@@ -1,8 +1,11 @@
 // Require dependencies
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require("./routes")
-
+const routes = require("./routes");
+const passport=require("passport");
+const session=require("express-session")
+const cookieParser=require("cookie-parser")
+const PORT= process.env.PORT || 3000;
 const app = express();
 
 // Serve static assets
@@ -28,7 +31,7 @@ require("./passport")(passport);
 app.use('/auth', passportRote);
 
 // Connect to mongo db
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/project3");
 
 // Listener
 app.listen(PORT, function () {
