@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var bcrypt=require("bcrypt");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -11,6 +12,12 @@ const userSchema = new Schema({
     ref: "Products"
   },
 });
+userSchema.methods.hashPassword=password=>{
+  return bcrypt.hashSync(password,bcrypt.genSaltSync(10))
+}
+userSchema.methods.comparePassword=(password,hash)=>{
+  return bcrypt.compareSync(password,hash)
+}
 
 const User = mongoose.model("User", userSchema);
 
