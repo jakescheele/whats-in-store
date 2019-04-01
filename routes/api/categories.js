@@ -1,19 +1,25 @@
-// CATEGORIES
+const router = require("express").Router();
+const categoriesController = require("../../controllers/categoryController");
 
-    // New category
-        // POST "/api/category"
+// Matches with "/api/category"
+router.route("/")
+    .get(categoriesController.findAll)
+    .post(categoriesController.create)
 
-    // Update category
-        // PUT "/api/category/:id"
+// Matches with "/api/category/:id"
+router
+    .route("/:id")
+    .get(categoriesController.findById)
+    .put(categoriesController.update)
+    .delete(categoriesController.remove);
 
-    // Delete category
-        // DELETE "api/category/:id"
+module.exports = router;
 
-    // New subcategory
-        // POST "/api/subcategory"
+// New subcategory
+// POST "/api/subcategory"
 
-    // Update subcategory
-        // PUT "/api/subcategory/:id"
+// Update subcategory
+// PUT "/api/subcategory/:id"
 
-    // Delete subcategory
-        // DELETE "api/subcategory/:id"
+// Delete subcategory
+// DELETE "api/subcategory/:id"
