@@ -74,13 +74,14 @@ opacity: 0;
 
 #toggle .span {
 height: 7px;
-background: #333;
+background: white;
 margin: 5px auto;
 backface-visibility: hidden;
 }
 
 #toggle.on #one {
 transform: rotate(45deg) translateX(6px) translateY(6px);
+background: black;
 }
 
 #toggle.on #two {
@@ -89,6 +90,7 @@ opacity: 0;
 
 #toggle.on #three {
 transform: rotate(-45deg) translateX(10px) translateY(-12px);
+background: black;
 }
 
 #hamburger {
