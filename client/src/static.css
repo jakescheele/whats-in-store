@@ -201,9 +201,6 @@
     .product_rassurance .list-inline li:hover {
         color: #343a40;
     }
-    .reviews_product .fa-star {
-        color: gold;
-    }
     .pagination {
         margin-top: 20px;
     }
@@ -219,6 +216,20 @@
     .h5Alt {
         font-weight: bold;
         color: black;
+    }
+
+
+
+    .modalButton {
+        text-align: center;
+        font-family: itc-avant-garde-gothic-pro, sans-serif;
+        font-weight: light;
+        color: white;
+        background-color: black;
+        border-radius: 20px;
+
+
+
     }
 
   
