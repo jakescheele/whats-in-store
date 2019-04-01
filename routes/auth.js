@@ -6,8 +6,8 @@ module.exports=function(passport){
     router.post("/auth/signup",function(req,res){
         var email = req.body.email,
         password =  User.hashPassword(req.body.password),
-        name = req.body.name,
-        shopName=req.body.shopName;
+        shopName=req.body.shopName,
+        name=req.body.description;
         User.find({email:email}).then((err,data)=>{
             if(err||data){
                 res.json("server error or user found")
