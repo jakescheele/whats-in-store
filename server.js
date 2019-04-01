@@ -1,26 +1,24 @@
-// Dependencies
-var express = require("express");
-var mongoose = require("mongoose");
-var routes = require("./routes");
+// Require dependencies
+const express = require('express');
+const mongoose = require('mongoose');
+const routes = require("./routes")
+const app = express();
 
-var PORT = process.env.PORT || 3000;
-
-// Initialize Express
-var app = express();
+// Set up dependencies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Make public a static folder
-app.use(express.static("public"));
+// Serve static assets
+if (process.env.NODE_ENV === "production") {
+ app.use(express.static("client/build"));
+};
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/whats-in-store");
-
-// Routes
+// Add routes
 app.use(routes);
 
+// Connect to mongo db
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
 
 // Listener
-app.listen(PORT, function() {
-    console.log("Server listening on port " + PORT);
-  });
-  
+app.listen(PORT, function () {
+    console.log(`API Server listening on PORT ${PORT}`)
+});
