@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "mongoose-bcrypt": "^1.6.0",
-=======
     "express": "^4.16.4",
     "mongoose": "^5.4.20",
->>>>>>> 4cf03f9468313b27f72d613e2c84b870d60fb868
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-scripts": "2.1.8"
