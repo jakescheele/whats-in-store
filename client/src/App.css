@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .test {
   color: white;
   margin-bottom: 50px;
@@ -222,3 +223,27 @@ footer a {
 }
 
 
+=======
+.signupbody{
+  display: flex;
+  flex-flow: row wrap;
+}
+.authCont{
+  justify-content: center;
+  display: flex;
+}
+.signupHeader{
+  font-size: 2rem;
+}
+.signupPara{
+  font-size:1rem;
+}
+.info{
+  width:50%;
+  padding:.5rem;
+}
+.forminput{
+  width:50%;
+  padding:.5rem;
+}
+>>>>>>> master
