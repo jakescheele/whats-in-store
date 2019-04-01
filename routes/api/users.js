@@ -1,7 +1,13 @@
-// USERS
+const router = require("express").Router();
+const usersController = require("../../controllers/usersController");
 
-    // New user
-        // POST "/api/users"
 
-    // Update user
-        // PUT "/api/users"
+router.route("/login")
+    .get(usersController.login);
+
+router
+    .route("/signup")
+    .post(usersController.signup);
+
+
+module.exports = router;
