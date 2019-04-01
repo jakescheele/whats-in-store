@@ -16,6 +16,6 @@ const userSchema = new Schema({
   stock: { type: Array },
 });
 
-const User = mongoose.model("User", userSchema);
+const Product = mongoose.model("Product", userSchema);
 
 module.exports = User;

@@ -1,11 +1,15 @@
- // Get products
-        // GET "/api/products"
+const router = require("express").Router();
+const productsController = require("../../controllers/productsController");
 
-    // New product
-        // POST "/api/products"
+// Matches with "/api/products"
+router.route("/")
+    .get(productsController.findAll)
+    .post(productsController.create);
 
-    // Update product
-        // PUT "/api/products/:id"
+// Matches with "/api/products/:id"
+router.route("/:id")
+    .get(productsController.findById)
+    .put(productsController.update)
+    .delete(productsController.remove);
 
-    // Delete product
-        // DELETE "api/products/:id"
+module.exports = router;
