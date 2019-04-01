@@ -31,7 +31,7 @@ class signup extends React.Component{
     }
     render(){
         return (
-            <div className="signupCont">
+            <div className="authCont">
                 <div className="signupbody">
                     <div className="info">
                         <p className="signupHeader">W i S</p>
