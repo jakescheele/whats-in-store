@@ -1,10 +1,5 @@
 {
   "name": "whats-in-store",
-<<<<<<< HEAD
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-=======
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,11 +11,9 @@
     "mongoose-bcrypt": "^1.6.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "react-scripts": "2.1.8"
+    "axios": "^0.18.0",
+    "if-env": "^1.0.4",
   },
->>>>>>> master
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -40,11 +33,5 @@
   "bugs": {
     "url": "https://github.com/jakescheele/whats-in-store/issues"
   },
-  "homepage": "https://github.com/jakescheele/whats-in-store#readme",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.4",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.4.20"
-  }
+  "homepage": "https://github.com/jakescheele/whats-in-store#readme"
 }
