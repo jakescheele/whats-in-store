@@ -53,31 +53,23 @@ class ModalComponent extends React.Component {
         <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Using Grid in Modal
+            EDIT PRODUCT
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
+          <Col md={6} lg={4}>
             <Row className="show-grid">
-              <Col xs={12} md={8}>
-                <code>.col-xs-12 .col-md-8</code>
-              </Col>
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-            </Row>
 
-            <Row className="show-grid">
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
+
+              
+                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
+              
+          
+            <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
             </Row>
+</Col>
+            
           </Container>
         </Modal.Body>
         <Modal.Footer>
