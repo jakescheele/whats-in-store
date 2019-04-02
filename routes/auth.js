@@ -1,19 +1,20 @@
 var router = require("express").Router();
-var User=require("../models").User;
-const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
+var db=require("../models");
+var user=db.User;
+// const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
 module.exports=function(passport){
     router.post("/auth/signup",function(req,res){
         var email = req.body.email,
-        password =  User.hashPassword(req.body.password),
-        name = req.body.name,
-        shopName=req.body.shopName;
-        User.find({email:email}).then((err,data)=>{
+        password =  user.hashPassword(req.body.password),
+        shopName=req.body.shopName,
+        name=req.body.description;
+        user.find({email:email}).then((err,data)=>{
             if(err||data){
                 res.json("server error or user found")
             }
             else{
-                User.insertOne({
+                user.insertOne({
                     email:email,
                     password:password,
                     name:name,

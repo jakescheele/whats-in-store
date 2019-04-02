@@ -4,4 +4,3 @@ module.exports = {
     Subcategory: require("./subcategory"),
     User: require("./user")
   };
-  
