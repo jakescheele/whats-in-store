@@ -1,6 +1,6 @@
 module.exports = {
-    User:     require('./User'),
-    Product:  require('./Product'),
-    Category:  require('./Category'),
-    Subcategory: require('./Subcategory')
+    User:     require('./user'),
+    Product:  require('./product'),
+    Category:  require('./category'),
+    Subcategory: require('./subcategory')
 }
