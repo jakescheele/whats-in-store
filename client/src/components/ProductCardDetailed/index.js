@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ProductCard from "../ProductCard"
 import Modal from 'react-bootstrap/Modal'
 import {Col, Row, Card } from 'react-bootstrap'
-import {Button, Container} from "react-bootstrap";
+import {Button, Container, InputGroup, FormControl} from "react-bootstrap";
+
 
 
 class ModalComponent extends React.Component {
@@ -36,22 +37,40 @@ class ModalComponent extends React.Component {
         <>
         <Modal show={this.props.show} onHide={this.props.close}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            EDIT PRODUCT
-          </Modal.Title>
+        <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
         </Modal.Header>
         <Modal.Body>
           <Container>
-          <Col lg={6} lg={4}>
+          <Col lg={12}>
             <Row className="show-grid">
-
-
-              
                 <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
-              
-          
-            <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
             </Row>
+            
+            <Row>
+            <InputGroup className="mb-3 mx-0">
+            <FormControl
+            placeholder="Edit Product Name"
+            />
+            <InputGroup.Append>
+            <Button variant="secondary">Enter</Button>
+            </InputGroup.Append>
+            </InputGroup>
+            </Row>
+
+
+            <Row>
+            <InputGroup className="mb-3 mx-0">
+            <FormControl
+            placeholder="Edit Price"
+            />
+            <InputGroup.Append>
+            <Button variant="secondary">Enter</Button>
+            </InputGroup.Append>
+            </InputGroup>
+            </Row>
+
+
+           
             </Col>
             
           </Container>
