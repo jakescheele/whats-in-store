@@ -9,7 +9,6 @@ function Inventory(){
     return(<>
         <Jumbotron pageName="INVENTORY" instructions="Click to view and edit products."/>
         <Layout/>
-        <ProductModal />
     </>)
 }
 
