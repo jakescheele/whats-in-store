@@ -1,10 +1,8 @@
 import React from "react";
-import axios from "axios";
-
-class signup extends React.Component{
+class Signup extends React.Component{
     state={
         email:"",
-        ShopName:"",
+        shopName:"",
         password:"",
         Confirmpassword:"",
         shopLogo:"",
@@ -15,8 +13,11 @@ class signup extends React.Component{
         const {name,value}= event.target;
         this.setState({[name]:value});
     }
-    formSubmit=()=>{
+    formSubmit=(event)=>{
+        event.preventDefault();
         if(this.state.Confirmpassword===this.state.password){
+            console.log("passowrds match")
+            console.log(this.state)
             let body={
                 email:this.state.email,
                 password: this.state.password,
@@ -24,9 +25,20 @@ class signup extends React.Component{
                 shopName:this.state.shopName,
                 description:this.state.description,
             }
-            axios.post("/auth/signup",body).then(res=>{
-                window.location.assign("/dashboard")
+            fetch("/auth/signup",{
+                method:"POST",
+                body:JSON.stringify(body),
+                credentials: "same-origin",
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type':'application/json'
+                }}).then(res=>{
+                console.log(res)
+                // window.location.assign("/dashboard")
             })
+        }
+        else{
+            console.log("check password")
         }
     }
     render(){
@@ -43,26 +55,26 @@ class signup extends React.Component{
                     <div className="forminput">
                         <form>
                             <div className="form-group">
-                              <label for="exampleFormControlInput1">Email address</label>
-                              <input type="email" onClick={this.handleChange} className="form-control" name="email" placeholder="name@example.com"/>
+                              <label for="email">Email address</label>
+                              <input type="email" onChange={this.handleChange} className="form-control" name="email" placeholder="name@example.com"/>
                             </div>
                             <div className="form-group">
-                              <label for="exampleFormControlInput1">Shop Name</label>
-                              <input type="text" onClick={this.handleChange} className="form-control" name="shopName" placeholder="she sells seaShells"/>
+                              <label for="shopName">Shop Name</label>
+                              <input type="text" onChange={this.handleChange} className="form-control" name="shopName" placeholder="she sells seaShells"/>
                             </div>
                             <div className="form-group">
-                              <label for="exampleFormControlInput1">Password</label>
-                              <input onClick={this.handleChange} className="form-control" name="password" type="password" />
+                              <label for="password">Password</label>
+                              <input onChange={this.handleChange} className="form-control" name="password" type="password" />
                             </div>
                             <div className="form-group">
-                              <label for="exampleFormControlInput1"> Confrim Password</label>
-                              <input onClick={this.handleChange} className="form-control" name="Confirmpassword" type="password" />
+                              <label for="Confirmpassword"> Confrim Password</label>
+                              <input onChange={this.handleChange} className="form-control" name="Confirmpassword" type="password" />
                             </div>
                             <div className="form-group">
-                              <label for="exampleFormControlTextarea1">Shop description</label>
-                              <textarea onClick={this.handleChange} className="form-control" name="description" rows="3"></textarea>
+                              <label for="description">Shop description</label>
+                              <textarea onChange={this.handleChange} className="form-control" name="description" rows="3"></textarea>
                             </div>
-                            <button type="submit" onClick={this.formSubmit} class="btn btn-info">Submit</button>
+                            <button type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} class="btn btn-info">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -71,4 +83,4 @@ class signup extends React.Component{
     }
 
 }
-export default signup;
+export default Signup;

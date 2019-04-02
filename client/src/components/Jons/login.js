@@ -1,5 +1,6 @@
 import React from "react";
-
+import {Link} from "react-router-dom";
+  
 class login extends React.Component{
     state={
         email:"",
@@ -16,7 +17,9 @@ class login extends React.Component{
                 email:this.state.email,
                 password: this.state.password
             }
-            axios.post("/auth/login",body).then(res=>{
+            fetch("/auth/login",{
+                method:"POST",
+                body:body}).then(res=>{
                 window.location.assign("/dashboard")
             })
         }
@@ -26,12 +29,11 @@ class login extends React.Component{
             <div className="authCont">
                 <div className="info">
                     <p className="signupHeader">W i S</p>
-                    <p className="signupPara">Whats-In-store is a Ecomerence  market place where you can buy goods or create a stand
-                    and open your very own store!
-                    </p>
+                    <Link to="/signup"><p className="signupPara">Don't have an account yet? click here to get set up!
+                    </p></Link>
                 </div>
                 <div className="forminput">
-                    <form>
+                    <form className="formss">
                         <div className="form-group">
                           <label for="email">Email address</label>
                           <input type="email" onClick={this.handleChange} className="form-control" name="email" placeholder="name@example.com"/>

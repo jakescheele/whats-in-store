@@ -5,7 +5,7 @@ let Schema = mongoose.Schema;
 let userSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
-  name: {type: String, required: true },
+  description: {type: String, required: true },
   shopName: {type: String},
   products: {
     type: Schema.Types.ObjectId,
