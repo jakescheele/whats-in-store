@@ -1,30 +1,32 @@
-var router = require("express").Router();
+var express = require("express");
+var router=express.Router()
 var db=require("../models");
-var user=db.User;
+var User=db.User;
 // const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
 module.exports=function(passport){
-    router.post("/auth/signup",function(req,res){
-        var email = req.body.email,
-        password =  user.hashPassword(req.body.password),
-        shopName=req.body.shopName,
-        name=req.body.description;
-        user.find({email:email}).then((err,data)=>{
-            if(err||data){
+    router.post("/signup",function(req,res){
+        User.find({email:req.body.email}).then((err,data)=>{
+            if(data){
+              console.log("uh oh")
                 res.json("server error or user found")
             }
             else{
-                user.insertOne({
-                    email:email,
-                    password:password,
-                    name:name,
-                    shopName:shopName
-                }).then(data=>res.json(data))
+              var user=new User()
+                User.create({
+                    email:req.body.email,
+                    password:user.hashPassword(req.body.password),
+                    description:req.body.description,
+                    shopName:req.body.shopName
+                }).then((dat)=> {
+                  console.log(dat);
+                  res.json(dat)
+                }).catch(err=>res.json(err))
             }
         })
-    })
+      })
 
-    router.post("/auth/login",(req,res,next)=>{
+    router.post("/login",(req,res,next)=>{
         passport.authenticate('local',(err,user,info)=>{
             if(err){
                 return next(err)
@@ -41,7 +43,7 @@ module.exports=function(passport){
         })
     })
 
-    router.get("/auth/logout",function(req,res){
+    router.get("/logout",function(req,res){
         const old_user=req.user;
         req.logout();
         res.json({success:(req.user?"NO":"Yes"),user:req.user,OldUser:old_user})
@@ -49,5 +51,4 @@ module.exports=function(passport){
 
     return router;
 }
-
 
