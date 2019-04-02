@@ -13,7 +13,8 @@ import products from "../../DummyProducts.json"
 
 class Layout extends Component {
     state={
-        products: products
+        products: products,
+        show: false
     }
 
     componentDidMount(){
@@ -24,6 +25,13 @@ class Layout extends Component {
     }
 
     // click handler for product card to trigger product detail modal
+    viewProductHandler=(id)=>{
+        this.setState({
+            show: true
+        })
+
+    }
+
 
     render(){
         return (<>
@@ -38,7 +46,7 @@ class Layout extends Component {
                 </Col>
                 <Col className="mx-1">
                     <Row>
-                        {this.state.products.map(product=>(<ProductCard product={product}/>))}
+                        {this.state.products.map(product=>(<ProductCard product={product} view={this.viewProductHandler}/>))}
                     </Row>
                 </Col>
 
