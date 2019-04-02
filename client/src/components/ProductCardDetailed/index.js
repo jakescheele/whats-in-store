@@ -102,3 +102,65 @@ class ModalComponent extends React.Component {
 
 // React.render(<App />, document.body);
 export default ModalComponent;
+
+
+// here is the modal triggered by click the card
+
+// function ProductModal(props) {
+//     // constructor(props) {
+//     //   super(props);
+    
+//       return (
+//         <>
+//         <Modal show={props.show} onHide={props.close}>
+//         <Modal.Header closeButton>
+//           <Modal.Title id="contained-modal-title-vcenter">
+//             Using Grid in Modal
+//           </Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>
+//           <Container>
+//             <Row className="show-grid">
+//               <Col xs={12} md={8}>
+//                 <code>.col-xs-12 .col-md-8</code>
+//               </Col>
+//               <Col xs={6} md={4}>
+//                 <code>.col-xs-6 .col-md-4</code>
+//               </Col>
+//             </Row>
+
+//             <Row className="show-grid">
+//               <Col xs={6} md={4}>
+//                 <code>.col-xs-6 .col-md-4</code>
+//               </Col>
+//               <Col xs={6} md={4}>
+//                 <code>.col-xs-6 .col-md-4</code>
+//               </Col>
+//               <Col xs={6} md={4}>
+//                 <code>.col-xs-6 .col-md-4</code>
+//               </Col>
+//             </Row>
+//           </Container>
+//         </Modal.Body>
+//         <Modal.Footer>
+         
+
+            
+//             <Button variant="secondary" onClick={props.close}>
+//               Close
+//             </Button>
+//             <Button variant="primary" onClick={props.close}>
+//               Save Changes
+//             </Button>
+//           </Modal.Footer>
+//         </Modal>
+//       </>
+        
+//       );
+//     }
+  
+  
+
+
+// // React.render(<App />, document.body);
+// export default ProductModal;
