@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Spring T-shirt",
+        "category": {
+          "name": "Clothing"
+        },
+        "subcategory": {
+            "name": "T-shirts"
+        },
+        "image" : "https://img.romwe.com/images/romwe.com/201609/1473209569435372363_thumbnail_1200x.webp",
+        "price": 36.6,
+        "description": "Beautiful T-shirt. 100% combed ringspun cotton. The perfect fabric for a graphic tee and the softest in the business.",
+        "stock": 100
+      },
+      {
+        "name": "Long Sleeve Button Front Comfort FLEX Shirt",
+        "category": {
+          "name": "Clothing"
+        },
+        "subcategory": {
+            "name": "Shirts"
+        },
+        "image" : "https://images-na.ssl-images-amazon.com/images/I/A1ab0WVqBFL._UX342_.jpg",
+        "price": 28.6,
+        "description": "A no-fuss everyday essential, this shirt features no wrinkle technology to keep you looking freshly pressed straight from the dryer.",
+        "stock": 80
+      },
+      {
+        "name": "Casual Dress",
+        "category": {
+          "name": "Clothing"
+        },
+        "subcategory": {
+            "name": "Dress"
+        },
+        "image": "https://photo.venus.com/im/J78043-WHMU.1.jpg?preset=product",
+        "price": 20.99,
+        "description": "Midi dresses for women will make you feel at your best regardless of whether you wear it to a grocery store or to a social event. To create this dress, we used viscose of the highest quality.",
+        "stock": 120
+      },
+      {
+        "name": "Charcoal and Clay Mask",
+        "category": {
+          "name": "Beauty"
+        },
+        "subcategory": {
+            "name": "Mask"
+        },
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71CkBtBnP%2BL._SY450_.jpg",
+        "price": 18.99,
+        "description": "Different skin types react uniquely to the changes in their environment and toxins and impurities can collect over time in our skin. Similar to a peel off mask, our cream-base mask works through your face to exfoliate, cleanse, smoothen, and provide antioxidants for healthier looking skin.",
+        "stock": 30
+      },
+      {
+        "name": "SEPHORA Face Mask",
+        "category": {
+          "name": "Beauty"
+        },
+        "subcategory": {
+            "name": "Mask"
+        },
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71B4KkH0MmL._SY355_.jpg",
+        "price": 19.99,
+        "description": "Each of these masks is infused with a different active ingredient for relaxing the skin and achieving a brighter, more revitalized complexion. The fiber masks perfectly hug facial contours for better penetration of the active ingredients. Honey Mask: Nourishes and balances to soothe and refresh dry or sensitive skin.",
+        "stock": 50
+      },
+      {
+        "name": "Roodie Pet Pouch Hoodie",
+        "category": {
+          "name": "Pet"
+        },
+        "image": "https://i5.walmartimages.com/asr/16de9caf-8287-45e4-93e6-c930c446b4c9_1.42da0f2b8f781422fccbbb0ceffd2dd5.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+        "price": 99.99,
+        "description": "Roodie is the perfect pet carrier hoodie / sweater for every small animal lover.",
+        "stock": 10
+      }
+]

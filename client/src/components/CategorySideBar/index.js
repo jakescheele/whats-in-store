@@ -1,19 +1,37 @@
 
 
 import React, { Component } from "react";
-import {Container, Col, Row, Card, Form} from 'react-bootstrap'
+import {Container, Col, Row, Card, Form, Button} from 'react-bootstrap'
 import CategoryList from "./CategoryList"
+import categories from "../../DummyCategories.json"
 
 
-function CategorySideBar(){
+
+class CategorySideBar extends Component{
+    state={
+        categories: categories
+    }
+
+    componentDidMount(){
+        //axio request to find all categories in DB
 
 
-    return (<Card>
-                <Card.Header>Categories</Card.Header>
-                <Card.Body>
-                    <CategoryList/>
-                </Card.Body>
-            </Card>)
+        // set state
+    }
+    
+    categoryEditHandler = (e)=>{
+        e.preventDefault()
+        // trigger edit category modal
+    }
+
+    render(){
+        return (<Card>
+                    <Card.Header className="d-flex justify-content-between"><span className="pt-1">Categories</span> <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button></Card.Header>
+                    <Card.Body>
+                    {this.state.categories.map(category=>(<CategoryList category={category}/>))}
+                    </Card.Body>
+                </Card>)
+    }
 }
 
 export default CategorySideBar;

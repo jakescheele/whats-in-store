@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import {Container, Col, Row, Card, Form} from 'react-bootstrap'
 
-function ProductCard() {
+function ProductCard(props) {
 
     return (<>
-        <Col xs={12} md={6} lg={4} className="px-1 pb-2">
+        <Col xs={12} sm={12} md={6} lg={4} className="px-1 pb-2">
             <Card style={{ width: '100%' }}>
-                <Card.Img variant="top" src="https://dummyimage.com/600x400/55595c/fff" />
+                <Card.Img variant="top" src={props.product.image} />
                 <Card.Body>
-                    <Card.Title>Product Name</Card.Title>
+                    <Card.Title className="product-name">{props.product.name}</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                                </Card.Text>
-                    <p>Price: $ 99.00 </p>
-                    <p>Stock: 1000 </p>
+                        <div className="product-description">{props.product.description}</div>
+                    </Card.Text>  
+                        <div>Price: $ {props.product.price} </div>
+                        <div>Stock: {props.product.stock} </div>
                 </Card.Body>
             </Card>
         </Col>
