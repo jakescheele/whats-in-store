@@ -1,6 +1,7 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
 import Layout from "../components/LayoutForInventory.js";
+import ProductModal from "../components/ProductCardDetailed";
 
 
 

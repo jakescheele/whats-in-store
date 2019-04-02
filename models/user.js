@@ -11,6 +11,14 @@ let UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Products"
   },
+  categories: {
+    type: Schema.Types.ObjectId,
+    ref: "Categories"
+  },
+  subcategoriese: {
+    type: Schema.Types.ObjectId,
+    ref: "Subcategories"
+  },
 });
 userSchema.methods.hashPassword=password=>{
   return bcrypt.hashSync(password,bcrypt.genSaltSync(10))
