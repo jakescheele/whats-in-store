@@ -1,0 +1,40 @@
+[
+    { 
+        "name": "Beauty",
+        "sub_category": [
+            {
+              "name": "Masks"
+            },
+            {
+              "name": "Exfolient"
+            }
+          ]
+    },
+    { 
+        "name": "Clothing",
+        "sub_category": [
+            {
+              "name": "Shirts"
+            },
+            {
+              "name": "T-shirts"
+            },
+            {
+              "name": "Dress"
+            },
+            {
+              "name": "Coats & Jackets"
+            },
+            {
+              "name": "Jeans"
+            },
+            {
+              "name": "Shorts"
+            }
+          ] 
+    },
+    { 
+        "name": "Pet",
+        "sub_category": [] 
+    }
+]
