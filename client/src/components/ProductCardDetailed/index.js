@@ -1,76 +1,98 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import Modal from "react-bootstrap/Modal";
+import ProductCard from "../ProductCard"
+import Modal from 'react-bootstrap/Modal'
+import {Col, Row, Card } from 'react-bootstrap'
+import {Button, Container} from "react-bootstrap";
 
 
-export default class ModalComponent extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { modal: false,product: '',price :'' ,category: ''};
+class ModalComponent extends React.Component {
+    // constructor(props) {
+    //   super(props);
+    state = { 
+      show: false, 
+      product: '',
+      price : '' ,
+      category: ''
+    };
   
-      this.toggle = this.toggle.bind(this);
-      this.handleChangeName = this.handleChangeName.bind(this);
-      this.handleChangeTeam = this.handleChangeTeam.bind(this);
-      this.handleChangeCountry = this.handleChangeCountry.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
   
-    toggle() {
+  
+    handleShow=() =>{
       this.setState({
-        modal: !this.state.modal
+        show: true
       });
     }
-    handleChangeName(event) {
-      this.setState({produc: event.target.value});
+    handleClose=() =>{
+      this.setState({
+        show: false
+      });
     }
-    handleChangeTeam(event) {
+    handleChangeProduct=(event) =>{
+      this.setState({product: event.target.value});
+    }
+    handleChangePrice=(event) =>{
       this.setState({price: event.target.value});
     }
-    handleChangeCountry(event) {
+    handleChangeCategory=(event) =>{
       this.setState({category: event.target.value});
     }
   
-    handleSubmit(event) {
+    handleSubmit=(event) =>{
       event.preventDefault();
        }
   
   
     render() {
       return (
-  
-          <div>
-            <h1>Modal</h1>
-          <Button color="success" onClick={this.toggle}>React Modal</Button>
-          <Modal isOpen={this.state.modal}>
-          <form onSubmit={this.handleSubmit}>
-            <ModalHeader>Product Card</ModalHeader>
-            <ModalBody>
-            <div className="row">
-              <div className="form-group col-md-4">
-              <label>Product:</label>
-              <input type="text" value={this.state.name} onChange={this.handleChangeName} className="form-control" />
-                </div>
-                </div>
-              <div className="row">
-               <div className="form-group col-md-4">
-              <label>Price:</label>
-                  <input type="text" value={this.state.team} onChange={this.handleChangeTeam} className="form-control" />
-                 </div>
-                </div>
-              <div className="row">
-               <div className="form-group col-md-4">
-                <label>Category:</label>
-                  <input type="text" value={this.country} onChange={this.handleChangeCountry} className="form-control" />
-                 </div>
-                </div>
-            </ModalBody>
-            <ModalFooter>
-              <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
-              <Button color="danger" onClick={this.toggle}>Cancel</Button>
-            </ModalFooter>
-            </form>
-          </Modal>
-          </div>
+        <>
+        <Button variant="primary" onClick={this.handleShow}>
+          Edit Product
+        </Button>
+
+        <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Using Grid in Modal
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Container>
+            <Row className="show-grid">
+              <Col xs={12} md={8}>
+                <code>.col-xs-12 .col-md-8</code>
+              </Col>
+              <Col xs={6} md={4}>
+                <code>.col-xs-6 .col-md-4</code>
+              </Col>
+            </Row>
+
+            <Row className="show-grid">
+              <Col xs={6} md={4}>
+                <code>.col-xs-6 .col-md-4</code>
+              </Col>
+              <Col xs={6} md={4}>
+                <code>.col-xs-6 .col-md-4</code>
+              </Col>
+              <Col xs={6} md={4}>
+                <code>.col-xs-6 .col-md-4</code>
+              </Col>
+            </Row>
+          </Container>
+        </Modal.Body>
+        <Modal.Footer>
+         
+
+            
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
         
       );
     }
