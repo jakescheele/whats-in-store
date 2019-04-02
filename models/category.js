@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const categorySchema = new Schema({
+const CategorySchema = new Schema({
   name: { type: String },
   subcategories: {
     type: Schema.Types.ObjectId,
@@ -9,6 +9,6 @@ const categorySchema = new Schema({
   },
 });
 
-const Category = mongoose.model("Category", categorySchema);
+const Category = mongoose.model("Category", CategorySchema);
 
 module.exports = Category;
