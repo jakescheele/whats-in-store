@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import {Container, Col, Row, Card, Form} from 'react-bootstrap'
 import CategorySideBar from "../CategorySideBar"
 import ProductCard from "../ProductCard"
+import ProductModal from "../ProductCardDetailed";
 import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
@@ -29,6 +30,7 @@ class Layout extends Component {
         return (<>
         <Container>
             <Row>
+            <ProductModal/>
                 <Col sm={12} md={10} lg={10} className="px-2"><SearchBar/></Col>
                 <Col sm={12} md={2} lg={2} className="px-2"><SortingBar/></Col>
             </Row>
