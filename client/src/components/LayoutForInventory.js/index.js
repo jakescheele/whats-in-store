@@ -3,10 +3,11 @@ import React, { Component } from "react";
 import {Container, Col, Row, Card, Form} from 'react-bootstrap'
 import CategorySideBar from "../CategorySideBar"
 import ProductCard from "../ProductCard"
-import ProductModal from "../ProductCardDetailed";
 import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
+import ProductModal from "../ProductCardDetailed";
+import CategoryModal from "../ViewCategoriesModal"
 import Footer from "../Footer"
 
 // dummy data
@@ -15,22 +16,28 @@ import products from "../../DummyProducts.json"
 class Layout extends Component {
     state={
         products: products,
-        show: false
+        show: false,
+        product: {}
     }
 
     componentDidMount(){
         //axio request to find all products in DB
-
+        
 
         // set state
     }
 
     // click handler for product card to trigger product detail modal
     viewProductHandler=(id)=>{
+         // make ajax request to the backend and get the viewed product
+         console.log(id)
+
+         // set the this.state.product to be the viewed product
+         // set show to true
         this.setState({
             show: true
         })
-
+       
     }
 
     closeModalHandler=(e)=>{
@@ -43,7 +50,7 @@ class Layout extends Component {
         return (<>
         <Container>
             <Row>
-                <ProductModal show={this.state.show} view={this.viewProductHandler} close={this.closeModalHandler}/>
+                <ProductModal show={this.state.show} view={this.viewProductHandler} close={this.closeModalHandler} product={this.state.product}/>
                 <Col sm={12} md={10} lg={10} className="px-2"><SearchBar/></Col>
                 <Col sm={12} md={2} lg={2} className="px-2"><SortingBar/></Col>
             </Row>
@@ -61,6 +68,7 @@ class Layout extends Component {
             <BackToTopBtn/>
         </Container>
         <Footer/>
+        <CategoryModal/>
         </>)
     }
 }

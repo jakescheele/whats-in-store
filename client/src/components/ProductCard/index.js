@@ -6,7 +6,7 @@ function ProductCard(props) {
     return (<>
         <Col xs={12} sm={12} md={6} lg={4} className="px-1 pb-2">
             <Card style={{ width: '100%' }}>
-                <Card.Img variant="top" src={props.product.image} onClick={props.view}/>
+                <Card.Img variant="top" src={props.product.image} onClick={(e)=>props.view(props.product._id)}/>
                 <Card.Body>
                     <Card.Title className="product-name">{props.product.name}</Card.Title>
                     <Card.Text>
