@@ -3,8 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routes = require("./routes");
 const passport=require("passport");
-const session=require("express-session")
-const cookieParser=require("cookie-parser")
+const session=require("express-session");
+const cookieParser=require("cookie-parser");
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
 const PORT= process.env.PORT || 3000;
 const app = express();
 // var db = require("./models");
@@ -28,7 +31,7 @@ app.use(passport.initialize())
 app.use(passport.session());
 
 // Add routes
-// app.use(routes);
+app.use(routes);
 const passportRote = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRote);
