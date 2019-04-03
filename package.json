@@ -15,7 +15,7 @@
     "mongoose-bcrypt": "^1.6.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
+    "passport-local": "^1.0.0"
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
