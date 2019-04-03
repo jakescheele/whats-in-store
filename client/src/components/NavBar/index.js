@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import Hamburger from "./Hamburger";
+import BrandLogo from "../BrandLogo"
 
 
 class Nav extends Component {
@@ -20,11 +21,7 @@ class Nav extends Component {
     render(){
         return this.state.collapse?(<>
             <nav>
-                <span id="brand">
-                    <div className="font">
-                        <a href="/">WiS</a>
-                    </div>
-                </span>
+                <BrandLogo/>
                 <div id="toggle" onClick={this.hamburgerHandler}>
                     <div className="span" id="one"></div>
                     <div className="span" id="two"></div>
@@ -34,11 +31,7 @@ class Nav extends Component {
         </>):
         (<>
             <nav>
-                <span id="brand">
-                    <div className="font">
-                        <a href="/">WiS</a>
-                    </div>
-                </span>
+                <BrandLogo/>
                 <div id="toggle" className="on" onClick={this.hamburgerHandler}>
                     <div className="span" id="one"></div>
                     <div className="span" id="two"></div>

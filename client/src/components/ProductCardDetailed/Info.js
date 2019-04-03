@@ -11,7 +11,7 @@ return (
           <Container>
           <Col lg={12}>
             <Row className="show-grid">
-                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
+                <img className="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
             </Row>
             
             <Row>

@@ -1,5 +1,6 @@
 [
     {
+        "_id":1,
         "name": "Spring T-shirt",
         "category": {
           "name": "Clothing"
@@ -13,6 +14,7 @@
         "stock": 100
       },
       {
+        "_id":2,
         "name": "Long Sleeve Button Front Comfort FLEX Shirt",
         "category": {
           "name": "Clothing"
@@ -26,6 +28,7 @@
         "stock": 80
       },
       {
+        "_id":3,
         "name": "Casual Dress",
         "category": {
           "name": "Clothing"
@@ -39,6 +42,7 @@
         "stock": 120
       },
       {
+        "_id":4,
         "name": "Charcoal and Clay Mask",
         "category": {
           "name": "Beauty"
@@ -52,6 +56,7 @@
         "stock": 30
       },
       {
+        "_id":5,
         "name": "SEPHORA Face Mask",
         "category": {
           "name": "Beauty"
@@ -65,6 +70,7 @@
         "stock": 50
       },
       {
+        "_id":6,
         "name": "Roodie Pet Pouch Hoodie",
         "category": {
           "name": "Pet"

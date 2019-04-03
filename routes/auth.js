@@ -9,6 +9,8 @@ module.exports=function(passport){
         User.find({email:req.body.email}).then((err,data)=>{
             if(data){
               console.log("uh oh")
+              console.log(data)
+              console.log(err)
                 res.json("server error or user found")
             }
             else{

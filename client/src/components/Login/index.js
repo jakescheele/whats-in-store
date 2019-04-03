@@ -20,14 +20,20 @@ class LoginModal extends Component{
             }
             fetch("/auth/login",{
                 method:"POST",
-                body:body}).then(res=>{
-                window.location.assign("/dashboard")
+                body:JSON.stringify(body),
+                credentials: "same-origin",
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type':'application/json'
+                }}).then(res=>{
+                console.log(res)
+                // window.location.assign("/dashboard")
             })
             
         }
     }
-render(){
-    return(
+    render(){
+        return(
         <>
         <Modal show={this.props.modalState} onHide={this.props.close}>
             <Container>

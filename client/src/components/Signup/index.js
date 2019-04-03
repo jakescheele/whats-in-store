@@ -28,16 +28,14 @@ class SignupModal extends Component {
                 shopName: this.state.shopName,
                 description: this.state.description,
             }
-            fetch("http://localhost:3000/auth/signup", {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify(body),
+            fetch("/auth/signup",{
+                method:"POST",
+                body:JSON.stringify(body),
                 credentials: "same-origin",
-                headers: {
-                    'Accept': 'application/x-www-form-urlencoded',
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(res => {
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type':'application/json'
+                }}).then(res=>{
                 console.log(res)
                 // window.location.assign("/dashboard")
                 this.props.close()
@@ -73,7 +71,7 @@ class SignupModal extends Component {
                             </Form.Group>
                             <Form.Group controlId="description">
                                 <Form.Label>Shop Description</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="description" placeholder="Shop Description" />
+                                <Form.Control as="textarea" rows="3" onChange={this.handleChange} type="description" placeholder="Shop Description" />
                             </Form.Group>
                             <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
                                 Submit

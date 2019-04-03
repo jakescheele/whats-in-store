@@ -1,10 +1,11 @@
 const db = require("../models");
+const parser = require("../cloudinary")
 
 // Defining methods for the productsController
 module.exports = {
   findAll: function (req, res) {
     db.Product
-      .find(req.query)
+      .find({ "user_id": req.user.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -14,10 +15,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  parseImage: parser.image("image"),
   create: function (req, res) {
+    const product = {
+      ...req.body,
+      url: req.file.url,
+      id: req.file.public_id
+    };
     db.Product
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .create(product)
+      .then(dbProduct =>  db.User.findOneAndUpdate({_id:req.user.id}, { $push: { products: dbProduct._id } }, { new: true }))
+      .then(dbUser => res.json(dbUser))
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {

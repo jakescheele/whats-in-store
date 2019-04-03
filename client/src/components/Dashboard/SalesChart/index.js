@@ -1,56 +1,35 @@
 import React, {Component} from "react";
 import '../../../../node_modules/react-vis/dist/style.css';
-
-import ShowcaseButton from './SalesChart';
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  VerticalGridLines,
-  HorizontalGridLines,
-  VerticalBarSeries,
-  VerticalBarSeriesCanvas,
-  LabelSeries
-} from 'index';
+import {XYPlot, VerticalBarSeries} from 'react-vis';
 
 
 
-const greenData = [{x: 'A', y: 10}, {x: 'B', y: 5}, {x: 'C', y: 15}];
 
-const blueData = [{x: 'A', y: 12}, {x: 'B', y: 2}, {x: 'C', y: 11}];
 
-const labelData = greenData.map((d, idx) => ({
-  x: d.x,
-  y: Math.max(greenData[idx].y, blueData[idx].y)
-}));
 
-class SalesChart extends React.Component {
-  state = {
-    useCanvas: false
-  };
-
-  render() {
-    const {useCanvas} = this.state;
-    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
-    const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
-    return (
-      <div>
-        <ShowcaseButton
-          onClick={() => this.setState({useCanvas: !useCanvas})}
-          buttonContent={content}
-        />
-        <XYPlot xType="ordinal" width={300} height={300} xDistance={100}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <BarSeries className="vertical-bar-series-example" data={greenData} />
-          <BarSeries data={blueData} />
-          <LabelSeries data={labelData} getLabel={d => d.x} />
-        </XYPlot>
-      </div>
-    );
+class SalesChart extends Component {
+    render() {
+      const data = [
+        {x: 0, y: 8},
+        {x: 1, y: 5},
+        {x: 2, y: 4},
+        {x: 3, y: 2},
+        {x: 4, y: 1},
+        {x: 5, y: 7},
+        {x: 6, y: 6},
+        {x: 7, y: 3},
+        {x: 8, y: 2},
+        {x: 9, y: 0}
+      ];
+      return (
+        <div className="App">
+          <XYPlot height={300} width={300}>
+            <VerticalBarSeries data={data} />
+          </XYPlot>
+        </div>
+      );
+    }
   }
-}
+  
 
 export default SalesChart
