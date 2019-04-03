@@ -1,8 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import Modal from 'react-bootstrap/Modal'
 import {Col, Row, Card } from 'react-bootstrap'
 import {Button, Container, InputGroup, FormControl} from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
+
 
 
 function Info (props) {
@@ -14,26 +15,20 @@ return (
             </Row>
             
             <Row>
-            <InputGroup className="mb-3 mx-0">
-            <FormControl
-            placeholder="Edit Product Name"
-            />
-            <InputGroup.Append>
-            <Button variant="secondary">Enter</Button>
-            </InputGroup.Append>
-            </InputGroup>
-            </Row>
+            
+              <Form.Group controlId="formGroupEmail">
+              
+              <Form.Control placeholder="Product Name" />
+              </Form.Group>
+              <Form.Group controlId="formGroupPassword">
+              
+              <Form.Control placeholder="Price" />
+              </Form.Group>
 
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Control as="textarea" rows="3" placeholder="Product Description"  />
+              </Form.Group>
 
-            <Row>
-            <InputGroup className="mb-3 mx-0">
-            <FormControl
-            placeholder="Edit Price"
-            />
-            <InputGroup.Append>
-            <Button variant="secondary">Enter</Button>
-            </InputGroup.Append>
-            </InputGroup>
             </Row>
            
             </Col>

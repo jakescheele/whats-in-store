@@ -16,7 +16,6 @@ class ModalComponent extends React.Component {
     state = { 
       show: false, 
       tab: "Info",
-      key: "Info"
     };
 
     
@@ -45,7 +44,8 @@ class ModalComponent extends React.Component {
         <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
         </Modal.Header>
         <Modal.Body>
-          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+
+          <Tabs defaultActiveKey="Info" transition={false} id="noanim-tab-example">
             <Tab eventKey="Info" title="Info" >
               <Info />
             </Tab>
