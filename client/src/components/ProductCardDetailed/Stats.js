@@ -6,9 +6,7 @@ import {Div, Button, Container, InputGroup, FormControl, Col, Row, Card } from "
 
 function stats (props) {
     return(
-        <>
         <Container>
-
             <Row>
             <Col md={4}>
             <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
@@ -30,12 +28,8 @@ function stats (props) {
             </InputGroup>
             </Col>
             </Row>
-
             </Container>
-        </>
-       
         )
 }
-
 
 export default stats
