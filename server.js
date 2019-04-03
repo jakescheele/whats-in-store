@@ -7,7 +7,7 @@ const cookieParser=require("cookie-parser");
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
-const PORT= process.env.PORT || 3000;
+const PORT= process.env.PORT || 3001;
 const app = express();
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
