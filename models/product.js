@@ -8,10 +8,7 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Category"
   },
-  subcategory: {
-    type: Schema.Types.ObjectId,
-    ref: "Subcategory"
-  },
+  subcategory: { type: String },
   image: { type: String },
   price: { type: Number, required: true },
   description: { type: String },

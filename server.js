@@ -35,7 +35,7 @@ app.use(passport.initialize())
 app.use(passport.session());
 
 // Add routes
-app.use(routes);
+// app.use(routes);
 const passportRote = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRote);
