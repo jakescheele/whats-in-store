@@ -13,7 +13,6 @@ import Profile from "./pages/Profile";
 import NoMatch from "./pages/NoMatch";
 import './App.css';
 import Nav from "./components/NavBar";
-
 function App() {
 
   return (
