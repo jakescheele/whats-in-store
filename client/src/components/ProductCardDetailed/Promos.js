@@ -1,44 +1,40 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import {Col, Row, Card } from 'react-bootstrap'
+import {Col, Row } from 'react-bootstrap'
+import Calendar from './Calendar'; 
 import {Form, Button, Container, InputGroup, FormControl} from "react-bootstrap";
-
-
 
 function Promos () {
     return(
         <Container>
             <Row>
             <Col md={4}>
-            <Form>
-                <Form.Group controlId="formBasicChecbox" className="mb-2">
-                
-                <Form.Check type="checkbox" />FLASH SALE 
-                </Form.Group>
-                </Form>
-                </Col>
-                </Row>
-                
-            <Row>
-            <InputGroup className="mb-3 mx-0">
-            <FormControl
-            placeholder="End Time"
-            />
-            <InputGroup.Append>
-            <Button variant="secondary">Enter</Button>
-            </InputGroup.Append>
-            </InputGroup>
-            </Row>
 
-            <Row>
-            <InputGroup className="mb-3 mx-0">
-            <FormControl
-            placeholder="End Time"
+            <Form>
+            {['checkbox' ].map(type => (
+            <div key={`-${type}`} className="mb-3">
+            <Form.Check 
+            type={type}
+            id={`default-${type}`}
+            label={`Flash Sale ${type}`}
             />
-            <InputGroup.Append>
-            <Button variant="secondary">Enter</Button>
-            </InputGroup.Append>
-            </InputGroup>
+            </div>
+            ))}
+            </Form>
+
+            </Col>
+            
+            <Col md={4}>  
+            <Row>
+                Start Date
+            <Calendar></Calendar>
+            </Row>
+           
+            <Row>
+                End Date
+            <Calendar></Calendar>
+            </Row></Col>  
+
             </Row>
 
             <Row>
@@ -51,8 +47,6 @@ function Promos () {
             </InputGroup.Append>
             </InputGroup>
             </Row>
-
-
             </Container>
     )
 }
