@@ -1,22 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import Modal from 'react-bootstrap/Modal'
-import { Button, Container } from "react-bootstrap";
-import axios from "axios";
-import {Link} from "react-router-dom";
+import { Button, Container,Form, Modal } from "react-bootstrap";
 
-class login extends React.Component{
+class LoginModal extends Component{
     state={
         email:"",
         password:"",
     }
     handleChange=(event)=>{
         event.preventDefault();
-        const {name,value}= event.target;
-        this.setState({[name]:value});
+        const { name, value }= event.target;
+        this.setState({ [name]: value });
     }
     formSubmit=()=>{
-        if(this.state.Confirmpassword===this.state.password){
+        if(this.state.password===this.state.password){
             let body={
                 email:this.state.email,
                 password: this.state.password
@@ -26,19 +23,19 @@ class login extends React.Component{
                 body:body}).then(res=>{
                 window.location.assign("/dashboard")
             })
+            
         }
     }
 render(){
     return(
         <>
-        <Modal>
+        <Modal show={this.props.modalState} onHide={this.props.close}>
             <Container>
                 <Form>
                     <Form.Group controlId="form-group">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control onChange={this.handleChange} type="email" placeholder="Enter email" />
                     </Form.Group>
-
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={this.handleChange} type="password" placeholder="Password" />
@@ -46,7 +43,7 @@ render(){
                     <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
                         Submit
                         </Button>
-                </Form>;
+                </Form>
                 </Container>
         </Modal>
     </>
@@ -54,4 +51,4 @@ render(){
     }
 
 }
-export default login;
+export default LoginModal;
