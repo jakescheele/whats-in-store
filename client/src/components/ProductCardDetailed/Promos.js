@@ -8,7 +8,7 @@ function Promos () {
     return(
         <Container>
             <Row>
-            <Col md={4}>
+            <Col lg={12}>
 
             <Form>
             {['checkbox' ].map(type => (
@@ -24,7 +24,7 @@ function Promos () {
 
             </Col>
             
-            <Col md={4}>  
+            <Col lg={12}>  
             <Row>
                 Start Date
             <Calendar></Calendar>

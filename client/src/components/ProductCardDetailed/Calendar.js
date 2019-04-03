@@ -1,8 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+
  
 
 class Calendar extends React.Component {
@@ -23,9 +24,13 @@ class Calendar extends React.Component {
     render() {
       return (
         <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleChange}
-        />
+        selected={this.state.startDate}
+        onChange={this.handleChange}
+        showTimeSelect
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        dateFormat="MMMM d, yyyy h:mm aa"
+        timeCaption="time"/>
       );
     }
   }
