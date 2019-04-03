@@ -1,12 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import Modal from 'react-bootstrap/Modal'
-import { Button, Container } from "react-bootstrap";
-import axios from "axios";
-class Signup extends React.Component {
+import { Button, Container,Form, Modal } from "react-bootstrap";
+
+class SignupModal extends Component {
     state = {
         email: "",
-        shopName: "",
         password: "",
         Confirmpassword: "",
         shopLogo: "",
@@ -17,6 +15,7 @@ class Signup extends React.Component {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     }
+
     formSubmit = (event) => {
         event.preventDefault();
         if (this.state.Confirmpassword === this.state.password) {
@@ -39,6 +38,7 @@ class Signup extends React.Component {
                 }}).then(res=>{
                 console.log(res)
                 // window.location.assign("/dashboard")
+                this.props.close()
             })
         }
         else {
@@ -49,7 +49,7 @@ class Signup extends React.Component {
     render() {
         return (
             <>
-                <Modal>
+                <Modal show={this.props.modalState} onHide={this.props.close}>
                     <Container>
                         <Form>
                             <Form.Group controlId="form-group">
@@ -87,5 +87,4 @@ class Signup extends React.Component {
 
 
 
-// React.render(<App />, document.body);
-export default Signup;
+export default SignupModal;
