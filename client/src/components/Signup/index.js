@@ -73,7 +73,7 @@ class SignupModal extends Component {
                             </Form.Group>
                             <Form.Group controlId="description">
                                 <Form.Label>Shop Description</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="description" placeholder="Shop Description" />
+                                <Form.Control as="textarea" rows="3" onChange={this.handleChange} type="description" placeholder="Shop Description" />
                             </Form.Group>
                             <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
                                 Submit
