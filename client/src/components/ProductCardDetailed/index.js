@@ -1,9 +1,12 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import ProductCard from "../ProductCard"
+import Info from "./Info"
+import Stock from "./Stock"
+import Promos from "./Promos"
 import Modal from 'react-bootstrap/Modal'
 import {Col, Row, Card } from 'react-bootstrap'
-import {Button, Container, InputGroup, FormControl} from "react-bootstrap";
+import {Button, Tab } from "react-bootstrap";
+import Tabs from 'react-bootstrap/Tabs'
 
 
 
@@ -12,10 +15,10 @@ class ModalComponent extends React.Component {
     //   super(props);
     state = { 
       show: false, 
-      product: '',
-      price : '' ,
-      category: ''
+      tab: "info"
     };
+
+    
   
     handleChangeProduct=(event) =>{
       this.setState({product: event.target.value});
@@ -35,45 +38,23 @@ class ModalComponent extends React.Component {
     render() {
       return (
         <>
+
         <Modal show={this.props.show} onHide={this.props.close}>
         <Modal.Header closeButton>
         <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
         </Modal.Header>
         <Modal.Body>
-          <Container>
-          <Col lg={12}>
-            <Row className="show-grid">
-                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
-            </Row>
-            
-            <Row>
-            <InputGroup className="mb-3 mx-0">
-            <FormControl
-            placeholder="Edit Product Name"
-            />
-            <InputGroup.Append>
-            <Button variant="secondary">Enter</Button>
-            </InputGroup.Append>
-            </InputGroup>
-            </Row>
-
-
-            <Row>
-            <InputGroup className="mb-3 mx-0">
-            <FormControl
-            placeholder="Edit Price"
-            />
-            <InputGroup.Append>
-            <Button variant="secondary">Enter</Button>
-            </InputGroup.Append>
-            </InputGroup>
-            </Row>
-
-
-           
-            </Col>
-            
-          </Container>
+          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+            <Tab eventKey="Info" title="Info" >
+              <Info />
+            </Tab>
+            <Tab eventKey="Stock" title="Stock">
+              <Stock />
+            </Tab>
+            <Tab eventKey="Promos" title="Promos">
+              <Promos />
+            </Tab>
+          </Tabs>
         </Modal.Body>
         <Modal.Footer>
          
@@ -93,7 +74,4 @@ class ModalComponent extends React.Component {
     }
   }
   
-
-
-// React.render(<App />, document.body);
 export default ModalComponent;
