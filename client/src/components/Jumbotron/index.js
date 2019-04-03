@@ -14,7 +14,7 @@ function Banner(props) {
         <div>{props.children}</div>
         </>)
         :(<>
-        <h1>{props.pageName}</h1>
+        <div style={{"fontSize": "46pt", "fontWeight":"bold"}}>{props.pageName}</div>
         <p>
             {props.instructions}
         </p>
