@@ -7,10 +7,10 @@ let userSchema = new Schema({
   password: { type: String, required: true },
   description: {type: String, required: true },
   shopName: {type: String},
-  products: {
+  products: [{
     type: Schema.Types.ObjectId,
     ref: "Products"
-  },
+  }],
 });
 userSchema.methods.hashPassword=password=>{
   return bcrypt.hashSync(password,bcrypt.genSaltSync(10))
