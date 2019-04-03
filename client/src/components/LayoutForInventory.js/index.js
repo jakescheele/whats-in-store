@@ -14,7 +14,8 @@ import products from "../../DummyProducts.json"
 
 class Layout extends Component {
     state={
-        products: products
+        products: products,
+        show: false
     }
 
     componentDidMount(){
@@ -25,12 +26,24 @@ class Layout extends Component {
     }
 
     // click handler for product card to trigger product detail modal
+    viewProductHandler=(id)=>{
+        this.setState({
+            show: true
+        })
+
+    }
+
+    closeModalHandler=(e)=>{
+        this.setState({
+            show: false
+        })
+    }
 
     render(){
         return (<>
         <Container>
             <Row>
-            <ProductModal/>
+                <ProductModal show={this.state.show} view={this.viewProductHandler} close={this.closeModalHandler}/>
                 <Col sm={12} md={10} lg={10} className="px-2"><SearchBar/></Col>
                 <Col sm={12} md={2} lg={2} className="px-2"><SortingBar/></Col>
             </Row>
@@ -40,7 +53,7 @@ class Layout extends Component {
                 </Col>
                 <Col className="mx-1">
                     <Row>
-                        {this.state.products.map(product=>(<ProductCard product={product}/>))}
+                        {this.state.products.map(product=>(<ProductCard product={product} view={this.viewProductHandler}/>))}
                     </Row>
                 </Col>
 
