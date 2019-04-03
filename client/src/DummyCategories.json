@@ -1,40 +1,24 @@
 [
     { 
         "name": "Beauty",
-        "sub_category": [
-            {
-              "name": "Masks"
-            },
-            {
-              "name": "Exfolient"
-            }
+        "subcategories": [
+            "Masks",
+            "Exfolient"
           ]
     },
     { 
         "name": "Clothing",
-        "sub_category": [
-            {
-              "name": "Shirts"
-            },
-            {
-              "name": "T-shirts"
-            },
-            {
-              "name": "Dress"
-            },
-            {
-              "name": "Coats & Jackets"
-            },
-            {
-              "name": "Jeans"
-            },
-            {
-              "name": "Shorts"
-            }
+        "subcategories": [
+            "Shirts",
+            "T-shirts",
+            "Dress",
+            "Coats & Jackets",
+            "Jeans",
+            "Shorts"
           ] 
     },
     { 
         "name": "Pet",
-        "sub_category": [] 
+        "subcategories": [] 
     }
 ]

@@ -1,33 +1,18 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import ProductCard from "../ProductCard"
+import Info from "./Info"
+import Stock from "./Stock"
+import Promos from "./Promos"
 import Modal from 'react-bootstrap/Modal'
 import {Col, Row, Card } from 'react-bootstrap'
-import {Button, Container} from "react-bootstrap";
+import {Button, Tab } from "react-bootstrap";
+import Tabs from 'react-bootstrap/Tabs'
+
 
 
 class ModalComponent extends React.Component {
-    // constructor(props) {
-    //   super(props);
-    state = { 
-      show: false, 
-      product: '',
-      price : '' ,
-      category: ''
-    };
-  
-  
-  
-    handleShow=() =>{
-      this.setState({
-        show: true
-      });
-    }
-    handleClose=() =>{
-      this.setState({
-        show: false
-      });
-    }
+    
+
     handleChangeProduct=(event) =>{
       this.setState({product: event.target.value});
     }
@@ -46,48 +31,33 @@ class ModalComponent extends React.Component {
     render() {
       return (
         <>
-        <Button variant="primary" onClick={this.handleShow}>
-          Edit Product
-        </Button>
 
-        <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal show={this.props.state} onHide={(e)=>this.props.close("productModal")}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Using Grid in Modal
-          </Modal.Title>
+        <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
         </Modal.Header>
         <Modal.Body>
-          <Container>
-            <Row className="show-grid">
-              <Col xs={12} md={8}>
-                <code>.col-xs-12 .col-md-8</code>
-              </Col>
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-            </Row>
 
-            <Row className="show-grid">
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-              <Col xs={6} md={4}>
-                <code>.col-xs-6 .col-md-4</code>
-              </Col>
-            </Row>
-          </Container>
+          <Tabs defaultActiveKey="Info" transition={false} id="noanim-tab-example">
+            <Tab eventKey="Info" title="Info" >
+              <Info />
+            </Tab>
+            <Tab eventKey="Stock" title="Stock">
+              <Stock />
+            </Tab>
+            <Tab eventKey="Promos" title="Promos">
+              <Promos />
+            </Tab>
+          </Tabs>
         </Modal.Body>
         <Modal.Footer>
          
 
             
-            <Button variant="secondary" onClick={this.handleClose}>
+            <Button variant="secondary" onClick={(e)=>this.props.close("productModal")}>
               Close
             </Button>
-            <Button variant="primary" onClick={this.handleClose}>
+            <Button variant="primary" onClick={(e)=>this.props.close("productModal")}>
               Save Changes
             </Button>
           </Modal.Footer>
@@ -98,7 +68,4 @@ class ModalComponent extends React.Component {
     }
   }
   
-
-
-// React.render(<App />, document.body);
 export default ModalComponent;

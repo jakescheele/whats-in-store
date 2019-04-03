@@ -26,9 +26,9 @@ class CategorySideBar extends Component{
 
     render(){
         return (<Card>
-                    <Card.Header className="d-flex justify-content-between"><span className="pt-1">Categories</span> <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button></Card.Header>
+                    <Card.Header className="d-flex justify-content-between"><span className="pt-1">Categories</span> <Button variant="secondary" size="sm" onClick={(e)=>this.props.show(null, "categoryModal")}><i className="far fa-edit pr-1"></i>Edit</Button></Card.Header>
                     <Card.Body>
-                    {this.state.categories.map(category=>(<CategoryList category={category}/>))}
+                    {this.state.categories.map(category=>(<CategoryList key={category.name} category={category}/>))}
                     </Card.Body>
                 </Card>)
     }
