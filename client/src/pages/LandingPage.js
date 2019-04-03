@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {default as LoginModal} from "../components/Login";
 import {default as SignupModal} from "../components/Signup";
-import { Button } from "react-bootstrap";
+import { Button, Container, Row, Col, Figure } from "react-bootstrap";
 
 
 class LandingPage extends Component {
@@ -36,10 +36,33 @@ class LandingPage extends Component {
     render() {
         return (
             <>
+            <Container>
+                <Row>
+                <Col md={{ span: 4, offset: 6 }}></Col>
                 <Button onClick={this.showModalLogin}>Login</Button>
                 <Button onClick={this.showModalSignup}>Signup</Button>
+                </Row>
+                <Col md={{ span: 6, offset: 2 }}>
+                <h1>Manage Your Inventory Online</h1>
+                <br></br>
+                <h2>Whether your business is big or small, or you'd just like to keep your stuff straight</h2>
+                <br></br>
+                <Button onClick={this.showModalSignup}>Get Started</Button>
                 <LoginModal modalState={this.state.showLogin} show={this.showModalLogin} close={this.closeModalLogin}/>
                 <SignupModal modalState={this.state.showSignup} show={this.showModalSignup} close={this.closeModalSignup}/>
+                </Col>
+                <br></br>
+                <Col md={{ span: 2, offset: 9 }}>
+                <Figure>
+                     <Figure.Image
+                        width={171}
+                        height={180}
+                        alt="171x180"
+                        src="holder.js/171x180"
+                 />
+                </Figure>
+                </Col>
+                </Container>
             </>)
     }
 }
