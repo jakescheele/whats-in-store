@@ -14,12 +14,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
-    db.Product
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   update: function (req, res) {
     db.Product
       .findOneAndUpdate({ _id: req.params.id }, req.body)
@@ -32,5 +26,19 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  addProduct:function(product,done){
+    db.Category.find({name:product.Category},
+        function(err,data){
+            if(err)done(err)
+            else if(data){
+                db.subCategory.findById(product.subCategory)
+                db.Product.insertOne(product)
+                .then(data=>done(data))
+            }
+            else{
+                db.Category.create({})
+            }
+        })
+},
 };

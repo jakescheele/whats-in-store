@@ -2,14 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 var logger = require("morgan");
 const passport=require("passport");
-const session=require("express-session")
+const session=require("express-session"),bodyParser = require("body-parser");
 const cookieParser=require("cookie-parser")
 const PORT= process.env.PORT || 3000;
 const app = express();
-// Set up dependencies
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cookieParser());
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
  app.use(express.static("client/build"));
@@ -23,12 +19,14 @@ mongoose.connection.once("open",function(){
   console.log("connection error: \n",err)
 });
 
-app.use(session({
-  secret:"secretSauce",
-  saveUninitialized:false,
-  resave:false
-}))
-app.use(passport.initialize())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+app.use(session({ secret: "cats",
+saveUninitialized:false,
+resave:false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes

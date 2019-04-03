@@ -7,7 +7,7 @@ class SignupModal extends Component {
         email: "",
         password: "",
         Confirmpassword: "",
-        shopLogo: "",
+        shopName: "",
         description: ""
     }
     handleChange = (event) => {
@@ -54,24 +54,24 @@ class SignupModal extends Component {
                         <Form>
                             <Form.Group controlId="form-group">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="email" placeholder="Enter email" />
+                                <Form.Control onChange={this.handleChange} name="email" type="email" placeholder="Enter email" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="password" placeholder="Password" />
+                                <Form.Control onChange={this.handleChange} name="password" type="password" placeholder="Password" />
                             </Form.Group>
                             <Form.Group controlId="confirmPassword">
                                 <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="confirmPassword" placeholder="Confirm Password" />
+                                <Form.Control onChange={this.handleChange} name="Confirmpassword" type="Password" placeholder="Confirm Password" />
                             </Form.Group>
                             <Form.Group controlId="shopName">
                                 <Form.Label>Shop Name</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="shopName" placeholder="Shop Name" />
+                                <Form.Control onChange={this.handleChange} name="shopName" type="text" placeholder="Shop Name" />
                             </Form.Group>
                             <Form.Group controlId="description">
                                 <Form.Label>Shop Description</Form.Label>
-                                <Form.Control onChange={this.handleChange} type="description" placeholder="Shop Description" />
+                                <Form.Control onChange={this.handleChange} name="description" type="text" placeholder="Shop Description" />
                             </Form.Group>
                             <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
                                 Submit

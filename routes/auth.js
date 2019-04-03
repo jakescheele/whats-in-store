@@ -27,23 +27,12 @@ module.exports=function(passport){
             }
         })
       })
-
-    router.post("/login",(req,res,next)=>{
-        passport.authenticate('local',(err,user,info)=>{
-            if(err){
-                return next(err)
-            }
-            else if (user){
-                req.login(user,(err)=>{
-                    next(err)
-                })
-                res.json({success:req.user?"Yes":"No",user:req.user})
-            }
-            else{
-                res.json("server error")
-            }
-        })
-    })
+      router.post('/login',passport.authenticate('local'),
+      function(req, res) {
+        console.log(req.user)
+        console.log("yoyo")
+        res.json(req.session);
+      });
 
     router.get("/logout",function(req,res){
         const old_user=req.user;
