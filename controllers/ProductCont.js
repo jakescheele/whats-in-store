@@ -4,9 +4,12 @@ module.exports={
         db.Category.find({name:product.Category},
             function(err,data){
                 if(err)done(err)
-                else{
+                else if(data){
                     db.Product.insertOne(product)
                     .then(data=>done(data))
+                }
+                else{
+                    
                 }
             })
     },
