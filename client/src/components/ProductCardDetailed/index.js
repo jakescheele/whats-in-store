@@ -15,7 +15,8 @@ class ModalComponent extends React.Component {
     //   super(props);
     state = { 
       show: false, 
-      tab: "info"
+      tab: "Info",
+      key: "Info"
     };
 
     
