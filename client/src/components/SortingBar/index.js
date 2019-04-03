@@ -3,7 +3,7 @@ import {Form} from 'react-bootstrap'
 
 function SortingBar(){
     return(<>
-        <Form controlId="exampleForm.ControlSelect2" className="mb-3 mx-0" inline>
+        <Form className="mb-3 mx-0" inline>
             <Form.Control as="select" style={{"width": "100%"}} >
             <option value="default">Default</option>
             <option value="priceLtoH">Price L-H</option>
