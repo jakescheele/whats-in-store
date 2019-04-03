@@ -12,6 +12,8 @@ background: black;
 nav {
 height: 70px;
 z-index: 3;
+padding-left: 0.5em;
+padding-right: 1em;
 }
 
 .container{
@@ -255,3 +257,10 @@ img{
   overflow: hidden;
   text-overflow: ellipsis; 
 }
+
+
+.vertical-center {
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    padding-top: 25vh;
+  }
