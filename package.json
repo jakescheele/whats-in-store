@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.5",
+    "concurrently": "^4.1.0",
     "cloudinary": "^1.14.0",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.4",
@@ -18,9 +19,6 @@
     "multer-storage-cloudinary": "^2.2.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
