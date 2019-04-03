@@ -11,16 +11,8 @@ import Tabs from 'react-bootstrap/Tabs'
 
 
 class ModalComponent extends React.Component {
-    // constructor(props) {
-    //   super(props);
-    state = { 
-      show: false, 
-      tab: "Info",
-      key: "Info"
-    };
-
     
-  
+
     handleChangeProduct=(event) =>{
       this.setState({product: event.target.value});
     }
@@ -40,7 +32,7 @@ class ModalComponent extends React.Component {
       return (
         <>
 
-        <Modal show={this.props.show} onHide={this.props.close}>
+        <Modal show={this.props.state} onHide={(e)=>this.props.close("productModal")}>
         <Modal.Header closeButton>
         <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
         </Modal.Header>
@@ -61,10 +53,10 @@ class ModalComponent extends React.Component {
          
 
             
-            <Button variant="secondary" onClick={this.props.close}>
+            <Button variant="secondary" onClick={(e)=>this.props.close("productModal")}>
               Close
             </Button>
-            <Button variant="primary" onClick={this.props.close}>
+            <Button variant="primary" onClick={(e)=>this.props.close("productModal")}>
               Save Changes
             </Button>
           </Modal.Footer>
