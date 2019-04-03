@@ -1,3 +1,5 @@
+// this file is replaced by auth.js
+
 const db = require("../models");
 
 // Defining methods for the usersController

@@ -12,9 +12,6 @@ module.exports=(passport)=>{
           done(err, user);
         });
       });
-    // passport.serializeUser(serializeUser);
-    // passport.deserializeUser(deserializeUser);
-    
     passport.use(new LocalStrategy({
         usernameField:"email",
         passwordField:"password"
@@ -22,7 +19,7 @@ module.exports=(passport)=>{
         function(email, password, done) {
         User.findOne({email:email})
         .then(function(data){
-            console.log("hi")
+            console.log("hi from passport")
             if(data){
                 console.log(data)
                 var valid=data.comparePassword(password,data.password)

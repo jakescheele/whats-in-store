@@ -28,7 +28,6 @@ class LoginModal extends Component{
                     'Accept': 'application/json',
                     'Content-Type':'application/json'
                 }}).then(res=>{
-                console.log(res.status)
                 console.log(res)
                 // window.location.assign("/dashboard")
             })
