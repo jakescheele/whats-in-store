@@ -11,15 +11,48 @@ mongoose.connect(
 const categorySeed = [
     { name: 'Clothing',
       subcategories: ["T-Shirts", "Hoodies", "Shorts", "Hats"]
-    },
-    { name: 'Accessories',
-      subcategories: ["Pendants", "Masks", "Pashminas"]
     }
 ]
 
 const productSeed = [
-  { name: ""
-
+  { name: "T-Benz Elephant T-Shirt",
+    category: "Clothing",
+    subcategory: "T-Shirts",
+    price: 35,
+    stock: {
+      "XS": 1,
+      "S" : 2,
+      "M" : 5,
+      "L" : 8,
+      "XL": 3,
+      "XXL":1
+    }
+  },
+  { name: "Entheos Logo T-Shirt",
+    category: "Clothing",
+    subcategory: "T-Shirts",
+    price: 30,
+    stock: {
+      "XS": 2,
+      "S" : 1,
+      "M" : 2,
+      "L" : 0,
+      "XL": 1,
+      "XXL":0
+    }
+  },
+  { name: "Blue Papa Bear Hoodie",
+    category: "Clothing",
+    subcategory: "Hoodies",
+    price: 70,
+    stock: {
+      "XS": 4,
+      "S" : 4,
+      "M" : 5,
+      "L" : 3,
+      "XL": 2,
+      "XXL":0
+    }
   }
 ]
 
@@ -28,6 +61,7 @@ db.Category
   .remove({})
   .then(() => {
       db.Category.collection.insertMany(categorySeed);
+      db.Product.collection.insertMany(productSeed);
   })
   .then(data => {
     console.log(data.result.n + " records inserted!");
