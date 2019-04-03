@@ -28,16 +28,14 @@ class SignupModal extends Component {
                 shopName: this.state.shopName,
                 description: this.state.description,
             }
-            fetch("http://localhost:3000/auth/signup", {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify(body),
+            fetch("/auth/signup",{
+                method:"POST",
+                body:JSON.stringify(body),
                 credentials: "same-origin",
-                headers: {
-                    'Accept': 'application/x-www-form-urlencoded',
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(res => {
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type':'application/json'
+                }}).then(res=>{
                 console.log(res)
                 // window.location.assign("/dashboard")
                 this.props.close()
