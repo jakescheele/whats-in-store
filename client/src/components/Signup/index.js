@@ -18,7 +18,10 @@ class SignupModal extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
-        if (this.state.Confirmpassword === this.state.password) {
+        let pass=this.state.password;
+        if (this.state.Confirmpassword === pass&&/[a-z]/gi.test(pass)&&
+        /[!@#$%^&*()<>.,/]/g.test(pass)&&/[0-9]/gi.test(pass)&&pass.length>=6&&/@/g.test(this.state.email)&&
+        /.com/g.test(this.state.email)) {
             console.log("passowrds match")
             console.log(this.state)
             axios.post("/auth/signup",this.state).then(res=>{
@@ -36,7 +39,7 @@ class SignupModal extends Component {
             })
         }
         else {
-            console.log("check password")
+            console.log("check password and email format, or passwords dont match")
         }
     }
 

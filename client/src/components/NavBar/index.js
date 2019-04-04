@@ -12,7 +12,7 @@ class Nav extends Component {
     }
 
     logoutHandler=(e)=>{
-
+        e.preventDefault()
         axios.get("/auth/logout")
         .then(res=>{
             if(res.data.success==="Yes"){
@@ -27,7 +27,6 @@ class Nav extends Component {
 
     hamburgerHandler = (e)=>{
         // e.preventDefault()
-
         this.setState({
             collapse: !this.state.collapse
         })
@@ -35,7 +34,8 @@ class Nav extends Component {
     }
     
     render(){
-        return this.state.collapse?(<>
+        return this.state.collapse?(
+        <>
             <nav>
                 <BrandLogo shopName={this.props.shop.shopName}/>
                 <div id="toggle" onClick={this.hamburgerHandler}>
