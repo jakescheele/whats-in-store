@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
-import {default as ProfileInputForm} from "../components/ProfileInputForm";
 import Nav from "../components/NavBarWithoutHamburger";
 import LoginModal from "../components/Login"
+import { Button} from "react-bootstrap";
+
 
 class Login extends Component {
     render() {
         return(<>
-        <Nav/>
+        <Nav>
+            <Button variant="outline-light" className="mx-2 my-3 float-right" onClick={(e)=>this.showModal("LoginModal")}>Login</Button>
+            <Button variant="outline-light" className="mx-2 my-3 float-right" onClick={(e)=>this.showModal("SignupModal")}>Signup</Button>
+        </Nav>
         <LoginModal modalState={true}/>
     </>)
 }
