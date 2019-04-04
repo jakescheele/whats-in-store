@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Row, Col, Dropdown, Card, Button, Form } from "react-bootstrap";
 // import CategoryCard from "./Cardbody"
@@ -7,16 +7,18 @@ import { Row, Col, Dropdown, Card, Button, Form } from "react-bootstrap";
 
 
 
-function AddCategory (props) {
+class AddCategory extends Component {
+  
+  
+  
+  render(){
     return (
-        <>
+      <>
 
         <Dropdown>
   <Dropdown.Toggle variant="success" id="dropdown-basic">
     Edit Category
   </Dropdown.Toggle>
-
-
 
   <Dropdown.Menu>
   {props.categories.map(category=>(
@@ -25,11 +27,8 @@ function AddCategory (props) {
   </Dropdown.Menu>
 </Dropdown>
 </>
-
-
-
-
     )
+  }
 }
 
 export default AddCategory

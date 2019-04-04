@@ -30,7 +30,7 @@ class SignupModal extends Component {
                     .then(res=>{
                         console.log(res.data)
                         this.props.loginStateHandler(res.data)
-                        // window.location.assign("/dashboard")
+                        window.location.assign("/dashboard")
                     })
                 }
             })
