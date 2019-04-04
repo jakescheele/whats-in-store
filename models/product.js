@@ -9,8 +9,9 @@ const productSchema = new Schema({
     ref: "Category"
   },
   subcategory: { type: String },
-  image: { type: String },
-  price: { type: Number, required: true },
+  img: { type: String },
+  img_id: {type: String},
+  price: { type: String, required: true },
   description: { type: String },
   stock: { type: Array },
 });

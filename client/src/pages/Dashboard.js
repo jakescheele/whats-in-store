@@ -4,6 +4,7 @@ import axios from "axios";
 import SalesChart from "../components/Dashboard/SalesChart";
 import StockChart from "../components/Dashboard/StockChart";
 import {Col, Row } from 'react-bootstrap'
+import { Link } from "react-router-dom";
 
 
 class Dashboard extends Component{
@@ -32,14 +33,35 @@ class Dashboard extends Component{
     render(){
         return(<>
         <Nav shop={this.state.shop}/>
-        <div>Here is Dashboard</div>
         <Row>
-        <Col md={4}>
+        <Col md={6}>
         <SalesChart /> 
+        <li className="chartButton">
+                    <Link 
+                        to="/inventory"
+                        className={
+                            window.location.pathname === "/inventory"
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                    >See All Stock</Link>     
+        </li>
+        
         </Col>
        
-        <Col md={4}>
+        <Col md={6}>
         <StockChart />
+        <li class="chartButton">
+                    <Link 
+                        to="/profile"
+                        className={
+                            window.location.pathname === "/profile"
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                    >See Sales Records</Link>     
+        </li>
+        
         </Col>
         </Row>
     </>)}

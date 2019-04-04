@@ -7,22 +7,21 @@ import Modal from 'react-bootstrap/Modal'
 import {Col, Row, Card } from 'react-bootstrap'
 import {Button, Tab } from "react-bootstrap";
 import Tabs from 'react-bootstrap/Tabs'
-import API from "../../utils/API"
+import ProductAPI from "../../utils/API/products"
 
 
 
 class ModalComponent extends React.Component {
     
     state={
-      
+        _id: "",
         name: "",
-        category: "",
+        category: "Others",
         subcategory:"",
         image:"",
-        price: 0,
+        price: "",
         description: "",
-        stock: {}
-      
+        stock: []
     }
   
     inputChangeHandler=(e)=>{
@@ -35,8 +34,11 @@ class ModalComponent extends React.Component {
     }
     handleSubmit=(event) =>{
       event.preventDefault();
-
+      console.log(this.state)
       // make axio request to create new product
+      ProductAPI.saveProduct(this.state)
+      .then(res=>console.log(res))
+      .catch(err => console.log(err));
 
       // close the modal after save changes
       this.props.close("productModal")

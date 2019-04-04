@@ -25,10 +25,10 @@ class Info extends Component {
               <Form.Control name="name" placeholder="Product Name" onChange={this.props.inputChangeHandler}/>
             </Form.Group>
             <Form.Group controlId="price">
-              <Form.Control name="price" placeholder="Price" />
+              <Form.Control name="price" placeholder="Price" onChange={this.props.inputChangeHandler}/>
             </Form.Group>
             <Form.Group controlId="description">
-              <Form.Control name="description" as="textarea" rows="3" placeholder="Product Description" />
+              <Form.Control name="description" as="textarea" rows="3" placeholder="Product Description" onChange={this.props.inputChangeHandler} />
             </Form.Group>
           </Row>
         </Col>
@@ -36,7 +36,7 @@ class Info extends Component {
         <Row>
           <Col lg={12}>
             {/* here is the dummy data, change here later */}
-            <AddCategory categories={categories} />
+            <AddCategory categories={categories} onChange={this.props.inputChangeHandler}/>
           </Col>
         </Row>
       </Container>

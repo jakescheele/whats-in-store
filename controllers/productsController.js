@@ -19,8 +19,8 @@ module.exports = {
   create: function (req, res) {
     const product = {
       ...req.body,
-      url: req.file.url,
-      id: req.file.public_id
+      // img: req.file.url,
+      // img_id: req.file.public_id
     };
     db.Product
       .create(product)
