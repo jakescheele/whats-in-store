@@ -32,13 +32,15 @@ resave:false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Add routes
-app.use(routes);
 
 // Passport
 const passportRoute = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRoute);
+
+// Add routes
+app.use(routes);
+
 
 // Listener
 app.listen(PORT, function () {

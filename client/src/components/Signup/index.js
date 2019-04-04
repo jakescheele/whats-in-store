@@ -28,8 +28,9 @@ class SignupModal extends Component {
                 else{
                     axios.post("/auth/login",{email:this.state.email,password:this.state.password})
                     .then(res=>{
-                        console.log(res)
-                        window.location.assign("/dashboard")
+                        console.log(res.data)
+                        this.props.loginStateHandler(res.data)
+                        // window.location.assign("/dashboard")
                     })
                 }
             })
