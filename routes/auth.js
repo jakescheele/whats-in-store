@@ -6,44 +6,27 @@ var User=db.User;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
-        User.find({email:req.body.email}).then((err,data)=>{
-            if(data){
-              console.log("uh oh")
-              console.log(data)
-              console.log(err)
-                res.json("server error or user found")
-            }
-            else{
-              var user=new User()
-                User.create({
-                    email:req.body.email,
-                    password:user.hashPassword(req.body.password),
-                    description:req.body.description,
-                    shopName:req.body.shopName
-                }).then((dat)=> {
-                  console.log(dat);
-                  res.json(dat)
-                }).catch(err=>res.json(err))
-            }
-        })
+      console.log(req.body)
+      console.log("started")
+      let user=new User();
+      req.body.password=user.hashPassword(req.body.password)
+      User.create(req.body,(err,dat)=> {
+        if(err&&err.code===11000){
+          res.send("Email already taken")
+        }
+        else{
+          console.log(dat);
+          console.log("here")
+          res.send("login succesful")
+        }
       })
+    });
 
-    router.post("/login",(req,res,next)=>{
-        passport.authenticate('local',(err,user,info)=>{
-            if(err){
-                return next(err)
-            }
-            else if (user){
-                req.login(user,(err)=>{
-                    next(err)
-                })
-                res.json({success:req.user?"Yes":"No",user:req.user})
-            }
-            else{
-                res.json("server error")
-            }
-        })
-    })
+    router.post('/login',passport.authenticate('local'),
+    function(req, res) {
+      console.log("done")
+      res.json("login sucessfull");
+    });
 
     router.get("/logout",function(req,res){
         const old_user=req.user;

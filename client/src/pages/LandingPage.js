@@ -42,10 +42,10 @@ class LandingPage extends Component {
                 <Button variant="outline-light" className="mx-2 my-3 float-right" onClick={this.showModalSignup}>Signup</Button>
             </Nav>
             <div className="vertical-center">
-                <Container className="text-light" r>
+                <Container className="text-light" >
                     <Row>
                         <Col>
-                            <div style={{"font-size":"55pt"}}>Manage Your Inventory Online</div>
+                            <div style={{"fontSize":"55pt"}}>Manage Your Inventory Online</div>
                             <br></br>
                             <h2>Whether your business is big or small, or you'd just like to keep your stuff straight.</h2>
                             <br></br>
