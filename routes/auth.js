@@ -17,7 +17,7 @@ module.exports=function(passport){
         else{
           console.log(dat);
           console.log("here")
-          res.json({email:dat.email,password:dat.password})
+          res.send("login succesful")
         }
       })
     });
