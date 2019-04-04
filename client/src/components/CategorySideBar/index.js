@@ -1,5 +1,3 @@
-
-
 import React, { Component } from "react";
 import {Container, Col, Row, Card, Form, Button} from 'react-bootstrap'
 import CategoryList from "./CategoryList"
