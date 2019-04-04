@@ -19,7 +19,7 @@ class Nav extends Component {
                 alert("You log out successfully!")
                 window.location.assign("/login")
             }else{
-                alert("Something wrong happen!")
+                alert("Something went wrong!")
             }
         })
 
