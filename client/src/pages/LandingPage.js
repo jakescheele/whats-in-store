@@ -41,8 +41,8 @@ class LandingPage extends Component {
                                 <h2>Whether your business is big or small, or you'd just like to keep your stuff straight.</h2>
                                 <br></br>
                                 <Button size="lg" variant="outline-light" onClick={(e)=>this.showModal("SignupModal")}>Get Started</Button>
-                                <LoginModal modalState={this.state.LoginModal} show={this.showModal} close={this.closeModal} />
-                                <SignupModal modalState={this.state.SignupModal} show={this.showModal} close={this.closeModal} />
+                                <LoginModal modalState={this.state.LoginModal} show={this.showModal} close={this.closeModal} loginStateHandler={this.props.loginStateHandler}/>
+                                <SignupModal modalState={this.state.SignupModal} show={this.showModal} close={this.closeModal} loginStateHandler={this.props.loginStateHandler}/>
                             </Col>
                         </Row>
                     </Container>

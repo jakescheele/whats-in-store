@@ -19,6 +19,7 @@ class LoginModal extends Component{
         .then(res=>{
             console.log(res)
             window.location.assign("/dashboard")
+            this.props.loginStateHandler()
         })
     }
     render(){

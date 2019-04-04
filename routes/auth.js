@@ -25,6 +25,7 @@ module.exports=function(passport){
     router.post('/login',passport.authenticate('local'),
     function(req, res) {
       console.log("done")
+      console.log(req.user)
       res.json("login sucessfull");
     });
 
