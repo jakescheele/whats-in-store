@@ -32,10 +32,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes
-// app.use(routes);
 const passportRote = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRote);
+// app.use(routes);
 
 // Listener
 app.listen(PORT, function () {

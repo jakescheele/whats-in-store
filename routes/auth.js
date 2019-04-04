@@ -2,7 +2,7 @@ var express = require("express");
 var router=express.Router()
 var db=require("../models");
 var User=db.User;
-// const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
@@ -31,8 +31,11 @@ module.exports=function(passport){
     router.get("/logout",function(req,res){
         const old_user=req.user;
         req.logout();
-        res.json({success:(req.user?"NO":"Yes"),user:req.user,OldUser:old_user})
+        res.json({success:(req.user?"No":"Yes"),user:req.user,OldUser:old_user})
     })
+    router.get("/test", ensureLoggedIn(), function(req, res) {
+      res.json(req.user);
+    });
 
     return router;
 }
