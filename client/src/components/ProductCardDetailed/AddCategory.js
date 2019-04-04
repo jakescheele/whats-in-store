@@ -14,18 +14,12 @@ class AddCategory extends Component {
   render(){
     return (
       <>
-
-        <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Edit Category
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-  {props.categories.map(category=>(
-    <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
-  ))}
-  </Dropdown.Menu>
-</Dropdown>
+      <Form className="mb-3 mx-0" inline>
+            <Form.Control as="select" style={{"width": "100%"}} >
+            {this.props.categories.map(category=>(
+            <option value="default">{category.name}</option>  ))}
+            </Form.Control>
+      </Form>
 </>
     )
   }
