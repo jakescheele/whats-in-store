@@ -3,11 +3,13 @@ const usersController = require("../../controllers/usersController");
 
 
 router.route("/login")
-    .get(usersController.login);
+    // .post(usersController.login);
 
-router
-    .route("/signup")
-    .post(usersController.signup);
+router.route("/signup")
+    // .post(usersController.signup);
+
+router.route("/update/:id")
+    .put(usersController.parseImage, usersController.update)
 
 
 module.exports = router;
