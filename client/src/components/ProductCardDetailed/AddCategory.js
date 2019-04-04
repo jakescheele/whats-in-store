@@ -16,8 +16,6 @@ function AddCategory (props) {
     Edit Category
   </Dropdown.Toggle>
 
-
-
   <Dropdown.Menu>
   {props.categories.map(category=>(
     <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
@@ -25,9 +23,6 @@ function AddCategory (props) {
   </Dropdown.Menu>
 </Dropdown>
 </>
-
-
-
 
     )
 }
