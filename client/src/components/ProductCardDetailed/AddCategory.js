@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { Row, Col, Dropdown, Card, Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 class AddCategory extends Component {
   
