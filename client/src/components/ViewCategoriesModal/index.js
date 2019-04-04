@@ -33,7 +33,7 @@ class CategoryModal extends Component {
             <Modal show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        EDIT Categories
+                        Edit Categories
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

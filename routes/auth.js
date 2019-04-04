@@ -34,6 +34,14 @@ module.exports=function(passport){
         res.json({success:(req.user?"NO":"Yes"),user:req.user,OldUser:old_user})
     })
 
+    router.get("/test", function(req,res){
+      if(req.user){
+        res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
+      }else{
+        res.json("no user")
+      }
+    })
+
     return router;
 }
 
