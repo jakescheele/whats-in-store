@@ -24,8 +24,8 @@ module.exports=function(passport){
 
     router.post('/login',passport.authenticate('local'),
     function(req, res) {
-      console.log("done")
-      res.json("login sucessfull");
+      console.log(req.user)
+      res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
     });
 
     router.get("/logout",function(req,res){
