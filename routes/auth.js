@@ -6,16 +6,13 @@ var User=db.User;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
-      console.log("signup")
         User.find({email:req.body.email}).then((err,data)=>{
             if(data){
-              console.log("uh oh")
               console.log(data)
               console.log(err)
                 res.json("server error or user found")
             }
             else{
-              console.log("making user")
               var user=new User()
                 User.create({
                     email:req.body.email,
@@ -25,14 +22,13 @@ module.exports=function(passport){
                 }).then((err,dat)=> {
                   console.log(dat);
                   res.json(dat)
-                }).catch(err=>res.json(err))
+                }).catch(err=>console.log(err),res.json(err))
             }
         })
       })
       router.post('/login',passport.authenticate('local'),
       function(req, res) {
         console.log(req.user)
-        console.log("yoyo")
         res.json(req);
       });
 
