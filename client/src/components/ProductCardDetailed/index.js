@@ -7,27 +7,36 @@ import Modal from 'react-bootstrap/Modal'
 import {Col, Row, Card } from 'react-bootstrap'
 import {Button, Tab } from "react-bootstrap";
 import Tabs from 'react-bootstrap/Tabs'
+import API from "../../utils/API"
 
 
 
 class ModalComponent extends React.Component {
     
-
-    handleChangeProduct=(event) =>{
-      this.setState({product: event.target.value});
-    }
-    handleChangePrice=(event) =>{
-      this.setState({price: event.target.value});
-    }
-    handleChangeCategory=(event) =>{
-      this.setState({category: event.target.value});
+    state={
+      
+        name: "",
+        category: "",
+        subcategory:"",
+        image:"",
+        price: 0,
+        description: "",
+        stock: {}
+      
     }
   
+    inputChangeHandler=(e)=>{
+      console.log(e.target)
+      let {name, value} = e.target
+      this.setState({
+        [name]: value
+      })      
+      
+    }
     handleSubmit=(event) =>{
       event.preventDefault();
 
       // make axio request to create new product
-
 
       // close the modal after save changes
       this.props.close("productModal")
@@ -46,7 +55,7 @@ class ModalComponent extends React.Component {
 
           <Tabs defaultActiveKey="Info" transition={false} id="noanim-tab-example">
             <Tab eventKey="Info" title="Info" >
-              <Info />
+              <Info inputChangeHandler={this.inputChangeHandler}/>
             </Tab>
             <Tab eventKey="Stock" title="Stock">
               <Stock />

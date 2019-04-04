@@ -21,7 +21,7 @@ class AddCategory extends Component {
         </Dropdown.Toggle>
           <Dropdown.Menu>
             {this.props.categories.map(category => (
-              <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
+              <Dropdown.Item key={category.name} href="#/action-1">{category.name}</Dropdown.Item>
             ))}
           </Dropdown.Menu>
         </Dropdown>
