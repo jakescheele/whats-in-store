@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Inventory from "./pages/Inventory";
 import Promos from "./pages/Promos";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import './App.css';
 import Nav from "./components/NavBar";
@@ -20,15 +21,16 @@ class App extends Component {
 
   state={
     
-    login:false,
-    shopName:"",
+    login: false,
+    shop:{},
 
   }
 
-  loginStateHandler=(shopName)=>{
+  loginStateHandler=(shop)=>{
+    console.log("log in!!!")
     this.setState({
       login: true,
-      shopName: shopName
+      shop: shop
     })
   }
 
@@ -36,11 +38,22 @@ class App extends Component {
     return (
       <Router>
           <Switch>
-            <Route exact path="/" component={LandingPage} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName}/>
-            <Route exact path="/dashboard" component={Dashboard} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName}/>
-            <Route exact path="/promos" component={Promos} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName}/>
-            <Route exact path="/inventory" component={Inventory} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName}/>
-            <Route exact path="/profile" component={Profile} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName}/>
+            <Route exact path="/" 
+            render={props=><LandingPage {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />} 
+            />
+            <Route exact path="/dashboard" 
+            render={props=><Dashboard {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            />
+            <Route exact path="/promos" 
+            render={props=><Promos {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            />
+            <Route exact path="/inventory" 
+            render={props=> <Inventory {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            />
+            <Route exact path="/profile" 
+            render={props=><Profile {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            />
+            <Route exact path="/login" component={Login}></Route>
             <Route component={NoMatch} />
           </Switch>
       </Router>
@@ -51,6 +64,5 @@ class App extends Component {
 }
 
 export default App;
-
 
 
