@@ -15,7 +15,7 @@ class Nav extends Component {
 
         axios.get("/auth/logout")
         .then(res=>{
-            if(res.data.success==="NO"){
+            if(res.data.success==="Yes"){
                 alert("You log out successfully!")
                 window.location.assign("/login")
             }else{

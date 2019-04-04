@@ -27,7 +27,6 @@ class AddCategory extends Component {
   </Dropdown.Menu>
 </Dropdown>
 </>
-
     )
   }
 }
