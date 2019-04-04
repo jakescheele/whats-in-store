@@ -1,11 +1,14 @@
 import React from "react";
 import '../../node_modules/react-vis/dist/style.css';
-import {XYPlot, LineSeries} from 'react-vis';
+import Nav from "../components/NavBar";
 import SalesChart from "../components/Dashboard/SalesChart";
 
 function Dashboard(){
     return(
-        <SalesChart></SalesChart>
+        <>
+        <Nav />
+        <SalesChart />
+        </>
     )
 }
 

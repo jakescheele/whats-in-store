@@ -23,13 +23,19 @@ class SalesChart extends Component {
       ];
       return (
         <div className="App">
-          <XYPlot height={300} width={300}>
+          <XYPlot height={500} width={500} color="white">
             <VerticalBarSeries data={data} />
           </XYPlot>
         </div>
       );
     }
   }
+
+
+
+
+
+
   
 
 export default SalesChart

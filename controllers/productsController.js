@@ -4,8 +4,8 @@ const parser = require("../cloudinary")
 // Defining methods for the productsController
 module.exports = {
   findAll: function (req, res) {
-    db.Product
-      .find({ "user_id": req.user.id })
+    db.User.find({ "_id": req.user.id })
+      .populate(products)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -40,5 +40,19 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  addProduct:function(product,done){
+    db.Category.find({name:product.Category},
+        function(err,data){
+            if(err)done(err)
+            else if(data){
+                db.subCategory.findById(product.subCategory)
+                db.Product.insertOne(product)
+                .then(data=>done(data))
+            }
+            else{
+                db.Category.create({})
+            }
+        })
+},
 };

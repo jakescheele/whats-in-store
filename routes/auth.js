@@ -6,6 +6,7 @@ var User=db.User;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
+      console.log("signup")
         User.find({email:req.body.email}).then((err,data)=>{
             if(data){
               console.log("uh oh")
@@ -14,36 +15,26 @@ module.exports=function(passport){
                 res.json("server error or user found")
             }
             else{
+              console.log("making user")
               var user=new User()
                 User.create({
                     email:req.body.email,
                     password:user.hashPassword(req.body.password),
                     description:req.body.description,
                     shopName:req.body.shopName
-                }).then((dat)=> {
+                }).then((err,dat)=> {
                   console.log(dat);
                   res.json(dat)
                 }).catch(err=>res.json(err))
             }
         })
       })
-
-    router.post("/login",(req,res,next)=>{
-        passport.authenticate('local',(err,user,info)=>{
-            if(err){
-                return next(err)
-            }
-            else if (user){
-                req.login(user,(err)=>{
-                    next(err)
-                })
-                res.json({success:req.user?"Yes":"No",user:req.user})
-            }
-            else{
-                res.json("server error")
-            }
-        })
-    })
+      router.post('/login',passport.authenticate('local'),
+      function(req, res) {
+        console.log(req.user)
+        console.log("yoyo")
+        res.json(req);
+      });
 
     router.get("/logout",function(req,res){
         const old_user=req.user;

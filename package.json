@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.5",
+    "cloudinary": "^1.14.0",
+    "concurrently": "^4.1.0",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
@@ -13,17 +15,21 @@
     "mongoose": "^5.4.20",
     "mongoose-bcrypt": "^1.6.0",
     "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "multer-storage-cloudinary": "^2.2.1",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "react-scripts": "2.1.8",
-    "react-vis": "^1.11.6"
+    "passport-local": "^1.0.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "client/*",
+      "node_modules/*"
+    ]
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:dev": "concurrently \"nodemon server.js\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
