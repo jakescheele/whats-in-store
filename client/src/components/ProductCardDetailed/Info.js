@@ -3,6 +3,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Col, Row, Card } from 'react-bootstrap'
 import {Button, Container, InputGroup, FormControl} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
+import AddCategory from '../ProductCardDetailed/AddCategory';
+//import CategoryCard from "./ViewCategoriesModal/CategoryCard"
+
+// dummy categories
+import categories from "../../DummyCategories.json"
 
 
 
@@ -29,10 +34,17 @@ return (
               <Form.Control as="textarea" rows="3" placeholder="Product Description"  />
               </Form.Group>
 
+              
+              
             </Row>
-           
             </Col>
-            
+
+            <Row>
+            <Col lg={12}>
+            {/* here is the dummy data, change here later */}
+            <AddCategory categories={categories}/>
+              </Col>
+            </Row>
           </Container>
         )
     }
