@@ -24,19 +24,16 @@ module.exports=function(passport){
 
     router.post('/login', passport.authenticate('local'),
     function(req, res) {
-      console.log(req)
       console.log(req.user)
       res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
     });
 
     router.get("/logout",function(req,res){
       console.log("logout start")
-      console.log(req.logout)
       console.log(req.user)
-        const old_user=req.user;
         req.logout();
       console.log(req.user)
-        res.json({success:(req.user?"No":"Yes"),user:req.user,OldUser:old_user})
+        res.json({success:(req.user?"No":"Yes")})
     })
 
     router.get("/test", function(req,res){
