@@ -6,24 +6,17 @@ var User=db.User;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
-        User.find({email:req.body.email}).then((err,data)=>{
-            if(data){
-              console.log(data)
-              console.log(err)
-                res.json("server error or user found")
-            }
-            else{
+        User.find({email:req.body.email}).then((data)=>{
               var user=new User()
                 User.create({
                     email:req.body.email,
                     password:user.hashPassword(req.body.password),
                     description:req.body.description,
                     shopName:req.body.shopName
-                }).then((err,dat)=> {
-                  console.log(dat);
-                  res.json(dat)
-                }).catch(err=>console.log(err),res.json(err))
-            }
+                }).then((data)=> {
+                  console.log(data);
+                  res.json(data)
+                }).catch(err=>console.log(err))
         })
       })
       router.post('/login',passport.authenticate('local'),
