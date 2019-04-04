@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Container,Form, Modal } from "react-bootstrap";
-
+import axios from "axios";
 class SignupModal extends Component {
     state = {
         email: "",
@@ -21,23 +21,17 @@ class SignupModal extends Component {
         if (this.state.Confirmpassword === this.state.password) {
             console.log("passowrds match")
             console.log(this.state)
-            let body = {
-                email: this.state.email,
-                password: this.state.password,
-                name: this.state.name,
-                shopName: this.state.shopName,
-                description: this.state.description,
-            }
-            fetch("/auth/signup",{
-                method:"POST",
-                body:JSON.stringify(body),
-                credentials: "same-origin",
-                headers:{
-                    'Accept': 'application/json',
-                    'Content-Type':'application/json'
-                }}).then(res=>{
-                console.log(res)
-                this.props.close()
+            axios.post("/auth/signup",this.state).then(res=>{
+                if(res.data==="Email already taken"){
+                    console.log(res.data)
+                }
+                else{
+                    axios.post("/auth/login",{email:this.state.email,password:this.state.password})
+                    .then(res=>{
+                        console.log(res)
+                        window.location.assign("/dashboard")
+                    })
+                }
             })
         }
         else {
