@@ -14,14 +14,14 @@ import ProductAPI from "../../utils/API/products"
 class ModalComponent extends React.Component {
     
     state={
-        _id: "",
+        productid: "",
         name: "",
-        category: "Others",
-        subcategory:"",
-        image:"",
+        // category: "Others",
+        // subcategory:"",
+        // image:"",
         price: "",
         description: "",
-        stock: []
+        // stock: []
     }
   
     inputChangeHandler=(e)=>{
