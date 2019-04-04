@@ -17,7 +17,7 @@ class LoginModal extends Component{
         console.log(this.state)
         axios.post("/auth/login",this.state)
         .then(res=>{
-            console.log(res)
+            console.log(res.data)
             window.location.assign("/dashboard")
         })
     }
