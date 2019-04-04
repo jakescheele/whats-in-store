@@ -4,9 +4,6 @@ var logger = require("morgan");
 const passport=require("passport");
 const session=require("express-session");
 const cookieParser=require("cookie-parser");
-const multer = require("multer");
-const cloudinary = require("cloudinary");
-const cloudinaryStorage = require("multer-storage-cloudinary");
 const PORT= process.env.PORT || 3001;
 const routes = require('./routes');
 const app = express();
@@ -32,7 +29,6 @@ resave:false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Passport
 const passportRoute = require("./routes/auth")(passport);
 require("./passport")(passport);
@@ -40,7 +36,6 @@ app.use('/auth', passportRoute);
 
 // Add routes
 app.use(routes);
-
 
 // Listener
 app.listen(PORT, function () {
