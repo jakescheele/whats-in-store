@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Row, Col, Dropdown, Card, Button, Form } from "react-bootstrap";
 // import CategoryCard from "./Cardbody"
@@ -7,9 +7,13 @@ import { Row, Col, Dropdown, Card, Button, Form } from "react-bootstrap";
 
 
 
-function AddCategory (props) {
+class AddCategory extends Component {
+  
+  
+  
+  render(){
     return (
-        <>
+      <>
 
         <Dropdown>
   <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -23,8 +27,8 @@ function AddCategory (props) {
   </Dropdown.Menu>
 </Dropdown>
 </>
-
     )
+  }
 }
 
 export default AddCategory
