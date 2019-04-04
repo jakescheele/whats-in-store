@@ -35,7 +35,8 @@ class Nav extends Component {
     }
     
     render(){
-        return this.state.collapse?(<>
+        return this.state.collapse?(
+        <>
             <nav>
                 <BrandLogo shopName={this.props.shop.shopName}/>
                 <div id="toggle" onClick={this.hamburgerHandler}>
