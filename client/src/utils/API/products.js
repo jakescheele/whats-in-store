@@ -16,6 +16,11 @@ export default {
     },
     // Saves a product to the database
     saveProduct: function (productData) {
+        // if product already exists, update
+        if (productData._id)
+        return axios.put("/api/products/" + productData._id, productData);
+        // else create new product
+        else
         return axios.post("/api/products", productData);
     }
 };
