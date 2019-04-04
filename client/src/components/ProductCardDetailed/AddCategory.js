@@ -16,21 +16,17 @@ class AddCategory extends Component {
       <>
 
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Edit Category
-        </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {this.props.categories.map(category => (
-              <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-        <Button variants="success">+</Button>
-      </>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+    Edit Category
+  </Dropdown.Toggle>
 
-
-
-
+  <Dropdown.Menu>
+  {props.categories.map(category=>(
+    <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
+  ))}
+  </Dropdown.Menu>
+</Dropdown>
+</>
     )
   }
 }
