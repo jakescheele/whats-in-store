@@ -3,7 +3,7 @@ import Nav from "../components/NavBar";
 import axios from "axios";
 import SalesChart from "../components/Dashboard/SalesChart";
 import StockChart from "../components/Dashboard/StockChart";
-import {Col, Row, Button } from 'react-bootstrap'
+import {Col, Row } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
 
@@ -33,11 +33,10 @@ class Dashboard extends Component{
     render(){
         return(<>
         <Nav shop={this.state.shop}/>
-        <div>Here is Dashboard</div>
         <Row>
         <Col md={6}>
-        <Button size="sm" variant="success">
-        <li>
+        <SalesChart /> 
+        <li class="chartButton">
                     <Link 
                         to="/inventory"
                         className={
@@ -45,16 +44,24 @@ class Dashboard extends Component{
                             ? "nav-link active"
                             : "nav-link"
                         }
-                        
-
-                    >INVENTORY</Link>     
-                </li>
-                </Button>
-        <SalesChart /> 
+                    >See All Stock</Link>     
+        </li>
+        
         </Col>
        
         <Col md={6}>
         <StockChart />
+        <li class="chartButton">
+                    <Link 
+                        to="/profile"
+                        className={
+                            window.location.pathname === "/profile"
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                    >See Sales Records</Link>     
+        </li>
+        
         </Col>
         </Row>
     </>)}
