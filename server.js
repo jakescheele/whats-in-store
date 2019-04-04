@@ -8,12 +8,13 @@ const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 const PORT= process.env.PORT || 3001;
+const routes = require('./routes');
 const app = express();
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
  app.use(express.static("client/build"));
 };
-//mongoo stuff
+//mongo stuff
 app.use(logger("dev"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/project3",{ useNewUrlParser: true });
 mongoose.connection.once("open",function(){
@@ -32,10 +33,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes
-// app.use(routes);
-const passportRote = require("./routes/auth")(passport);
+app.use(routes);
+
+// Passport
+const passportRoute = require("./routes/auth")(passport);
 require("./passport")(passport);
-app.use('/auth', passportRote);
+app.use('/auth', passportRoute);
 
 // Listener
 app.listen(PORT, function () {
