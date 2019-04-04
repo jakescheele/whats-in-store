@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Jumbotron from "../components/Jumbotron";
 import Nav from "../components/NavBar";
+import Table from "../components/PromosManagement/FlashSale/ProductCardForFlashSale";
 import axios from "axios";
 
 class Promos extends Component{
@@ -28,8 +29,9 @@ class Promos extends Component{
 
     render(){
         return(<>
-        <Nav shop={this.state.shop}/>
-        <Jumbotron pageName="PROMOTIONALS" instructions="Edit your promotion settings."/>
+            <Nav shop={this.state.shop}/>
+            <Jumbotron pageName="PROMOTIONALS" instructions="Edit your promotion settings."/>
+            <Table/>
         </>)
     }
 }

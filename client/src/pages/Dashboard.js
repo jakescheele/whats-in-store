@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import Nav from "../components/NavBar";
 import axios from "axios";
+import SalesChart from "../components/Dashboard/SalesChart";
+import StockChart from "../components/Dashboard/StockChart";
+import {Col, Row } from 'react-bootstrap'
 
 
 class Dashboard extends Component{
@@ -30,6 +33,15 @@ class Dashboard extends Component{
         return(<>
         <Nav shop={this.state.shop}/>
         <div>Here is Dashboard</div>
+        <Row>
+        <Col md={4}>
+        <SalesChart /> 
+        </Col>
+       
+        <Col md={4}>
+        <StockChart />
+        </Col>
+        </Row>
     </>)}
 }
 
