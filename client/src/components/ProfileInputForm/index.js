@@ -14,7 +14,6 @@ class ProfileInputForm extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
-        if (this.state.password === this.state.password) {
             console.log("passwords match")
             console.log(this.state)
             let body = {
@@ -30,7 +29,6 @@ class ProfileInputForm extends Component {
             }).then(res => {
                 window.location.assign("/profile")
             })
-        }
     }
 
     render() {

@@ -6,24 +6,27 @@ var User=db.User;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
-        User.find({email:req.body.email}).then((data)=>{
-              var user=new User()
-                User.create({
-                    email:req.body.email,
-                    password:user.hashPassword(req.body.password),
-                    description:req.body.description,
-                    shopName:req.body.shopName
-                }).then((data)=> {
-                  console.log(data);
-                  res.json(data)
-                }).catch(err=>console.log(err))
-        })
+      console.log(req.body)
+      console.log("started")
+      let user=new User();
+      req.body.password=user.hashPassword(req.body.password)
+      User.create(req.body,(err,dat)=> {
+        if(err&&err.code===11000){
+          res.send("Email already taken")
+        }
+        else{
+          console.log(dat);
+          console.log("here")
+          res.send("login succesful")
+        }
       })
-      router.post('/login',passport.authenticate('local'),
-      function(req, res) {
-        console.log(req.user)
-        res.json(req);
-      });
+    });
+
+    router.post('/login',passport.authenticate('local'),
+    function(req, res) {
+      console.log("done")
+      res.json("login sucessfull");
+    });
 
     router.get("/logout",function(req,res){
         const old_user=req.user;

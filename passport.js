@@ -21,7 +21,6 @@ module.exports=(passport)=>{
         .then(function(data){
             console.log("hi from passport")
             if(data){
-                console.log(data)
                 var valid=data.comparePassword(password,data.password)
                 if(valid){
                   console.log("valid")
@@ -40,5 +39,3 @@ module.exports=(passport)=>{
       ));
     
 }
-
-
