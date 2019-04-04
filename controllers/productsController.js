@@ -15,22 +15,25 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },
-  
+
   parseImage: parser.single("image"),
-  
+
   create: function (req, res) {
-    const product = {
-      ...req.body,
-      // img: req.file.url,
-      // img_id: req.file.public_id
-    };
-    console.log(product)
-    console.log(req.user)
-    db.Product
-      .create(product)
-      .then(dbProduct => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { products: dbProduct._id } }, { new: true }))
-      .then(dbUser => res.json(dbUser))
-      .catch(err => res.json(422, err))
+    // if photo has been uploaded
+    if (req.file) {
+      const product = {
+        ...req.body,
+        // img: req.file.url,
+        // img_id: req.file.public_id
+      };
+      console.log(product)
+      console.log(req.user)
+      db.Product
+        .create(product)
+        .then(dbProduct => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { products: dbProduct._id } }, { new: true }))
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.json(422, err))
+    }
   },
 
   update: function (req, res) {
