@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Inventory from "./pages/Inventory";
 import Promos from "./pages/Promos";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import './App.css';
 import Nav from "./components/NavBar";
@@ -21,14 +22,15 @@ class App extends Component {
   state={
     
     login: false,
-    shopName:"",
+    shop:{},
 
   }
 
-  loginStateHandler=(shopName)=>{
+  loginStateHandler=(shop)=>{
+    console.log("log in!!!")
     this.setState({
       login: true,
-      shopName: shopName
+      shop: shop
     })
   }
 
@@ -51,6 +53,7 @@ class App extends Component {
             <Route exact path="/profile" 
             render={props=><Profile {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
             />
+            <Route exact path="/login" component={Login}></Route>
             <Route component={NoMatch} />
           </Switch>
       </Router>

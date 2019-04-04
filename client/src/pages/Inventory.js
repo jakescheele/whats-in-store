@@ -4,12 +4,32 @@ import Layout from "../components/LayoutForInventory.js";
 import Nav from "../components/NavBar";
 import { Button } from 'react-bootstrap'
 import ProductModal from '../components/ProductCardDetailed'
+import axios from "axios";
 
 
 
 class Inventory extends Component {
     state={
-        productModal:false
+        productModal:false,
+        login: false,
+        shop:{},
+    }
+
+    componentDidMount(){
+        axios.get("/auth/test")
+        .then(res=>{
+            console.log(res.data)
+            if(res.data==="no user"){
+                console.log("no user log in")
+                window.location.assign("/login")
+            }else{
+                console.log("user logged in")
+                this.setState({
+                    login: true,
+                    shop: res.data
+                })
+            }
+        })
     }
 
     openModaltHandler=(id, modalname)=>{
@@ -25,6 +45,8 @@ class Inventory extends Component {
       
    }
 
+   
+
    closeModalHandler=(modalname)=>{
        this.setState({
            [modalname]: false
@@ -33,7 +55,7 @@ class Inventory extends Component {
 
     render() {
         return (<>
-            <Nav />
+            <Nav shop={this.state.shop}/>
             <Jumbotron pageName="INVENTORY" instructions="Click to view and edit products and categories.">
                 <Button variant="outline-dark" size="lg" onClick={(e)=>this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>

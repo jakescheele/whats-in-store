@@ -40,50 +40,6 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-  
-  addProduct:function(product,done){
-    db.Category.find({name:product.category},
-        function(err,Cat){
-          console.log(err);
-            if(err)done(err)
-            else if(Cat){
-                db.subCategory.find({name:product.subCategory},function(err,sub){
-                  if(err)throw err;
-                  else if(sub){
-                    db.Product.insertOne(product,inserted=>done(inserted))
-                  }
-                  else{
-                    db.Subcategory.create({
-                      name:product.subCategory,
-                      Category:Cat["_id"]
-                    },(err,datt)=>{
-                      if(err)throw err;
-                      product.subCategory=datt["_id"]
-                      product.category=Cat["_id"]
-                      db.Product.insertOne(product,inserted=>done(inserted))
-                    })
-                  }
-                })
-                
-            }
-            else{
-                db.Category.create({
-                  name:product.Category,
-                },function(err,cata){
-                  if(err)throw err;
-                  db.Subcategory.create({
-                    name:product.subCategory,
-                    Category:cata["_id"]
-                  },(err,datt)=>{
-                    if(err)throw err;
-                    product.subCategory=datt["_id"]
-                    product.category=cata["_id"]
-                    db.Product.insertOne(product,inserted=>done(inserted))
-                  })
-                })
-            }
-        })
-  },
+  }
 
 };

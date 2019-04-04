@@ -24,15 +24,22 @@ module.exports=function(passport){
 
     router.post('/login',passport.authenticate('local'),
     function(req, res) {
-      console.log("done")
       console.log(req.user)
-      res.json("login sucessfull");
+      res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
     });
 
     router.get("/logout",function(req,res){
         const old_user=req.user;
         req.logout();
         res.json({success:(req.user?"NO":"Yes"),user:req.user,OldUser:old_user})
+    })
+
+    router.get("/test", function(req,res){
+      if(req.user){
+        res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
+      }else{
+        res.json("no user")
+      }
     })
 
     return router;
