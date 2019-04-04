@@ -11,7 +11,7 @@ class CategoryCard extends Component {
 
     render() {
         return (
-            <Card className="py-1 px-3 mb-2">
+            <Card className="py-1 rem-0.1875 mb-2">
                 
                 <Card.Body className="p-0 my-2">
                     <div className="p-0 m-0 d-flex">
