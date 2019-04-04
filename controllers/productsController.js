@@ -4,8 +4,10 @@ const parser = require("../cloudinary")
 // Defining methods for the productsController
 module.exports = {
   findAll: function (req, res) {
-    db.User.find({ "_id": req.user.id })
-      .populate(products)
+    console.log("REQUEST:")
+    console.log(req.session)
+    db.User.find({ "_id": req.user.id})
+      .populate("products")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -15,7 +17,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  parseImage: parser.image("image"),
+  parseImage: parser.single("image"),
   create: function (req, res) {
     const product = {
       ...req.body,
@@ -41,5 +43,4 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
-
 };
