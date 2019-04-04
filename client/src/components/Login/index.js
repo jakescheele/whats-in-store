@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Container,Form, Modal } from "react-bootstrap";
-
+import axios from "axios";
 class LoginModal extends Component{
     state={
         email:"",
@@ -14,25 +14,12 @@ class LoginModal extends Component{
     }
     formSubmit=(event)=>{
         event.preventDefault();
-        if(this.state.password===this.state.password){
-            let body={
-                email:this.state.email,
-                password: this.state.password
-            }
-            console.log(body)
-            fetch("/auth/login",{
-                method:"POST",
-                body:JSON.stringify(body),
-                credentials: "same-origin",
-                headers:{
-                    'Accept': 'application/json',
-                    'Content-Type':'application/json'
-                }}).then(res=>{
-                console.log(res)
-                // window.location.assign("/dashboard")
-            })
-            
-        }
+        console.log(this.state)
+        axios.post("/auth/login",this.state)
+        .then(res=>{
+            console.log(res)
+            window.location.assign("/dashboard")
+        })
     }
     render(){
         return(

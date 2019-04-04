@@ -45,7 +45,7 @@ class LandingPage extends Component {
                 <Container className="text-light" >
                     <Row>
                         <Col>
-                            <div style={{"font-size":"55pt"}}>Manage Your Inventory Online</div>
+                            <div style={{"fontSize":"55pt"}}>Manage Your Inventory Online</div>
                             <br></br>
                             <h2>Whether your business is big or small, or you'd just like to keep your stuff straight.</h2>
                             <br></br>
