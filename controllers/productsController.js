@@ -24,7 +24,7 @@ module.exports = {
       img: req.file.url,
       img_id: req.file.public_id
     }}
-    else const product = req.body
+    else {const product = req.body}
 
     db.Product
       .create(product)
