@@ -24,7 +24,13 @@ class LoginModal extends Component{
     render(){
         return(
         <>
-        <Modal show={this.props.modalState} onHide={this.props.close}>
+        <Modal show={this.props.modalState} onHide={(e)=>this.props.close("LoginModal")}>
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Log In
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="p-3">
             <Container>
                 <Form>
                     <Form.Group controlId="form-group">
@@ -40,6 +46,7 @@ class LoginModal extends Component{
                         </Button>
                 </Form>
                 </Container>
+            </Modal.Body>
         </Modal>
     </>
         );

@@ -42,7 +42,13 @@ class SignupModal extends Component {
     render() {
         return (
             <>
-                <Modal show={this.props.modalState} onHide={this.props.close}>
+                <Modal show={this.props.modalState} onHide={(e)=>this.props.close("SignupModal")}>
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Sign Up
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="p-3">
                     <Container>
                         <Form>
                             <Form.Group controlId="form-group">
@@ -68,9 +74,10 @@ class SignupModal extends Component {
                             </Form.Group>
                             <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
                                 Submit
-                                </Button>
+                            </Button>
                         </Form>
                         </Container>
+                    </Modal.Body>
                 </Modal>
             </>
 
