@@ -25,7 +25,13 @@ class ModalComponent extends React.Component {
   
     handleSubmit=(event) =>{
       event.preventDefault();
-       }
+
+      // make axio request to create new product
+
+
+      // close the modal after save changes
+      this.props.close("productModal")
+    }
   
   
     render() {
@@ -57,7 +63,7 @@ class ModalComponent extends React.Component {
             <Button variant="secondary" onClick={(e)=>this.props.close("productModal")}>
               Close
             </Button>
-            <Button variant="primary" onClick={(e)=>this.props.close("productModal")}>
+            <Button variant="primary" onClick={this.handleSubmit}>
               Save Changes
             </Button>
           </Modal.Footer>

@@ -25,6 +25,7 @@ class AddCategory extends Component {
             ))}
           </Dropdown.Menu>
         </Dropdown>
+        <Button variants="success">+</Button>
       </>
 
 
