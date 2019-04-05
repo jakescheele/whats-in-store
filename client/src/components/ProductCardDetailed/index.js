@@ -16,9 +16,9 @@ class ModalComponent extends React.Component {
     state={
         productid: "",
         name: "",
-        // category: "Others",
-        // subcategory:"",
-        // image:"",
+        category: "Misc.",
+        subcategory:"",
+        image:"",
         price: "",
         description: "",
         // stock: []
