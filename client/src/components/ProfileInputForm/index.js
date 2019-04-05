@@ -64,7 +64,6 @@ class ProfileInputForm extends Component {
                             <label class="fileContainer">
                             <Form.Control onChange={this.handleChange} 
                             type="file" class="fileButton" name="image" display="none" placeholder="Your Shop Logo"/>
-
                         </label>
                         </Form.Group>
                         <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
@@ -81,11 +80,3 @@ class ProfileInputForm extends Component {
 }
 
 export default ProfileInputForm;
-
-
-/*style={{
-                                border: 'gray',
-                                color: 'gray',
-                                padding: 8,
-                                border: 8,
-                            }} */
