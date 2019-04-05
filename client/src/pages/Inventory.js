@@ -13,6 +13,7 @@ class Inventory extends Component {
         productModal:false,
         login: false,
         shop:{},
+        product:{}
     }
 
     componentDidMount(){
@@ -34,8 +35,18 @@ class Inventory extends Component {
 
     openModaltHandler=(id, modalname)=>{
         
-        // make ajax request to the backend and get the viewed product
         console.log("click")
+        if(id){
+
+        // make ajax request to the backend and get the viewed product
+
+        // set state
+
+        }else{
+
+
+        }
+
 
         // set the this.state.product to be the viewed product
         // set show to true

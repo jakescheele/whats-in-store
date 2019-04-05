@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import {Container, Col, Row, Card, Form} from 'react-bootstrap'
+import {Container, Col, Row, Card} from 'react-bootstrap'
 import CategorySideBar from "../CategorySideBar"
 import ProductCard from "../ProductCard"
 import SearchBar from "../SearchBar"
@@ -10,13 +10,16 @@ import ProductModal from "../ProductCardDetailed";
 import CategoryModal from "../ViewCategoriesModal"
 import Footer from "../Footer"
 
+// Utils
+import ProductAPI from "../../utils/API/products"
+
 // dummy data
 import products from "../../DummyProducts.json"
 import categories from "../../DummyCategories.json"
 
 class Layout extends Component {
     state={
-        products: products,
+        products: "",
         categories: categories,
         productModal: false,
         categoryModal: false,
@@ -25,9 +28,17 @@ class Layout extends Component {
 
     componentDidMount(){
         //axio request to find all products in DB
-        
+        ProductAPI.getProducts()
+        .then(res=>{
+            console.log(res.data)
+            // set state
+            this.setState({
+                products: res.data
+            })
 
-        // set state
+
+        })
+
     }
 
     // click handler for product card to trigger product detail modal
@@ -63,7 +74,7 @@ class Layout extends Component {
                 </Col>
                 <Col>
                     <Row>
-                        {this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>))}
+                        {this.state.products?(this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>))):(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>)}
                     </Row>
                 </Col>
 

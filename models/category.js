@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const CategorySchema = new Schema({
   name: { type: String },
   subcategories: {
-    type:[String],
-    ref: "Subcategory"
+    type: Array
   },
 });
 
