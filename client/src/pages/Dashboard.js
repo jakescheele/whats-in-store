@@ -41,7 +41,7 @@ class Dashboard extends Component{
         <Row>
         <Col md={6}>
         <SalesChart /> 
-        <li class="chartButton">
+        <li className="chartButton">
                     <Link 
                         to="/inventory"
                         className={

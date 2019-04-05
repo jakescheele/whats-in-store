@@ -2,7 +2,7 @@ var express = require("express");
 var router=express.Router()
 var db=require("../models");
 var User=db.User;
-// const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
 module.exports=function(passport){
     router.post("/signup",function(req,res){
@@ -18,8 +18,12 @@ module.exports=function(passport){
           console.log(dat);
           console.log("here")
           res.send("login succesful")
+          db.Category.create({name: "Misc."})
+          .then(dbCategory=>User.findOneAndUpdate({_id: dat._id},  {$push: { Category: dbCategory._id }}))
+          .catch(err => res.json(422,err));
         }
       })
+      
     });
 
     router.post('/login', passport.authenticate('local'),
@@ -29,12 +33,15 @@ module.exports=function(passport){
     });
 
     router.get("/logout",function(req,res){
-        const old_user=req.user;
+      console.log("logout start")
+      console.log(req.user)
         req.logout();
-        res.json({success:(req.user?"NO":"Yes"),user:req.user,OldUser:old_user})
+      console.log(req.user)
+        res.json({success:(req.user?"No":"Yes")})
     })
 
     router.get("/test", function(req,res){
+      console.log(req.user)
       if(req.user){
         res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
       }else{

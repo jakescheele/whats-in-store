@@ -11,7 +11,7 @@ const productSchema = new Schema({
   subcategory: { type: String },
   img: { type: String },
   img_id: {type: String},
-  price: { type: Number, required: true },
+  price: { type: String, required: true },
   description: { type: String },
   stock: { type: Array },
 });

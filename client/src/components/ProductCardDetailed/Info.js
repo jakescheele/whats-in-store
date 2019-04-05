@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import 'bootstrap/dist/css/bootstrap.css';
-import {Col, Row, Card } from 'react-bootstrap'
-import {Button, Container} from "react-bootstrap";
+import React, {Component} from "react";
 import Form from 'react-bootstrap/Form';
 import AddCategory from '../ProductCardDetailed/AddCategory';
 import '../../fileButton.css';
 //import CategoryCard from "./ViewCategoriesModal/CategoryCard"
-
+import 'bootstrap/dist/css/bootstrap.css';
+import { Col, Row, Card } from 'react-bootstrap'
+import { Button, Container, InputGroup, FormControl } from "react-bootstrap";
 // dummy categories
 import categories from "../../DummyCategories.json"
+
 
 class Info extends Component {
   render() {
@@ -41,8 +41,6 @@ class Info extends Component {
               <Form.Control as="textarea" rows="3" placeholder="Product Description"  />
               </Form.Group>
 
-              
-              
             </Row>
             </Col>
 
