@@ -9,7 +9,7 @@ function CategoryList(props){
         </Form.Group>
             <div className="pl-4">
                 <Form.Group controlId="formBasicChecbox">
-                    {props.category.subcategories.map(subcategory=>(<Form.Check key={subcategory} type="checkbox" value= {subcategory} label={subcategory} />))}
+                    {/* {props.category.subcategories.map(subcategory=>(<Form.Check key={subcategory} type="checkbox" value= {subcategory} label={subcategory} />))} */}
                 </Form.Group>
             </div>
     </Form>)

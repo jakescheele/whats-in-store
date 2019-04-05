@@ -16,10 +16,10 @@ class CategorySideBar extends Component{
         Axios.get("/api/categories/")
         // set state
         .then( (response) => {
-            console.log(response)
+            console.log("RESPONSE DATA")
+            console.log(response.data)
             this.setState({categories: response.data})
-        }
-        )
+        })
     }
     
     categoryEditHandler = (e)=>{

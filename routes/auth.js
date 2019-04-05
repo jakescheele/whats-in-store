@@ -19,7 +19,7 @@ module.exports=function(passport){
           console.log("here")
           res.send("login succesful")
           db.Category.create({name: "Misc."})
-          .then(dbCategory=>User.findOneAndUpdate({_id: dat._id},  {$push: { Category: dbCategory._id }}))
+          .then(dbCategory=>User.findOneAndUpdate({_id: dat._id},  {$push: { categories: dbCategory._id }}))
           .catch(err => res.json(422,err));
         }
       })

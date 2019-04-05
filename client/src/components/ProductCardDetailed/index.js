@@ -16,7 +16,7 @@ class ModalComponent extends React.Component {
     state={
         _id: "",
         name: "",
-        category: "Others",
+        category: "Misc.",
         subcategory:"",
         image:"",
         price: "",
