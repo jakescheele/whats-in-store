@@ -4,20 +4,25 @@ import { Col, Row, Card } from 'react-bootstrap'
 import { Button, Container, InputGroup, FormControl } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import AddCategory from '../ProductCardDetailed/AddCategory';
-//import CategoryCard from "./ViewCategoriesModal/CategoryCard"
-
+import '../../fileButton.css';
 // dummy categories
 import categories from "../../DummyCategories.json"
-
 
 
 class Info extends Component {
   render() {
     return (
       <Container>
-        <Col lg={12}>
           <Row className="show-grid">
-            <img className="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
+          <Form.Group controlId="productImage">
+              <label class="borderBlack">
+                  <Form.Label className ="borderBlack">Upload Product Image</Form.Label>
+              </label>
+                  <label class="fileContainer">
+                  <Form.Control onChange={this.handleChange} 
+                  type="file" class="fileButton" name="image" display="none" placeholder="Upload Product Image"/>
+              </label>
+            </Form.Group>
           </Row>
 
           <Row>
@@ -55,16 +60,9 @@ class Info extends Component {
               <AddCategory categories={categories} dropDownSelectHandler={this.props.dropDownSelectHandler} selectedCategory={this.props.category} />
             </Form>
           </Row>
-        </Col>
-
-        <Row>
-          <Col lg={12}>
-            {/* here is the dummy data, change here later */}
-          </Col>
-        </Row>
       </Container>
     )
   }
 }
 
-export default Info
+    export default Info

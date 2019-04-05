@@ -19,7 +19,7 @@ import categories from "../../DummyCategories.json"
 
 class Layout extends Component {
     state={
-        products: "",
+        products: [],
         categories: categories,
         productModal: false,
         categoryModal: false,
@@ -74,7 +74,7 @@ class Layout extends Component {
                 </Col>
                 <Col>
                     <Row>
-                        {this.state.products?(this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>))):(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>)}
+                        {this.state.products===[]?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>)))}
                     </Row>
                 </Col>
 

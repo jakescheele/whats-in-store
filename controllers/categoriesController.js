@@ -5,15 +5,15 @@ module.exports = {
   findAll: function (req, res) {
     db.User
       .findOne({"_id": req.user.id})
-      .populate("Category")
-      .then(dbModel => res.json(dbModel.Category))
-      .catch(err => res.status(422).json(err));
+      .populate("categories")
+      .then(user => res.json(user.categories))
+      .catch(err => res.status(422, err)) 
   },
   findById: function (req, res) {
     db.Category
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(422, err));
   },
   create: function (req, res) {
     db.Category
