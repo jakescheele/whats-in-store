@@ -34,6 +34,7 @@ export default {
         // else create new product
         else{
             console.log("going to the post route!!")
+            
         return axios.post("/api/products", product);
 
 
