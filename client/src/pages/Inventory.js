@@ -5,7 +5,8 @@ import Nav from "../components/NavBar";
 import { Button } from 'react-bootstrap'
 import ProductModal from '../components/ProductCardDetailed'
 import axios from "axios";
-
+import ProductAPI from "../utils/API/products";
+import CategoryAPI from "../utils/API/categories"
 
 
 class Inventory extends Component {
@@ -13,7 +14,9 @@ class Inventory extends Component {
         productModal:false,
         login: false,
         shop:{},
-        product:{}
+        product:{},
+        products: [],
+        categories: [],
     }
 
     componentDidMount(){
@@ -25,12 +28,22 @@ class Inventory extends Component {
                 window.location.assign("/login")
             }else{
                 console.log("user logged in")
-                this.setState({
-                    login: true,
-                    shop: res.data
+                this.setState({login: true,shop: res.data})
+                CategoryAPI.getCategories()
+                .then(res=>{
+                    console.log(res.data)
+                    this.setState({categories: res.data})
+                })
+                ProductAPI.getProducts()
+                .then(res=>{
+                    console.log(res.data)
+                    this.setState({products: res.data})
+                
+                
                 })
             }
         })
+        
     }
 
     openModaltHandler=(id, modalname)=>{
@@ -56,8 +69,6 @@ class Inventory extends Component {
       
    }
 
-   
-
    closeModalHandler=(modalname)=>{
        this.setState({
            [modalname]: false
@@ -70,7 +81,7 @@ class Inventory extends Component {
             <Jumbotron pageName="INVENTORY" instructions="Click to view and edit products and categories.">
                 <Button variant="outline-dark" size="lg" onClick={(e)=>this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
-            <Layout />
+            <Layout categories={this.state.categories} />
             <ProductModal state={this.state.productModal} show={this.openModaltHandler} close={this.closeModalHandler}/>
         </>)
     }

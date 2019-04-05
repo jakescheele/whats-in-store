@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Container,Form, Modal } from "react-bootstrap";
 import axios from "axios";
-import { on } from "cluster";
+// import { on } from "cluster";
+// import Overlay from "react-bootstrap";
 class SignupModal extends Component {
     state = {
         email: "",
@@ -21,6 +22,7 @@ class SignupModal extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
+        this.setState({ showOverlay: false });
         let pass=this.state.password;
         if (this.state.Confirmpassword === pass&&/[a-z]/gi.test(pass)&&
         /[!@#$%^&*()<>.,/]/g.test(pass)&&/[0-9]/gi.test(pass)&&pass.length>=6&&/@/g.test(this.state.email)&&
@@ -87,8 +89,6 @@ class SignupModal extends Component {
 
 
                             <Button variant="primary" type="submit" onSubmit={this.formSubmit} 
-                            
-                            onClick={() => this.setState({ showOverlay: !showOverlay })}
                             onClick={this.formSubmit} >
                                 Submit
                             </Button>
@@ -97,7 +97,7 @@ class SignupModal extends Component {
 
 
 
-                            
+{/*                             
         <Overlay password={this.state.password} showOverlay={this.state.showOverlay} placement="right">
           {({ placement, scheduleUpdate, arrowProps, ...props }) => (
             <div
@@ -113,7 +113,7 @@ class SignupModal extends Component {
               check password and email format, or passwords don't match
             </div>
           )}
-        </Overlay>
+        </Overlay> */}
 
                         </Form>
                         </Container>

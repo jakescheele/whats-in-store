@@ -11,40 +11,16 @@ import Footer from "../Footer"
 import Axios from "axios";
 
 // Utils
-import ProductAPI from "../../utils/API/products";
-import CategoryAPI from "../../utils/API/categories"
+
 
 
 
 class Layout extends Component {
     state={
-        products: [],
-        categories: [],
         productModal: false,
         categoryModal: false,
-        product: {}
-    }
-    componentDidMount(){
-        //axio request to find all categories in DB
-        CategoryAPI.getCategories()
-        .then(res=>{
-            console.log(res.data)
-            // set state
-            this.setState({
-                categories: res.data
-            })
-        })
-        ProductAPI.getProducts()
-        .then(res=>{
-            console.log(res.data)
-            // set state
-            this.setState({
-                products: res.data
-            })
-
-
-        })
-
+        product: {},
+        products:[]
     }
 
     submitForm=(event)=>{
@@ -91,7 +67,7 @@ class Layout extends Component {
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={3} lg={3} className="rem-0.0625 pb-2">
-                    <CategorySideBar categories={this.state.categories} show={this.openModaltHandler}/>
+                    <CategorySideBar categories={this.props.categories} show={this.openModaltHandler}/>
                 </Col>
                 <Col>
                     <Row>
@@ -107,7 +83,7 @@ class Layout extends Component {
          close={this.closeModalHandler} product={this.state.product}/>
 
         <CategoryModal state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
-          show={this.openModaltHandler} close={this.closeModalHandler} categories={this.state.categories}/>
+          show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)
     }
 }
