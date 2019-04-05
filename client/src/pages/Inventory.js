@@ -8,7 +8,7 @@ import axios from "axios";
 import ProductAPI from "../utils/API/products";
 import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
-
+const emptyCategory = { name: "", subcategories: [], _id: ""}
 
 class Inventory extends Component {
     state = {
@@ -20,7 +20,7 @@ class Inventory extends Component {
         // the product state
         productid: "",
         name: "",
-        category: {},
+        category: {...emptyCategory},
         price: "",
         description: "",
         stock: [{ ...emptyVariant }],
@@ -86,6 +86,8 @@ class Inventory extends Component {
                             [modalname]: true
                         })
                     }
+                    console.log("===========Here is the original category state =================") 
+                    console.log(this.state.category)
                 })
 
 
@@ -134,6 +136,7 @@ class Inventory extends Component {
         })
     }
 
+    // methods for stock page
     updateVariant = (varientIndex, field) => value => {
         this.setState(
             {
@@ -207,7 +210,7 @@ class Inventory extends Component {
                 price={this.state.price}
                 stock={this.state.stock}
                 description={this.state.description}
-                selectedCategory={{ ...this.state.category }}
+                selectedCategory={this.state.category}
 
             />
         </>)

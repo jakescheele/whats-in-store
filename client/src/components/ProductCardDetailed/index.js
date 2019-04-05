@@ -6,12 +6,15 @@ import Promos from "./Promos"
 import Modal from 'react-bootstrap/Modal'
 import { Col, Row, Card } from 'react-bootstrap'
 import { Button, Tab, Tabs } from "react-bootstrap";
-import ProductAPI from "../../utils/API/products"
 
 
-const emptyVariant = {name:"", stock:0};
 class ModalComponent extends React.Component {
 
+  componentDidMount(){
+    console.log("============Here is in Product Modal for props.category========")
+    console.log(this.props.selectedCategory)
+    console.log(this.props.productName)
+  }
 
   render() {
 
@@ -36,7 +39,7 @@ class ModalComponent extends React.Component {
                 productName={this.props.productName} 
                 price={this.props.price} 
                 description = {this.props.description} 
-                selectedCategory={{...this.props.category}}
+                selectedCategory={this.props.selectedCategory}
                 />
               </Tab>
               <Tab eventKey="Stock" title="Stock">

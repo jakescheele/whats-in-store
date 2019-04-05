@@ -30,7 +30,7 @@ class Promos extends Component{
     render(){
         return(<>
             <Nav shop={this.state.shop}/>
-            <Jumbotron pageName="PROMOTIONALS" instructions="Edit your promotion settings."/>
+            <Jumbotron pageName="PROMOTIONS" instructions="Edit your promotion settings."/>
             <Table/>
         </>)
     }
