@@ -9,9 +9,6 @@ import {Col, Row } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
 
-
-
-
 class Dashboard extends Component{
     state={
         login: false,

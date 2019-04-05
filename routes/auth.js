@@ -9,7 +9,11 @@ module.exports=function(passport){
       console.log(req.body)
       console.log("started")
       let user=new User();
-      req.body.password=user.hashPassword(req.body.password)
+      req.body.password=user.hashPassword(req.body.password) 
+
+    
+
+
       User.create(req.body,(err,dat)=> {
         if(err&&err.code===11000){
           res.send("Email already taken")
@@ -19,6 +23,8 @@ module.exports=function(passport){
           console.log("here")
           res.send("login succesful")
         }
+
+      
       })
     });
 
