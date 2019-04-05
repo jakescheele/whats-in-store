@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import {Container, Col, Row, Card, Form, Button} from 'react-bootstrap'
 import CategoryList from "./CategoryList"
 import categories from "../../DummyCategories.json"
+import CategoryAPI from "../../utils/API/categories"
 
 
 
 class CategorySideBar extends Component{
     state={
-        categories: categories
+        categories: []
     }
 
     componentDidMount(){
         //axio request to find all categories in DB
+        CategoryAPI.getCategories()
+        .then(res=>{
+            console.log(res.data)
+            // set state
+            this.setState({
+                categories: res.data
+            })
 
+        })
 
-        // set state
     }
     
     categoryEditHandler = (e)=>{

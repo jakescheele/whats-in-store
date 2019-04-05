@@ -3,9 +3,10 @@ const db = require("../models");
 // Defining methods for the categoriesController
 module.exports = {
   findAll: function (req, res) {
-    db.Category
+    db.User
       .find({"_id": req.user.id})
-      .then(dbModel => res.json(dbModel))
+      .populate("Category")
+      .then(dbModel => res.json(dbModel.Category))
       .catch(err => res.status(422).json(err));
   },
   findById: function (req, res) {
