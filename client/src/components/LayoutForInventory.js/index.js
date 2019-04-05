@@ -9,7 +9,7 @@ import BackToTopBtn from "../BackToTopBtn"
 import ProductModal from "../ProductCardDetailed";
 import CategoryModal from "../ViewCategoriesModal"
 import Footer from "../Footer"
-
+import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 // Utils
 import ProductAPI from "../../utils/API/products"
 
@@ -61,8 +61,14 @@ class Layout extends Component {
         })
     }
 
-    render(){
-        return (<>
+    render() {
+        return (
+        <>
+         
+
+
+
+
         <Container>
             <Row>
                 <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar/></Col>
@@ -84,7 +90,11 @@ class Layout extends Component {
         <Footer/>
         <ProductModal state={this.state.productModal} show={this.openModaltHandler} close={this.closeModalHandler} product={this.state.product}/>
         <CategoryModal state={this.state.categoryModal} show={this.openModaltHandler} close={this.closeModalHandler} categories={this.state.categories}/>
-        </>)
+        
+
+        </>
+        )
+        
     }
 }
                         
