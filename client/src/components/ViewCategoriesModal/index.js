@@ -1,30 +1,11 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Card, Form, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
+import {Col, Row, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
 
 
 
 
 class CategoryModal extends Component {
-    // constructor(props) {
-    //   super(props);
-    state = {
-        categories: ""
-    };
-
-    // handleChangeProduct = (event) => {
-    //     this.setState({ product: event.target.value });
-    // }
-    // handleChangePrice = (event) => {
-    //     this.setState({ price: event.target.value });
-    // }
-    // handleChangeCategory = (event) => {
-    //     this.setState({ category: event.target.value });
-    // }
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    // }
 
 
     render() {
@@ -44,9 +25,10 @@ class CategoryModal extends Component {
                                         placeholder="New category name"
                                         aria-label="Recipient's username"
                                         aria-describedby="basic-addon2"
+                                        name="cata" onChange={this.props.handleChange}
                                     />
                                     <InputGroup.Append>
-                                        <Button variant="outline-secondary" size="sm">Add New Category</Button>
+                                        <Button variant="outline-secondary" onClick={this.props.submitForm} size="sm">Add New Category</Button>
                                     </InputGroup.Append>
                                 </InputGroup>
                             </Col>
