@@ -1,24 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import {Col, Row, Card } from 'react-bootstrap'
-import {Button, Container, InputGroup, FormControl} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import AddCategory from '../ProductCardDetailed/AddCategory';
+import '../../fileButton.css';
 //import CategoryCard from "./ViewCategoriesModal/CategoryCard"
 
 // dummy categories
 import categories from "../../DummyCategories.json"
 
-
-
-function Info (props) {
-return (
+class Info extends Component {
+  render() {
+  return (
           <Container>
           <Col lg={12}>
-            <Row className="show-grid">
-                <img className="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap"></img>
-            </Row>
-            
+            <Form.Group controlId="productImage">
+                        <label class="borderBlack">
+                            <Form.Label className ="borderBlack">Upload Product Image</Form.Label>
+                        </label>
+                            <label class="fileContainer">
+                            <Form.Control onChange={this.handleChange} 
+                            type="file" class="fileButton" name="image" display="none" placeholder="Upload Product Image"/>
+
+                        </label>
+                        </Form.Group>
+                        
             <Row>
             
               <Form.Group controlId="formGroupEmail">
@@ -48,5 +55,6 @@ return (
           </Container>
         )
     }
+  }
 
     export default Info

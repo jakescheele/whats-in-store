@@ -1,0 +1,34 @@
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+.border {
+    border-style: 10px solid white;
+    padding: 8px;
+    border-radius: 30px;
+
+}
+
+.borderBlack {
+    color: black;
+    border-color: 10px solid black;
+
+    padding: 8px;
+    border-radius: 30px;
+
+}
