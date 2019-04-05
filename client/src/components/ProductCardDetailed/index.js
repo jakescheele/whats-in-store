@@ -41,7 +41,7 @@ class ModalComponent extends React.Component {
       .catch(err => console.log(err));
 
       // close the modal after save changes
-      this.props.close("productModal")
+      // this.props.close("productModal")
     }
   
   
