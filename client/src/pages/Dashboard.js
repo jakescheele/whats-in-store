@@ -1,10 +1,15 @@
 import React, {Component} from "react";
+
 import Nav from "../components/NavBar";
+
 import axios from "axios";
 import SalesChart from "../components/Dashboard/SalesChart";
 import StockChart from "../components/Dashboard/StockChart";
 import {Col, Row } from 'react-bootstrap'
 import { Link } from "react-router-dom";
+
+
+
 
 
 class Dashboard extends Component{
