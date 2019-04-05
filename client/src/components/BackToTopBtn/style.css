@@ -2,13 +2,13 @@
 .scroll {
 opacity: 0.6;
 background-color: gray;
-width: 40px;
-height: 40px;
+width: 2.5rem;
+height: 2.5rem;
 position: fixed;
-border-radius: 0px;
+border-radius: 0rem;
 border: none;
-bottom: 40px;
-right: 20px;
+bottom: 2.5rem;
+right: 1.25rem;
 }
 
 .scroll:hover {
@@ -20,6 +20,6 @@ color: white;
 position: absolute;
 top: 50%;
 left: 50%;
-margin-top: 0px;
-margin-left: 0px;
+margin-top: 0rem;
+margin-left: 0rem;
 }
