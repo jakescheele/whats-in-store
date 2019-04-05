@@ -18,8 +18,9 @@ class SignupModal extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
+
         if (this.state.Confirmpassword === this.state.password) {
-            console.log("passowrds match")
+            console.log("passwords match")
             console.log(this.state)
             axios.post("/auth/signup",this.state).then(res=>{
                 if(res.data==="Email already taken"){

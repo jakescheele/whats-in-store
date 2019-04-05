@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import Nav from "../components/NavBar";
-
+import '../index.css'
 import axios from "axios";
 import SalesChart from "../components/Dashboard/SalesChart";
 import StockChart from "../components/Dashboard/StockChart";
@@ -51,6 +51,8 @@ class Dashboard extends Component{
                         }
                     >See All Stock</Link>     
         </li>
+
+        
         
         </Col>
        
