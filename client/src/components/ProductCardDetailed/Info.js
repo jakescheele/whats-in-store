@@ -15,12 +15,12 @@ class Info extends Component {
       <Container>
           <Row className="show-grid">
           <Form.Group controlId="productImage">
-              <label class="borderBlack">
+              <label className="borderBlack">
                   <Form.Label className ="borderBlack">Upload Product Image</Form.Label>
               </label>
-                  <label class="fileContainer">
+                  <label className="fileContainer">
                   <Form.Control onChange={this.handleChange} 
-                  type="file" class="fileButton" name="image" display="none" placeholder="Upload Product Image"/>
+                  type="file" className="fileButton" name="image" display="none" placeholder="Upload Product Image"/>
               </label>
             </Form.Group>
           </Row>
@@ -39,6 +39,7 @@ class Info extends Component {
                 type="text"
                 name="name" 
                 placeholder="Product Name" 
+                value={this.props.productName}
                 onChange={this.props.inputChangeHandler} />
                 <Form.Control.Feedback type="invalid">
                   Please enter a product name.
@@ -49,13 +50,20 @@ class Info extends Component {
                 required
                 name="price" 
                 placeholder="Price" 
+                value={this.props.price}
                 onChange={this.props.inputChangeHandler} />
                 <Form.Control.Feedback type="invalid">
                   Please enter a product price.
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="description">
-                <Form.Control name="description" as="textarea" rows="3" placeholder="Product Description" onChange={this.props.inputChangeHandler} />
+                <Form.Control 
+                name="description" 
+                as="textarea" 
+                rows="3" 
+                placeholder="Product Description" 
+                value={this.props.description}
+                onChange={this.props.inputChangeHandler} />
               </Form.Group>
               <AddCategory categories={categories} dropDownSelectHandler={this.props.dropDownSelectHandler} selectedCategory={this.props.category} />
             </Form>

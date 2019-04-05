@@ -98,7 +98,7 @@ class SignupModal extends Component {
 
 
                             
-        <Overlay password={this.state.password} showOverlay={this.state.showOverlay} placement="right">
+        {/* <Overlay password={this.state.password} showOverlay={this.state.showOverlay} placement="right">
           {({ placement, scheduleUpdate, arrowProps, ...props }) => (
             <div
               {...props}
@@ -113,7 +113,7 @@ class SignupModal extends Component {
               check password and email format, or passwords don't match
             </div>
           )}
-        </Overlay>
+        </Overlay> */}
 
                         </Form>
                         </Container>
