@@ -43,7 +43,7 @@ class Hamburger extends Component {
                                 }
                                 onClick={this.props.collapse}
 
-                            >PROMOTIONALS</Link>
+                            >PROMOTIONS</Link>
                         </li>
                         <li>
                             <Link
