@@ -30,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Passport
+
 const passportRoute = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRoute);

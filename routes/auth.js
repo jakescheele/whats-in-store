@@ -26,12 +26,33 @@ module.exports=function(passport){
       
     });
 
-    router.post('/login', passport.authenticate('local'),
-    function(req, res) {
-      console.log(req.user)
-      res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
+    // router.post('/login', passport.authenticate('local'),
+    // function(req, res) {
+    //   console.log(req.user)
+    //   res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
+    // });
+    router.post("/login", (req, res, next) => {
+      // Check for errors of like 50 kinds.
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+         return next(err); 
+        }
+      if (user) {
+        req.login(user, (err) => {
+          // If errors aren't found when logging in...
+          if (err) { 
+            return next(err);
+          }
+            // Complete a log in handshake.
+          res.json({ success: req.user ? "Yes" : "No", user: req.user });
+        });
+      } else {
+          // If errors ARE found, send an error we can interpret for the front end.
+        res.json("Server Error");
+      }
+    })(req, res, next);
     });
-
+    
     router.get("/logout",function(req,res){
       console.log("logout start")
       console.log(req.user)
