@@ -1,20 +1,49 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { Form } from "react-bootstrap";
+import { Row, Col, Dropdown, Card, Button, Form } from "react-bootstrap";
+
+// Utils
+import CategoryAPI from "../../utils/API/categories"
+
+
+
 
 class AddCategory extends Component {
-  
-  
+  state={
+    categories: []
+  }
+
+  componentDidMount(){
+    //axio request to find all categories in DB
+    CategoryAPI.getCategories()
+    .then(res=>{
+        console.log(res.data)
+        // set state
+        this.setState({
+            categories: res.data
+        })
+
+    })
+  }
   
   render(){
     return (
       <>
-      <Form className="mb-3 mx-0" inline>
-            <Form.Control as="select" style={{"width": "100%"}} >
-            {this.props.categories.map(category=>(
-            <option value="default">{category.name}</option>  ))}
+      <Form.Group className="mb-3 mx-0">
+            <Form.Control 
+            required
+            name="category" 
+            as="select" 
+            style={{"width": "100%"}} 
+            onChange={this.props.dropDownSelectHandler}>
+            <option value="" disabled selected>Select a category</option>
+            {this.state.categories.map(category=>(
+            <option key={category.name} value={category._id}>{category.name}</option>  ))}
             </Form.Control>
-      </Form>
+            <Form.Control.Feedback type="invalid">
+              Please select a category.
+            </Form.Control.Feedback>
+      </Form.Group>
 </>
     )
   }

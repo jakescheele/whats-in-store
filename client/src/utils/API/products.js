@@ -16,11 +16,12 @@ export default {
     },
     // Saves a product to the database
     saveProduct: function (productData) {
+        console.log("Hello! I'm here in the utils!")
         let product = {
             name: productData.name,
             category: productData.category,
-            subcategory: productData.subcategory,
-            image: productData.image,
+            // subcategory: productData.subcategory,
+            // image: productData.image,
             price: productData.price,
             description: productData.description,
             stock: productData.stock

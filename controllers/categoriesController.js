@@ -6,7 +6,7 @@ module.exports = {
     db.User
       .findOne({"_id": req.user.id})
       .populate("categories")
-      .then(cats => res.json(cats))
+      .then(user => res.json(user.categories))
       .catch(err => res.status(422, err)) 
   },
   findById: function (req, res) {
