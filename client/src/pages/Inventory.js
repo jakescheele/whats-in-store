@@ -36,7 +36,7 @@ class Inventory extends Component {
             console.log(res.data)
             if(res.data==="no user"){
                 console.log("no user log in")
-                window.location.assign("/login")
+                window.location.assign("/")
             }else{
                 console.log("user logged in")
                 this.setState({login: true,shop: res.data})
@@ -60,6 +60,7 @@ class Inventory extends Component {
     openModaltHandler = (id, modalname) => {
 
         if (id) {
+            console.log("===========You are going to see specific product=================")
             console.log(id)
 
             // make ajax request to the backend and get the viewed product
@@ -90,6 +91,7 @@ class Inventory extends Component {
 
 
         } else {
+            console.log("===========You are going to see new product=================")
             this.setState({
                 productid: "",
                 name: "",
@@ -162,13 +164,13 @@ class Inventory extends Component {
             console.log("=========here is the state=========")
             console.log(this.state)
             console.log("===================================")
-            console.log("Hello! I'm here trying to thit the save Product!")
+            console.log("Hello! I'm here trying to hit the save Product!")
             ProductAPI.saveProduct(this.state)
                 .then(res => console.log(res))
                 .catch(err => console.log(err));
 
             // close the modal after save changes
-            this.props.close("productModal")
+            this.closeModalHandler("productModal")
             window.location.reload()
         }
     }

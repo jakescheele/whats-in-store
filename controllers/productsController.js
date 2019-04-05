@@ -47,7 +47,7 @@ module.exports = {
 
   update: function (req, res) {
     db.Product
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, {$set:{...req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },

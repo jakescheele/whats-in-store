@@ -20,7 +20,7 @@ class Dashboard extends Component {
                 console.log(res.data)
                 if (res.data === "no user") {
                     console.log("no user log in")
-                    window.location.assign("/login")
+                    window.location.assign("/")
                 } else {
                     console.log("user logged in")
                     this.setState({
