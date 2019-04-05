@@ -15,8 +15,10 @@ class CategorySideBar extends Component{
         //axio request to find all categories in DB
         Axios.get("/api/categories/")
         // set state
-        .then( (req, res) =>
-            this.setState({categories: res.body})
+        .then( (response) => {
+            console.log(response)
+            this.setState({categories: response.data})
+        }
         )
     }
     
