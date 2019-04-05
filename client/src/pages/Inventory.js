@@ -6,72 +6,204 @@ import { Button } from 'react-bootstrap'
 import ProductModal from '../components/ProductCardDetailed'
 import axios from "axios";
 
+// Utils
+import ProductAPI from "../utils/API/products"
+
+
+const emptyVariant = { name: "", stock: 0 };
 
 
 class Inventory extends Component {
-    state={
-        productModal:false,
+    state = {
+        productModal: false,
         login: false,
-        shop:{},
-        product:{}
+        shop: {},
+
+
+
+        // the product state
+        productid: "",
+        name: "",
+        category: {},
+        price: "",
+        description: "",
+        stock: [{ ...emptyVariant }],
+        // image:"",
+
+        // validator for submit
+        validated: false,
+
+
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        // check if the user has logged in
         axios.get("/auth/test")
-        .then(res=>{
-            console.log(res.data)
-            if(res.data==="no user"){
-                console.log("no user log in")
-                window.location.assign("/login")
-            }else{
-                console.log("user logged in")
-                this.setState({
-                    login: true,
-                    shop: res.data
-                })
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data === "no user") {
+                    console.log("no user log in")
+                    window.location.assign("/login")
+                } else {
+                    console.log("user logged in")
+                    this.setState({
+                        login: true,
+                        shop: res.data
+                    })
+                }
+            })
+
     }
 
-    openModaltHandler=(id, modalname)=>{
-        
-        console.log("click")
-        if(id){
+    openModaltHandler = (id, modalname) => {
 
-        // make ajax request to the backend and get the viewed product
+        if (id) {
+            console.log(id)
 
-        // set state
+            // make ajax request to the backend and get the viewed product
+            ProductAPI.getProduct(id)
+                .then(res => {
 
-        }else{
+                    
+                    if (res.data.stock.length === 0) {
+                        console.log("the stock array is empty")
+                        this.setState({ 
+                            [modalname]: true
+                        })
+                        
+                    }else{
+                        console.log("the stock array has a lot")
+                        this.setState({
+                            productid: res.data._id,
+                            name: res.data.name,
+                            stock: res.data.stock,
+                            price: res.data.price,
+                            description: res.data.description,
+                            category: { ...res.data.category },
+                            [modalname]: true
+                        })
+                    }
+                })
+
+
+
+        } else {
+            this.setState({
+                productid: "",
+                name: "",
+                category: {},
+                price: "",
+                description: "",
+                stock: [{ ...emptyVariant }],
+                [modalname]: true
+            })
 
 
         }
 
+    }
 
-        // set the this.state.product to be the viewed product
-        // set show to true
-       this.setState({
-           [modalname]: true
-       })
-      
-   }
+    // methods for the product info management
+    inputChangeHandler = (e) => {
+        let { name, value } = e.target
+        console.log(name)
+        console.log(value)
+        this.setState({
+            [name]: value
+        })
+    }
 
-   
 
-   closeModalHandler=(modalname)=>{
-       this.setState({
-           [modalname]: false
-       })
-   }
+    dropDownSelectHandler = (e) => {
+        let { name, value } = e.target
+        console.log(name)
+        console.log(value)
+        this.setState({
+            [name]: value
+        })
+    }
+
+
+    closeModalHandler = (modalname) => {
+        this.setState({
+            [modalname]: false
+        })
+    }
+
+    updateVariant = (varientIndex, field) => value => {
+        this.setState(
+            {
+                stock: this.state.stock.map((item, i) => i === varientIndex ? { ...item, [field]: value } : { ...item })
+            }
+        )
+    }
+
+    addVariant = () => {
+        console.log("=====================Click !!!!=====================")
+        this.setState({
+            stock: [...this.state.stock, { ...emptyVariant }]
+        })
+    }
+
+    handleSubmit = (event) => {
+
+        // validation
+        const form = event.currentTarget
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.setState({ validated: true });
+
+        // make axio request to create new product
+        if (this.state.name && this.state.price && this.state.category) {
+            console.log("=========here is the state=========")
+            console.log(this.state)
+            console.log("===================================")
+            console.log("Hello! I'm here trying to thit the save Product!")
+            ProductAPI.saveProduct(this.state)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+
+            // close the modal after save changes
+            this.props.close("productModal")
+            window.location.reload()
+        }
+    }
+
 
     render() {
         return (<>
-            <Nav shop={this.state.shop}/>
+            <Nav shop={this.state.shop} />
             <Jumbotron pageName="INVENTORY" instructions="Click to view and edit products and categories.">
-                <Button variant="outline-dark" size="lg" onClick={(e)=>this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
+                <Button variant="outline-dark" size="lg" onClick={(e) => this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
-            <Layout />
-            <ProductModal state={this.state.productModal} show={this.openModaltHandler} close={this.closeModalHandler}/>
+            <Layout
+                state={this.state.productModal}
+                show={this.openModaltHandler}
+                close={this.closeModalHandler} />
+
+            <ProductModal
+                // modal methods
+                state={this.state.productModal}
+                show={this.openModaltHandler}
+                close={this.closeModalHandler}
+                // product methods
+                product={this.state.product}
+                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} updateVariant={this.updateVariant}
+                addVariant={this.addVariant}
+                // submit methods
+                handleSubmit={this.handleSubmit}
+                validated={this.state.validated}
+                // product info
+                productid={this.state._id}
+                productName={this.state.name}
+                price={this.state.price}
+                stock={this.state.stock}
+                description={this.state.description}
+                selectedCategory={{ ...this.state.category }}
+
+            />
         </>)
     }
 }
