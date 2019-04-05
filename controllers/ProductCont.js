@@ -1,4 +1,4 @@
-var db=require("../models")
+var db = require("../models")
 module.exports={
     addProduct:function(product,done){
         db.Category.find({name:product.Category},

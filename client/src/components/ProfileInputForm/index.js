@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import '../../fileButton.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import { Button, Container, Form, Col } from "react-bootstrap";
+import { relative } from "path";
 
 class ProfileInputForm extends Component {
     state = {
@@ -55,12 +58,19 @@ class ProfileInputForm extends Component {
                             <Form.Control as="textarea" rows="5" onChange={this.handleChange} type="description" placeholder="Your Shop Description" />
                         </Form.Group>
                         <Form.Group controlId="shopLogo">
-                            <Form.Label className ="text-light">Shop Logo</Form.Label>
-                            <Form.Control onChange={this.handleChange} type="file" name="image" placeholder="Your Shop Logo"/>
+                        <label class="border">
+                            <Form.Label className ="text-light">Upload Logo</Form.Label>
+                        </label>
+                            <label class="fileContainer">
+                            <Form.Control onChange={this.handleChange} 
+                            type="file" class="fileButton" name="image" display="none" placeholder="Your Shop Logo"/>
+
+                        </label>
                         </Form.Group>
                         <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
-                            Submit
-                                </Button>
+                        Submit
+                        </Button>
+
                     </Form>
                     </Col>
                 </Container>
@@ -71,3 +81,11 @@ class ProfileInputForm extends Component {
 }
 
 export default ProfileInputForm;
+
+
+/*style={{
+                                border: 'gray',
+                                color: 'gray',
+                                padding: 8,
+                                border: 8,
+                            }} */

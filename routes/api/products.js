@@ -4,12 +4,14 @@ const productsController = require("../../controllers/productsController");
 // Matches with "/api/products"
 router.route("/")
     .get(productsController.findAll)
-    .post(productsController.parseImage, productsController.create);
-
+    .post(productsController.create);
+    
 // Matches with "/api/products/:id"
 router.route("/:id")
     .get(productsController.findById)
     .put(productsController.update)
     .delete(productsController.remove);
 
+router.route("/filter/lth").post(productsController.lowToHigh)
+router.route("/filter/htl").post(productsController.lowToHigh)
 module.exports = router;
