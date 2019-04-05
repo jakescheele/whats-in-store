@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import {Container, Col, Row, Card, Form} from 'react-bootstrap'
+import {Container, Col, Row, Card} from 'react-bootstrap'
 import CategorySideBar from "../CategorySideBar"
 import ProductCard from "../ProductCard"
 import SearchBar from "../SearchBar"
@@ -10,13 +10,16 @@ import ProductModal from "../ProductCardDetailed";
 import CategoryModal from "../ViewCategoriesModal"
 import Footer from "../Footer"
 
+// Utils
+import ProductAPI from "../../utils/API/products"
+
 // dummy data
 import products from "../../DummyProducts.json"
 import categories from "../../DummyCategories.json"
 
 class Layout extends Component {
     state={
-        products: products,
+        products: [],
         categories: categories,
         productModal: false,
         categoryModal: false,
@@ -25,9 +28,17 @@ class Layout extends Component {
 
     componentDidMount(){
         //axio request to find all products in DB
-        
+        ProductAPI.getProducts()
+        .then(res=>{
+            console.log(res.data)
+            // set state
+            this.setState({
+                products: res.data
+            })
 
-        // set state
+
+        })
+
     }
 
     // click handler for product card to trigger product detail modal
@@ -54,16 +65,16 @@ class Layout extends Component {
         return (<>
         <Container>
             <Row>
-                <Col sm={12} md={10} lg={10} className="px-2"><SearchBar/></Col>
-                <Col sm={12} md={2} lg={2} className="px-2"><SortingBar/></Col>
+                <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar/></Col>
+                <Col sm={12} md={2} lg={2} className="rem-0.125"><SortingBar/></Col>
             </Row>
             <Row>
-                <Col xs={12} sm={12} md={2} lg={2} className="mx-1 px-1 pb-2">
+                <Col xs={12} sm={12} md={3} lg={3} className="rem-0.0625 pb-2">
                     <CategorySideBar show={this.openModaltHandler}/>
                 </Col>
-                <Col className="mx-1">
+                <Col>
                     <Row>
-                        {this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>))}
+                        {this.state.products===[]?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>)))}
                     </Row>
                 </Col>
 

@@ -4,41 +4,67 @@ const parser = require("../cloudinary")
 // Defining methods for the productsController
 module.exports = {
   findAll: function (req, res) {
-    db.User.find({ "_id": req.user._id})
+    db.User.findOne({ _id: req.user._id })
       .populate("products")
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .then(dbModel => res.json(dbModel.products))
+      .catch(err => res.json(422, err))
   },
+
   findById: function (req, res) {
     db.Product
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.json(422, err))
   },
+
   parseImage: parser.single("image"),
+
   create: function (req, res) {
-    const product = {
-      ...req.body,
-      img: req.file.url,
-      img_id: req.file.public_id
-    };
-    db.Product
-      .create(product)
-      .then(dbProduct =>  db.User.findOneAndUpdate({_id:req.user.id}, { $push: { products: dbProduct._id } }, { new: true }))
-      .then(dbUser => res.json(dbUser))
-      .catch(err => res.status(422).json(err));
+    // if photo has been uploaded
+    // if (req.file) {
+      const product = {
+        name: req.body.name,
+        category: req.body.category,
+        // subcategory: req.body.subcategory,
+        price: req.body.price,
+        description: req.body.description,
+        // img: req.file.url,
+        // img_id: req.file.public_id
+        stock: req.body.stock
+
+      };
+      console.log("==============hit the post route==========")
+      console.log(product)
+      console.log(req.user)
+      db.Product
+        .create(product)
+        .then(dbProduct => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { products: dbProduct._id } }, { new: true }))
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.json(422, err))
+    // }
   },
+
   update: function (req, res) {
     db.Product
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.json(422, err))
   },
+
   remove: function (req, res) {
     db.Product
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.json(422, err))
+  },
+  lowToHigh:function(req,res){
+    db.Product.find().sort({price:-1}).exec(function(err,data){
+      console.log(data)
+      
+    })
+
+
   }
+  
 };
