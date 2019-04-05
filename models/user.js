@@ -11,10 +11,10 @@ let userSchema = new Schema({
   logo_id: {type: String,},
   products: [{
     type: Schema.Types.ObjectId,
-    ref: "Products"
+    ref: "Product"
   }],
   categories:[{
-    type:[String],
+    type: Schema.Types.ObjectId,
     ref:'Category'
   }]
 });

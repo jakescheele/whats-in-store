@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Card, Form, Modal, Button } from 'react-bootstrap'
+import { Container, Col, Row, Card, Form, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
 
 
@@ -29,36 +29,43 @@ class CategoryModal extends Component {
 
     render() {
         return (
-        <>
-            <Modal show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Edit Categories
+            <>
+                <Modal show={this.props.state} onHide={(e) => this.props.close("categoryModal")}>
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Edit Categories
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Row>
-                        <Col>
-                            <Button className="mb-2 float-right" variant="success" size="sm" >
-                                + Add New Category
-                            </Button>
-                        </Col>
-                    </Row>
-                    {this.props.categories.map(category=>(
-                        <CategoryCard key={category.name} category={category}/>
-                    ))}
-                
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={(e)=>this.props.close("categoryModal")}>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Row>
+                            <Col>
+                                <InputGroup className="mb-3" size="sm">
+                                    <FormControl
+                                        placeholder="New category name"
+                                        aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2"
+                                    />
+                                    <InputGroup.Append>
+                                        <Button variant="outline-secondary" size="sm">Add New Category</Button>
+                                    </InputGroup.Append>
+                                </InputGroup>
+                            </Col>
+                        </Row>
+                        {this.props.categories.map(category => (
+                            <CategoryCard key={category.name} category={category} />
+                        ))}
+
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={(e) => this.props.close("categoryModal")}>
                             Close
                     </Button>
-                    <Button variant="primary" onClick={(e)=>this.props.close("categoryModal")}>
+                        <Button variant="primary" onClick={(e) => this.props.close("categoryModal")}>
                             Save Changes
                     </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
+                    </Modal.Footer>
+                </Modal>
+            </>
         );
     }
 }
