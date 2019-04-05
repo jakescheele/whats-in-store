@@ -4,11 +4,12 @@ const parser = require("../cloudinary")
 // Defining methods for the productsController
 module.exports = {
   findAll: function (req, res) {
-    db.User.find({ "_id": req.user._id })
+    db.User.findOne({ "_id": req.user._id })
       .populate("products")
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => res.json(dbModel.products))
       .catch(err => res.json(422, err))
   },
+
   findById: function (req, res) {
     db.Product
       .findById(req.params.id)
@@ -20,12 +21,19 @@ module.exports = {
 
   create: function (req, res) {
     // if photo has been uploaded
-    if (req.file) {
+    // if (req.file) {
       const product = {
-        ...req.body,
+        name: req.body.name,
+        category: req.body.category,
+        // subcategory: req.body.subcategory,
+        price: req.body.price,
+        description: req.body.description,
         // img: req.file.url,
         // img_id: req.file.public_id
+        stock: req.body.stock
+
       };
+      console.log("==============hit the post route==========")
       console.log(product)
       console.log(req.user)
       db.Product
@@ -33,7 +41,7 @@ module.exports = {
         .then(dbProduct => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { products: dbProduct._id } }, { new: true }))
         .then(dbUser => res.json(dbUser))
         .catch(err => res.json(422, err))
-    }
+    // }
   },
 
   update: function (req, res) {

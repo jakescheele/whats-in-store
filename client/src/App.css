@@ -264,3 +264,16 @@ img{
     display: flex;
     padding-top: 25vh;
   }
+
+
+/* reset tab nav */
+
+a .nav-link {
+    padding: 0.5rem 1rem 0.5rem 1rem!important;
+    height: 3rem!important
+}
+
+.nav-tabs{
+    height: 3rem!important;
+    margin-bottom: 2rem
+}

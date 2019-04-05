@@ -59,6 +59,7 @@ class Hamburger extends Component {
                         </li>
                         <li>
                             <Link
+                                to="#"
                                 className={
                                     window.location.pathname === "/login"
                                         ? "nav-link active"
