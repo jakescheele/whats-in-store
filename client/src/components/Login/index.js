@@ -17,8 +17,14 @@ class LoginModal extends Component{
         console.log(this.state)
         axios.post("/auth/login",this.state)
         .then(res=>{
-            console.log("log the user in!")
-            window.location.assign("/dashboard")
+            console.log(res)
+            if(res.data==='Server Error'){
+                console.log("wrong input")
+            }
+            else{
+                console.log("login successful")
+                window.location.assign("/dashboard")
+            }
         })
     }
     render(){
