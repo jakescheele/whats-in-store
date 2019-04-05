@@ -4,7 +4,7 @@ const parser = require("../cloudinary")
 // Defining methods for the productsController
 module.exports = {
   findAll: function (req, res) {
-    db.User.findOne({ "_id": req.user._id })
+    db.User.findOne({ _id: req.user._id })
       .populate("products")
       .then(dbModel => res.json(dbModel.products))
       .catch(err => res.json(422, err))
@@ -57,5 +57,14 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
+  },
+  lowToHigh:function(req,res){
+    db.Product.find().sort({price:-1}).exec(function(err,data){
+      console.log(data)
+      
+    })
+
+
   }
+  
 };
