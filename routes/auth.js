@@ -18,8 +18,12 @@ module.exports=function(passport){
           console.log(dat);
           console.log("here")
           res.send("login succesful")
+          db.Category.create({name: "Misc."})
+          .then(dbCategory=>User.findOneAndUpdate({_id: dat._id},  {$push: { categories: dbCategory._id }}))
+          .catch(err => res.json(422,err));
         }
       })
+      
     });
 
     router.post('/login', passport.authenticate('local'),

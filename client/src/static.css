@@ -226,5 +226,8 @@
       border-color: 1px solid white;
     }
 
-  
-  
+
+    var variables = {
+      background-color: black;
+    }
+    

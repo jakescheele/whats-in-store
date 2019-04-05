@@ -12,7 +12,7 @@ function ProductCard(props) {
                         <div className="product-description">{props.product.description}</div>
                         <hr></hr>
                         <h5>Price: $ {props.product.price} </h5>
-                        <h5>Stock: {props.product.stock} </h5>
+                        {/* <h5>Stock: {props.product.stock} </h5> */}
                 </Card.Body>
             </Card>
         </Col>

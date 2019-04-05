@@ -9,7 +9,7 @@ function Stock (props) {
     return(
         <>
         {/* <Container> */}
-            <StockDiv />
+            <StockDiv stock={props.stock} stockChangeHandler={props.stockChangeHandler} inputChangeHandler={props.inputChangeHandler}/>
         {/* </Container> */}
         </>
         )

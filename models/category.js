@@ -3,10 +3,9 @@ const Schema = mongoose.Schema;
 
 const CategorySchema = new Schema({
   name: { type: String },
-  subcategories: {
-    type:[String],
-    ref: "Subcategory"
-  },
+  subcategories: [{
+    type: String
+  }],
 });
 
 const Category = mongoose.model("Category", CategorySchema);

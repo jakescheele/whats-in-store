@@ -11,16 +11,12 @@ let userSchema = new Schema({
   logo_id: {type: String,},
   products: [{
     type: Schema.Types.ObjectId,
-    ref: "Products"
+    ref: "Product"
   }],
-  Category:{
-    type:[String],
+  categories:[{
+    type: Schema.Types.ObjectId,
     ref:'Category'
-  },
-  subCategory:{
-    type:[String],
-    ref:'subCategory'
-  }
+  }]
 });
 userSchema.methods.hashPassword=password=>{
   return bcrypt.hashSync(password,bcrypt.genSaltSync(10))
