@@ -5,11 +5,8 @@ import Nav from "../components/NavBar";
 import { Button } from 'react-bootstrap'
 import ProductModal from '../components/ProductCardDetailed'
 import axios from "axios";
-
-// Utils
-import ProductAPI from "../utils/API/products"
-
-
+import ProductAPI from "../utils/API/products";
+import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
 
 
@@ -18,9 +15,8 @@ class Inventory extends Component {
         productModal: false,
         login: false,
         shop: {},
-
-
-
+        categories: [],
+        products:[],
         // the product state
         productid: "",
         name: "",
@@ -29,30 +25,36 @@ class Inventory extends Component {
         description: "",
         stock: [{ ...emptyVariant }],
         // image:"",
-
         // validator for submit
         validated: false,
-
-
     }
 
     componentDidMount() {
         // check if the user has logged in
         axios.get("/auth/test")
-            .then(res => {
-                console.log(res.data)
-                if (res.data === "no user") {
-                    console.log("no user log in")
-                    window.location.assign("/login")
-                } else {
-                    console.log("user logged in")
-                    this.setState({
-                        login: true,
-                        shop: res.data
-                    })
-                }
-            })
-
+        .then(res=>{
+            console.log(res.data)
+            if(res.data==="no user"){
+                console.log("no user log in")
+                window.location.assign("/login")
+            }else{
+                console.log("user logged in")
+                this.setState({login: true,shop: res.data})
+                CategoryAPI.getCategories()
+                .then(res=>{
+                    console.log(res.data)
+                    this.setState({categories: res.data})
+                })
+                ProductAPI.getProducts()
+                .then(res=>{
+                    console.log(res.data)
+                    this.setState({products: res.data})
+                
+                
+                })
+            }
+        })
+        
     }
 
     openModaltHandler = (id, modalname) => {
@@ -179,6 +181,8 @@ class Inventory extends Component {
                 <Button variant="outline-dark" size="lg" onClick={(e) => this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
             <Layout
+                products={this.state.products}
+                categories={this.state.categories}
                 state={this.state.productModal}
                 show={this.openModaltHandler}
                 close={this.closeModalHandler} />
