@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Container, Col, Row, Card, Form} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 
 function CategoryList(props){
 

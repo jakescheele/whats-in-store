@@ -18,6 +18,7 @@ class SignupModal extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
+        this.setState({ showOverlay: false });
         let pass=this.state.password;
         if (this.state.Confirmpassword === pass&&/[a-z]/gi.test(pass)&&
         /[!@#$%^&*()<>.,/]/g.test(pass)&&/[0-9]/gi.test(pass)&&pass.length>=6&&/@/g.test(this.state.email)&&

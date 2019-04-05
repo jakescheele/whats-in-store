@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Card, Form, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
+import {Col, Row, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
 import CategoryOverlay from "../../components/ViewCategoriesModal";
 
@@ -28,9 +28,9 @@ class CategoryModal extends Component {
                                         aria-describedby="basic-addon2"
                                         name="cata" onChange={this.props.handleChange}
                                     />
-                                    {<InputGroup.Append>
+                                    <InputGroup.Append>
                                         <Button variant="outline-secondary" onClick={this.props.submitForm} size="sm">Add New Category</Button>
-                                    </InputGroup.Append>}
+                                    </InputGroup.Append>
                                 </InputGroup>
                             </Col>
                         </Row>

@@ -13,6 +13,7 @@ module.exports = {
   findById: function (req, res) {
     db.Product
       .findById(req.params.id)
+      .populate("category")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },
@@ -50,7 +51,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },
-
   remove: function (req, res) {
     db.Product
       .findById({ _id: req.params.id })
@@ -59,12 +59,46 @@ module.exports = {
       .catch(err => res.json(422, err))
   },
   lowToHigh:function(req,res){
-    db.Product.find().sort({price:-1}).exec(function(err,data){
+    db.User.findOne({ _id: req.user._id })
+      .populate("products").sort({price:1}).exec(function(err,data){
       console.log(data)
-      
+      res.json(data)
     })
-
-
+  },
+  highToLow:function(req,res){
+    db.User.findOne({ _id: req.user._id })
+    .populate("products").sort({price:-1}).exec(function(err,data){
+        console.log(data)
+        res.json(data)
+      })
+  },
+  stockLowToHigh:function(req,res){
+    db.User.findOne({ _id: req.user._id })
+      .populate("products").sort({stock:1}).exec(function(err,data){
+      console.log(data)
+      res.json(data)
+    })
+  },
+  stockHighToLow:function(req,res){
+    db.User.findOne({ _id: req.user._id })
+    .populate("products").sort({stock:-1}).exec(function(err,data){
+        console.log(data)
+        res.json(data)
+      })
+  },
+  az:function(req,res){
+    db.User.findOne({ _id: req.user._id })
+      .populate("products").sort({name:1}).exec(function(err,data){
+      console.log(data)
+      res.json(data)
+    })
+  },
+  za:function(req,res){
+    db.User.findOne({ _id: req.user._id })
+      .populate("products").sort({name:-1}).exec(function(err,data){
+      console.log(data)
+      res.json(data)
+    })
   }
   
 };
