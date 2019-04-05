@@ -10,11 +10,11 @@ class CategoryModal extends Component {
 
     render() {
         return (
-            <>
-                <Modal show={this.props.state} onHide={(e) => this.props.close("categoryModal")}>
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Categories
+        <>
+            <Modal show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Edit Categories
                     </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -42,12 +42,12 @@ class CategoryModal extends Component {
                         <Button variant="secondary" onClick={(e) => this.props.close("categoryModal")}>
                             Close
                     </Button>
-                        <Button variant="primary" onClick={(e) => this.props.close("categoryModal")}>
+                    <Button variant="primary" onClick={(e)=>this.props.close("categoryModal")}>
                             Save Changes
                     </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
+                </Modal.Footer>
+            </Modal>
+        </>
         );
     }
 }

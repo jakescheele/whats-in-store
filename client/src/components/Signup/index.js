@@ -97,8 +97,8 @@ class SignupModal extends Component {
 
 
 
-{/*                             
-        <Overlay password={this.state.password} showOverlay={this.state.showOverlay} placement="right">
+                            
+        {/* <Overlay password={this.state.password} showOverlay={this.state.showOverlay} placement="right">
           {({ placement, scheduleUpdate, arrowProps, ...props }) => (
             <div
               {...props}

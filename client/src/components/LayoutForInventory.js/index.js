@@ -20,7 +20,6 @@ class Layout extends Component {
         productModal: false,
         categoryModal: false,
         product: {},
-        products:[]
     }
 
     submitForm=(event)=>{
@@ -71,7 +70,7 @@ class Layout extends Component {
                 </Col>
                 <Col>
                     <Row>
-                        {this.state.products===[]?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.state.products.map(product=>(<ProductCard key={product._id} product={product} show={this.openModaltHandler}/>)))}
+                        {this.props.products.length===0?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.props.products.map(product=>(<ProductCard key={product._id} product={product} show={this.props.show} />)))}
                     </Row>
                 </Col>
 
@@ -79,9 +78,6 @@ class Layout extends Component {
             <BackToTopBtn/>
         </Container>
         <Footer/>
-        <ProductModal state={this.state.productModal} show={this.openModaltHandler}
-         close={this.closeModalHandler} product={this.state.product}/>
-
         <CategoryModal state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
           show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)

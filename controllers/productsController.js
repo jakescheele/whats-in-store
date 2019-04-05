@@ -13,6 +13,7 @@ module.exports = {
   findById: function (req, res) {
     db.Product
       .findById(req.params.id)
+      .populate("category")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },
