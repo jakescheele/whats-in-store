@@ -8,6 +8,8 @@ import axios from "axios";
 import ProductAPI from "../utils/API/products";
 import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
+const emptyCategory = { name: "", subcategories: [], _id: ""}
+const emptyFlashSale = {checked: false, startDate: new Date(), endDate: new Date(), price: "0"}
 
 
 class Inventory extends Component {
@@ -20,11 +22,13 @@ class Inventory extends Component {
         // the product state
         productid: "",
         name: "",
-        category: {},
+        category: {...emptyCategory},
         price: "",
         description: "",
         stock: [{ ...emptyVariant }],
         // image:"",
+        flashSales: {...emptyFlashSale},
+
         // validator for submit
         validated: false,
     }
@@ -36,7 +40,7 @@ class Inventory extends Component {
             console.log(res.data)
             if(res.data==="no user"){
                 console.log("no user log in")
-                window.location.assign("/login")
+                window.location.assign("/")
             }else{
                 console.log("user logged in")
                 this.setState({login: true,shop: res.data})
@@ -60,6 +64,7 @@ class Inventory extends Component {
     openModaltHandler = (id, modalname) => {
 
         if (id) {
+            console.log("===========You are going to see specific product=================")
             console.log(id)
 
             // make ajax request to the backend and get the viewed product
@@ -85,11 +90,14 @@ class Inventory extends Component {
                             [modalname]: true
                         })
                     }
+                    console.log("===========Here is the original category state =================") 
+                    console.log(this.state.category)
                 })
 
 
 
         } else {
+            console.log("===========You are going to see new product=================")
             this.setState({
                 productid: "",
                 name: "",
@@ -132,6 +140,7 @@ class Inventory extends Component {
         })
     }
 
+    // methods for stock page
     updateVariant = (varientIndex, field) => value => {
         this.setState(
             {
@@ -146,6 +155,27 @@ class Inventory extends Component {
             stock: [...this.state.stock, { ...emptyVariant }]
         })
     }
+
+    // methods for promo page
+    handleDatepicker= (date, name) => {
+        console.log(name)
+        console.log(date)
+        this.setState({
+            flashSales: {...this.state.flashSales, [name] : date}
+        });
+    }
+
+    handleSalesPrice = (e)=>{
+        let { name, value } = e.target
+        console.log(name)
+        console.log(value)
+        this.setState({
+            flashSales: {...this.state.flashSales, [name] : value}
+        })
+    }
+
+
+    // submit btn
 
     handleSubmit = (event) => {
 
@@ -162,16 +192,18 @@ class Inventory extends Component {
             console.log("=========here is the state=========")
             console.log(this.state)
             console.log("===================================")
-            console.log("Hello! I'm here trying to thit the save Product!")
+            console.log("Hello! I'm here trying to hit the save Product!")
             ProductAPI.saveProduct(this.state)
                 .then(res => console.log(res))
                 .catch(err => console.log(err));
 
             // close the modal after save changes
-            this.props.close("productModal")
+            this.closeModalHandler("productModal")
             window.location.reload()
         }
     }
+
+
 
 
     render() {
@@ -194,8 +226,11 @@ class Inventory extends Component {
                 close={this.closeModalHandler}
                 // product methods
                 product={this.state.product}
-                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} updateVariant={this.updateVariant}
+                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} 
+                updateVariant={this.updateVariant}
                 addVariant={this.addVariant}
+                handleDatepicker={this.handleDatepicker}
+                handleSalesPrice={this.handleSalesPrice}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
@@ -205,8 +240,9 @@ class Inventory extends Component {
                 price={this.state.price}
                 stock={this.state.stock}
                 description={this.state.description}
-                selectedCategory={{ ...this.state.category }}
-
+                selectedCategory={this.state.category}
+                flashSales={this.state.flashSales}
+                
             />
         </>)
     }

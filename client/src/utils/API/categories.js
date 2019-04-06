@@ -17,5 +17,6 @@ export default {
     // Saves a category to the database
     saveCategory: function (catData) {
         return axios.post("/api/categories", catData);
-    }
+    },
+    
 };

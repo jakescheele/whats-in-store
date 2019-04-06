@@ -26,7 +26,7 @@ class Layout extends Component {
         event.preventDefault();
         Axios.post("/api/categories",{name:this.state.cata})
         .then(res=>{
-        this.setState({categories:[...this.state.categories,res.data]})
+        this.setState({categories:[...this.state.categories, res.data]})
         })
     }
     

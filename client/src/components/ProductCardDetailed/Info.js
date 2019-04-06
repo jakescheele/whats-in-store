@@ -10,6 +10,10 @@ import categories from "../../DummyCategories.json"
 
 
 class Info extends Component {
+  componentDidMount(){
+    console.log("============Here is in info for props.category========")
+    console.log(this.props.selectedCategory)
+  }
   render() {
     return (
       <Container>
@@ -34,6 +38,7 @@ class Info extends Component {
               style={{"width":"100%"}}
             >
               <Form.Group controlId="name">
+                <Form.Label className ="pl-1">Product Name</Form.Label>
                 <Form.Control 
                 required
                 type="text"
@@ -46,6 +51,7 @@ class Info extends Component {
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="price">
+                <Form.Label className ="pl-1">Product Price</Form.Label>
                 <Form.Control 
                 required
                 name="price" 
@@ -57,6 +63,7 @@ class Info extends Component {
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="description">
+                <Form.Label className ="pl-1">Product Description</Form.Label>
                 <Form.Control 
                 name="description" 
                 as="textarea" 
@@ -65,7 +72,10 @@ class Info extends Component {
                 value={this.props.description}
                 onChange={this.props.inputChangeHandler} />
               </Form.Group>
-              <AddCategory categories={categories} dropDownSelectHandler={this.props.dropDownSelectHandler} selectedCategory={this.props.category} />
+              <AddCategory 
+                categories={categories} 
+                dropDownSelectHandler={this.props.dropDownSelectHandler} 
+                selectedCategory={this.props.selectedCategory} />
             </Form>
           </Row>
       </Container>
