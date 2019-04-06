@@ -1,5 +1,4 @@
 const db = require("../models");
-const parser = require("cloudinary")
 
 // Defining methods for the usersController
 module.exports = {
