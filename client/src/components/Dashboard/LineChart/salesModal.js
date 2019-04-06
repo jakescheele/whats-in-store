@@ -12,7 +12,7 @@ class SalesModal extends React.Component {
           <Modal
           show={this.props.state} 
           onHide={(e) => this.props.close("SalesModal")}
-          dialogClassName="modal-100w">
+        >
          
           
           <div class="modalHeader">

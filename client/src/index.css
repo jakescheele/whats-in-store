@@ -59,7 +59,7 @@ code {
   font-family: itc-avant-garde-gothic-pro, sans-serif;
   color: black;
   font-weight: bold; 
-  font-size: 60pt;
+  font-size: 40pt;
 }
 
 
@@ -69,6 +69,7 @@ code {
   background-color: black;
   border-radius: 5pt;
   padding: 4pt;
+  margin-right: 4pt;
 }
 
 .whiteButton {
@@ -83,6 +84,7 @@ code {
   color: black;
   font-family: open-sans, sans-serif;
   font-size: 17pt;
+  margin-bottom: 15pt;
 }
 
 .input {
