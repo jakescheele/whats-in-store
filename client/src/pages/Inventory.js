@@ -87,6 +87,7 @@ class Inventory extends Component {
                             price: res.data.price,
                             description: res.data.description,
                             category: { ...res.data.category },
+                            flashSales: {...res.data.flashSales},
                             [modalname]: true
                         })
                     }
@@ -157,6 +158,14 @@ class Inventory extends Component {
     }
 
     // methods for promo page
+    handleCheckBox=(e)=>{
+        const {checked} = e.target
+        this.setState({ 
+            flashSales: {...this.state.flashSales, checked : checked}
+        })
+    }
+
+
     handleDatepicker= (date, name) => {
         console.log(name)
         console.log(date)
@@ -231,6 +240,7 @@ class Inventory extends Component {
                 addVariant={this.addVariant}
                 handleDatepicker={this.handleDatepicker}
                 handleSalesPrice={this.handleSalesPrice}
+                handleCheckBox={this.handleCheckBox}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
