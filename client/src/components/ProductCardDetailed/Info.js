@@ -12,6 +12,11 @@ import Axios from "axios";
 class Info extends Component {
 
 
+  componentDidMount(){
+    console.log("============Here is in info for props.category========")
+    console.log(this.props.selectedCategory)
+  }
+
   handleChange = (event) => {
     const files = Array.from(event.target.files)
     const formData = new FormData()
@@ -27,10 +32,8 @@ class Info extends Component {
       })
   }
 
-  componentDidMount(){
-    console.log("============Here is in info for props.category========")
-    console.log(this.props.selectedCategory)
-  }
+  
+  
   render() {
     return (
       <Container>
@@ -94,6 +97,7 @@ class Info extends Component {
                 dropDownSelectHandler={this.props.dropDownSelectHandler} 
                 selectedCategory={this.props.selectedCategory} />
             </Form>
+          </Row>
       </Container>
     )
   }
