@@ -35,12 +35,15 @@ class ModalComponent extends React.Component {
                 handleSubmit={this.props.handleSubmit} 
                 inputChangeHandler={this.props.inputChangeHandler} 
                 dropDownSelectHandler={this.props.dropDownSelectHandler}
+                uploadImage={this.props.uploadImage}
+
                 // product info
                 productid={this.props._id}
                 productName={this.props.productName} 
                 price={this.props.price} 
                 description = {this.props.description} 
                 selectedCategory={this.props.selectedCategory}
+                image={this.props.image}
                 />
               </Tab>
               <Tab eventKey="Stock" title="Stock">
