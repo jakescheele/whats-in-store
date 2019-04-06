@@ -12,7 +12,7 @@ class CategorySideBar extends Component{
                         <Button variant="outline-dark" size="sm" onClick={(e)=>this.props.show(null, "categoryModal")}><i className="far fa-plus-square mr-2"></i> Add/Edit Category</Button>
                     </Card.Header>
                     <Card.Body>
-                    {this.props.categories===[]?(<></>):(this.props.categories.map(category=>(<CategoryList key={category.name} category={category}/>)))}
+                    {this.props.categories.length===0?(<></>):(this.props.categories.map(category=>(<CategoryList key={category.name} category={category}/>)))}
                     </Card.Body>
                 </Card>)
     }

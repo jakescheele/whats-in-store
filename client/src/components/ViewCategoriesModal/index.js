@@ -34,7 +34,7 @@ class CategoryModal extends Component {
                             </Col>
                         </Row>
                         {this.props.categories.map(category => (
-                            <CategoryCard key={category.name} category={category} />
+                            <CategoryCard catDelete={this.props.catDelete} addCat={this.props.addCat} key={category.name} category={category} />
                         ))}
 
                     </Modal.Body>

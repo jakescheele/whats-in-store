@@ -19,13 +19,14 @@ class CategoryCard extends Component {
                             <input value={this.props.category.name}></input>
                         </div>
                         <div>
-                            <Button onclick={this.props.addCat} className="mr-2" size="sm" variant="success">+ extend</Button><Button onClick={this.props.catDelete} size="sm" variant="danger">- delete</Button>
+                            <Button className="mr-2" size="sm" variant="success">+ extend</Button><Button onClick={this.props.catDelete} size="sm" variant="danger">- delete</Button>
                         </div>
                     </div>
                 </Card.Body>
                 {this.props.category.subcategories.map(subcategory=>(
                     <SubcategoryCardBody subcategory={subcategory}/>
                 ))}
+                <SubcategoryCardBody catDelete={this.props.catDelete} addCat={this.props.addCat} />
             </Card>)
     }
 }
