@@ -15,7 +15,7 @@ class SubcategoryCardBody extends Component {
                             <input value={this.props.subcategory}></input>
                         </div>
                         <div>
-                            <Button size="sm" variant="danger">- delete</Button>
+                            <button class="blackButton">Delete</button>
                         </div>
                     </div>
                     </Card.Body>

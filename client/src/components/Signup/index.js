@@ -69,7 +69,6 @@ class SignupModal extends Component {
         }
     }
 
-
     render() {
         const { validated } = this.state;
 
@@ -173,6 +172,7 @@ class SignupModal extends Component {
         );
     }
 }
+
 
 
 export default SignupModal;
