@@ -15,17 +15,17 @@ class Calendar extends React.Component {
       this.handleChange = this.handleChange.bind(this);
     }
   
-    handleChange(date) {
-      this.setState({
-        startDate: date
-      });
-    }
+    // handleChange(date) {
+    //   this.setState({
+    //     startDate: date
+    //   });
+    // }
   
     render() {
       return (
         <DatePicker
         selected={this.state.startDate}
-        onChange={this.handleChange}
+        onChange={this.props.handleDatepicker}
         showTimeSelect
         timeFormat="HH:mm"
         timeIntervals={15}

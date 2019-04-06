@@ -9,6 +9,8 @@ import ProductAPI from "../utils/API/products";
 import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
 const emptyCategory = { name: "", subcategories: [], _id: ""}
+const emptyFlashSale = {checked: false, startDate: new Date(), endDate: new Date(), price: "0"}
+
 
 class Inventory extends Component {
     state = {
@@ -25,6 +27,8 @@ class Inventory extends Component {
         description: "",
         stock: [{ ...emptyVariant }],
         // image:"",
+        flashSales: {...emptyFlashSale},
+
         // validator for submit
         validated: false,
     }
@@ -178,6 +182,13 @@ class Inventory extends Component {
         }
     }
 
+    // methods for promo page
+    handleDatepicker= (date) => {
+        this.setState({
+          startDate: date
+        });
+      }
+
 
     render() {
         return (<>
@@ -199,8 +210,10 @@ class Inventory extends Component {
                 close={this.closeModalHandler}
                 // product methods
                 product={this.state.product}
-                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} updateVariant={this.updateVariant}
+                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} 
+                updateVariant={this.updateVariant}
                 addVariant={this.addVariant}
+                handleDatepicker={this.handleDatepicker}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
@@ -211,7 +224,7 @@ class Inventory extends Component {
                 stock={this.state.stock}
                 description={this.state.description}
                 selectedCategory={this.state.category}
-
+                
             />
         </>)
     }

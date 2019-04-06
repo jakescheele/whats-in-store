@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Col, Row } from 'react-bootstrap'
 import Calendar from './Calendar';
@@ -7,26 +7,19 @@ import { Form, Button, Container, InputGroup, FormControl, Card } from "react-bo
 function Promos() {
     return (
         <Container>
-            <Form>
-                {['checkbox'].map(type => (
-                    <div key={`-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label={`Flash Sale ${type}`}
-                        />
-                    </div>
-                ))}
-            </Form>
-
+            <h5 className="mb-3">Flash Sale</h5>
             <Card className="p-3">
                 <div className="my-2">
                     <span className="mr-1">Start Date</span>
-                    <Calendar></Calendar>
+                    {/* <Calendar
+                    handleDatepicker={this.props.handleDatepicker}
+                    />
                 </div>
                 <div className="my-2">
                     <span className="mr-1">End Date</span>
-                    <Calendar></Calendar>
+                    <Calendar
+                    handleDatepicker={this.props.handleDatepicker}
+                    /> */}
                 </div>
                 <InputGroup className="my-2">
                     <FormControl placeholder="Promo Price" />
