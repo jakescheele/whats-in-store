@@ -20,21 +20,30 @@ class SignupModal extends Component {
     }
 
     formSubmit = (event) => {
+        console.log("signing up!!!")
         event.preventDefault();
         this.setState({ showAlert: false });
         let pass=this.state.password;
-        if (this.state.Confirmpassword === pass&&/[a-z]/gi.test(pass)&&
-        /[!@#$%^&*()<>.,/]/g.test(pass)&&/[0-9]/gi.test(pass)&&pass.length>=6&&/@/g.test(this.state.email)&&
-        /.com/g.test(this.state.email)){
+        if (this.state.Confirmpassword === pass 
+            &&/[a-z]/gi.test(pass)
+            &&/[!@#$%^&*()<>.,/]/g.test(pass)
+            &&/[0-9]/gi.test(pass)
+            &&pass.length>=6
+            &&/@/g.test(this.state.email)
+            &&/.com/g.test(this.state.email))
+        {
             console.log("passwords match")
             console.log(this.state)
+            
             axios.post("/auth/signup",this.state).then(res=>{
                 if(res.data==="Email already taken"){
                     console.log(res.data)
                 }
                 else{
-                    this.setState({ showOverlay: false })
-                    axios.post("/auth/login",{email:this.state.email,password:this.state.password})
+                    axios.post("/auth/login",
+                        {email:this.state.email,
+                        password:this.state.password
+                    })
                     .then(res=>{
                         console.log(res.data)
                         this.props.loginStateHandler(res.data)
@@ -85,7 +94,7 @@ class SignupModal extends Component {
                                 <Form.Label>Shop Description</Form.Label>
                                 <Form.Control as="textarea" rows="3" onChange={this.handleChange} name="description" placeholder="Shop Description" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" onSubmit={this.formSubmit} >
+                            <Button variant="primary" type="submit" onClick={this.formSubmit} >
                                 Submit
                             </Button>
                         </Form>
