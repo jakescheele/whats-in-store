@@ -10,19 +10,17 @@ class SalesModal extends React.Component {
       return (
         <>
           <Modal
+          size="xl"
           show={this.props.state} 
           onHide={(e) => this.props.close("SalesModal")}
-          dialogClassName="modal-100w">
-         
-          
-          <div class="modalHeader">
-          WOAH, HEY THERE
+          >
             <Modal.Header closeButton>
-            <div class="modalImage">
-            <img src={require('../img/happy.png')} />
-            </div>
+            <h2><b>WOAH, HEY THERE</b></h2>
             </Modal.Header>
-          </div>
+            <Modal.Body>
+            <img style={{"width":"100%","object-fit": "contain"}}src={require('../img/happy.png')} />
+            </Modal.Body>
+          
             <Modal.Footer>
               <button class="blackButton" variant="secondary" onClick={(e) => this.props.close("SalesModal")}>
                 I dislike paying for stuff that doesn't work

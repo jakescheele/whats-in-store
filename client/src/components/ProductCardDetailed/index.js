@@ -23,9 +23,13 @@ class ModalComponent extends React.Component {
         <Modal size="lg" 
         show={this.props.state} 
         onHide={(e) => this.props.close("productModal")}>
-          <Modal.Header closeButton>
-            <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
-          </Modal.Header>
+        <Modal.Header closeButton>
+          <div className="modalHeader">
+            <Modal.Title id="contained-modal-title-vcenter">
+                VIEW/EDIT PRODUCT
+            </Modal.Title>
+          </div>
+        </Modal.Header>
           <Modal.Body>
             <Tabs defaultActiveKey="Info" transition={false} id="noanim-tab-example">
               <Tab eventKey="Info" title="Info">

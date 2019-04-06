@@ -60,7 +60,10 @@ class Profile extends Component {
     render() {
     return(<>
         <Nav shop={this.state.shop}/>
-        <Jumbotron pageName="PROFILE" instructions="Edit basic information of the shop."/>
+        <Jumbotron 
+        pageName="PROFILE" 
+        instructions="Edit basic information of the shop."
+        />
         <ProfileInputForm shop={this.state.shop}/>
     </>)
 }
