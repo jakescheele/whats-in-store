@@ -7,6 +7,10 @@ import StockChart from "../components/Dashboard/StockChart";
 import { Col, Row } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
+// Utils
+import ProductAPI from "../utils/API/categories";
+
+
 
 class Dashboard extends Component {
     state = {
@@ -29,9 +33,57 @@ class Dashboard extends Component {
                     })
                 }
             })
+           
     }
+    componentDidMount(){
+        console.log("Request to find category objects succesful")
+        console.log(this.props.selectedProduct)
+    //axios request to get all category objects
+    ProductAPI.get.productData.category()
+    .then(res=>
+      {
+          console.log(res.data)
+          //set state
+          this.setState({
+              products: res.data
+          })
+      })
+  }
 
-    render() {
+   
+
+/*
+      
+    
+    
+    
+    
+    
+     console.log("Request to find category objects succesful")
+          console.log(this.props.selectedProduct)
+      //axios request to get all category objects
+      ProductAPI.get.productData.category()
+      .then(res=>
+        {
+            console.log(res.data)
+            //set state
+            this.setState({
+                products: res.data
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    */
+
+
+    render(){
         return (<>
             <Nav shop={this.state.shop} />
             <Row>
