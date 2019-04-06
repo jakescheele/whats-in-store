@@ -52,6 +52,8 @@ class ModalComponent extends React.Component {
               <Tab eventKey="Promos" title="Promos">
                 <Promos 
                 handleDatepicker={this.props.handleDatepicker}
+                flashSales={this.props.flashSales}
+                handleSalesPrice={this.props.handleSalesPrice}
                 />
               </Tab>
             </Tabs>

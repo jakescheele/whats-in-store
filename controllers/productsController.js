@@ -31,7 +31,8 @@ module.exports = {
         description: req.body.description,
         // img: req.file.url,
         // img_id: req.file.public_id
-        stock: req.body.stock
+        stock: req.body.stock,
+        flashSales: req.body.flashSales
 
       };
       console.log("==============hit the post route==========")

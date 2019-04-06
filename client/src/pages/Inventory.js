@@ -156,6 +156,27 @@ class Inventory extends Component {
         })
     }
 
+    // methods for promo page
+    handleDatepicker= (date, name) => {
+        console.log(name)
+        console.log(date)
+        this.setState({
+            flashSales: {...this.state.flashSales, [name] : date}
+        });
+    }
+
+    handleSalesPrice = (e)=>{
+        let { name, value } = e.target
+        console.log(name)
+        console.log(value)
+        this.setState({
+            flashSales: {...this.state.flashSales, [name] : value}
+        })
+    }
+
+
+    // submit btn
+
     handleSubmit = (event) => {
 
         // validation
@@ -182,12 +203,7 @@ class Inventory extends Component {
         }
     }
 
-    // methods for promo page
-    handleDatepicker= (date) => {
-        this.setState({
-          startDate: date
-        });
-      }
+
 
 
     render() {
@@ -214,6 +230,7 @@ class Inventory extends Component {
                 updateVariant={this.updateVariant}
                 addVariant={this.addVariant}
                 handleDatepicker={this.handleDatepicker}
+                handleSalesPrice={this.handleSalesPrice}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
@@ -224,6 +241,7 @@ class Inventory extends Component {
                 stock={this.state.stock}
                 description={this.state.description}
                 selectedCategory={this.state.category}
+                flashSales={this.state.flashSales}
                 
             />
         </>)
