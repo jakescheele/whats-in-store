@@ -40,7 +40,7 @@ class AddCategory extends Component {
             style={{"width": "100%"}} 
             onChange={this.props.dropDownSelectHandler}
             >
-              <option disabled>Select a category</option>
+              <option disabled selected>Select a category</option>
               {this.state.categories.map(category=>
               (category._id === this.props.selectedCategory._id)?
               (<option key={category.name} value={category._id} selected>{category.name} </option>)

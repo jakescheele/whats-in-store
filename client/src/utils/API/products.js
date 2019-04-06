@@ -24,7 +24,8 @@ export default {
             // image: productData.image,
             price: productData.price,
             description: productData.description,
-            stock: productData.stock
+            stock: productData.stock,
+            flashSales: {...productData.flashSales, checked: true}
         }
         // if product already exists, update
         if (productData.productid){
