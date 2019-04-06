@@ -12,4 +12,8 @@ router.route("/:id")
     .put(productsController.update)
     .delete(productsController.remove);
 
+// Matches with "/api/products/uploadImage"
+router.route("/uploadImage")
+    .post(productsController.uploadImage)
+
 module.exports = router;

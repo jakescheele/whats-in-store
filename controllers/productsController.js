@@ -1,5 +1,12 @@
 const db = require("../models");
-const parser = require("../cloudinary")
+const cloudinary = require("cloudinary");
+require("dotenv").config()
+
+cloudinary.config({ 
+  cloud_name: process.env.REACT_APP_CLOUD_NAME, 
+  api_key: process.env.REACT_APP_API_KEY, 
+  api_secret: process.env.REACT_APP_API_SECRET
+})
 
 // Defining methods for the productsController
 module.exports = {
@@ -17,31 +24,30 @@ module.exports = {
       .catch(err => res.json(422, err))
   },
 
-  parseImage: parser.single("image"),
+  uploadImage: function (req, res) {
+    const values = Object.values(req.files)
+    const promises = values.map(image => cloudinary.uploader.upload(image.path))
+    Promise
+      .all(promises)
+      .then(results => res.json(results))
+  },
 
   create: function (req, res) {
-    // if photo has been uploaded
-    // if (req.file) {
-      const product = {
-        name: req.body.name,
-        category: req.body.category,
-        // subcategory: req.body.subcategory,
-        price: req.body.price,
-        description: req.body.description,
-        // img: req.file.url,
-        // img_id: req.file.public_id
-        stock: req.body.stock
-
-      };
-      console.log("==============hit the post route==========")
-      console.log(product)
-      console.log(req.user)
-      db.Product
-        .create(product)
-        .then(dbProduct => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { products: dbProduct._id } }, { new: true }))
-        .then(dbUser => res.json(dbUser))
-        .catch(err => res.json(422, err))
-    // }
+    const product = {
+      name: req.body.name,
+      category: req.body.category,
+      // subcategory: req.body.subcategory,
+      price: req.body.price,
+      description: req.body.description,
+      stock: req.body.stock,
+      // img: req.files.url,
+      // img_id: req.files.public_id
+    };
+    db.Product
+      .create(product)
+      .then(dbProduct => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { products: dbProduct._id } }, { new: true }))
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.json(422, err))
   },
 
   update: function (req, res) {
