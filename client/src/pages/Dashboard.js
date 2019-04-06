@@ -8,6 +8,9 @@ import { Col, Row, Container, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import ProductAPI from "../utils/API/products"
 import Jumbotron from "../components/Jumbotron"
+import SalesModal from "../components/Dashboard/LineChart/salesModal"
+import '../index.css';
+
 // Utils
 import CategoryAPI from "../utils/API/categories"
 
@@ -16,7 +19,10 @@ class Dashboard extends Component {
     state = {
         login: false,
         shop: {},
-        categoryStockData: []
+        categoryStockData: [],
+        SalesModal: false,
+
+        
     }
 
     componentDidMount() {
@@ -93,6 +99,18 @@ class Dashboard extends Component {
         window.location.assign(name)
     }
 
+    showModal= (modalName) => {
+        this.setState({
+            [modalName]: true
+        })
+    }
+
+    closeModal = (modalName) => {
+        this.setState({
+            [modalName]: false
+        })
+    }
+
     render() {
         return (<>
             <Nav shop={this.state.shop} />
@@ -115,18 +133,29 @@ class Dashboard extends Component {
 
                 <Col sm={12} md={4} lg={4} className="text-center">
                     <LineSeries/>
-                    <Button 
+                    
+                    <Button  
                         className="mt-5"
                         name="#" 
                         size="lg" 
                         variant="outline-light"
+                        onClick={(e) => this.showModal("SalesModal")}
                         block
                     >
                         See Sales Records
                     </Button>
+                
+                    
                 </Col>
             </Row>
             </Container>
+            {/* modal /this.state.salemodal */}
+            <SalesModal 
+            state= {this.state.SalesModal}
+            show={this.showModal}
+            close= {this.closeModal}
+            
+            />
         </>)
     }
 }

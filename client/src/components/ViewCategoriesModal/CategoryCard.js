@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Col, Row, Card, Form, Button } from 'react-bootstrap'
 import SubcategoryCardBody from "./SubcategoryCardbody"
-import CategoryOverlay from "../../components/ViewCategoriesModal";
+
 
 
 
@@ -13,7 +13,7 @@ class CategoryCard extends Component {
     render() {
         return (
             <>
-            <CategoryOverlay></CategoryOverlay>
+            
 
             <Card className="py-1 rem-0.1875 mb-2">
                 

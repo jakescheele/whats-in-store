@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import './App.css';
+import './index.css';
 import Nav from "./components/NavBar";
 
 
