@@ -9,9 +9,13 @@ router.route("/")
 // Matches with "/api/category/:id"
 router
     .route("/:id")
-    .get(categoriesController.findById)
-    .put(categoriesController.update)
-    .delete(categoriesController.remove);
+    .get(categoriesController.findById);
+//     .put(categoriesController.update)
+//     .delete(categoriesController.remove);
+router.route("/create").post(categoriesController.create)
+router.route("/delete").post(categoriesController.remove)
+router.route("/createsub").post(categoriesController.createSub)
+router.route("/deletesub").post(categoriesController.deleteSub)
 
 module.exports = router;
 

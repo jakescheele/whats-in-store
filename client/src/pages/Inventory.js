@@ -178,7 +178,6 @@ class Inventory extends Component {
     // submit btn
 
     handleSubmit = (event) => {
-
         // validation
         const form = event.currentTarget
         if (form.checkValidity() === false) {

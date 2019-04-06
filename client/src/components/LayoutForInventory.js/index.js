@@ -12,9 +12,6 @@ import Axios from "axios";
 
 // Utils
 
-
-
-
 class Layout extends Component {
     state={
         productModal: false,
@@ -36,7 +33,6 @@ class Layout extends Component {
         this.setState({[name]:value });
         console.log(this.state.cata)
     }
-
     // click handler for product card to trigger product detail modal
     openModaltHandler=(id, modalname)=>{
         
@@ -49,6 +45,31 @@ class Layout extends Component {
             [modalname]: true
         })
        
+    }
+    categoryDelete=(event)=>{
+        event.preventDefault();
+        console.log(event.target)
+        Axios.post("/api/catagories/delete",{_id:event.target.name})
+        .then(function(res){
+            console.log(res)
+        })
+    }
+    subCatagoryDelete=(event)=>{
+        event.preventDefault();
+        console.log(event.target)
+        Axios.post("/api/catagories/subdelete",{_id:event.target.name})
+        .then(function(res){
+            console.log(res)
+        })
+
+    }
+    subCategoryCreate=(event)=>{
+        event.preventDefault();
+        console.log(event.target)
+        Axios.post("/api/catagories/subcreate",{_id:event.target.name})
+        .then(function(res){
+            console.log(res)
+        })
     }
 
     closeModalHandler=(modalname)=>{
@@ -70,7 +91,7 @@ class Layout extends Component {
                 </Col>
                 <Col>
                     <Row>
-                        {this.props.products.length===0?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.props.products.map(product=>(<ProductCard key={product._id} product={product} show={this.props.show} />)))}
+                        {this.props.products.length===0?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.props.products.map(product=>(<ProductCard key={product._id} catName={product._id} product={product} show={this.props.show} />)))}
                     </Row>
                 </Col>
 
@@ -78,7 +99,7 @@ class Layout extends Component {
             <BackToTopBtn/>
         </Container>
         <Footer/>
-        <CategoryModal state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
+        <CategoryModal categoryDelete={this.categoryDelete} state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
           show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)
     }
