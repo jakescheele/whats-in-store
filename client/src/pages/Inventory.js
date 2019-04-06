@@ -10,6 +10,9 @@ import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
 const emptyCategory = { name: "", subcategories: [], _id: ""}
 const emptyFlashSale = {checked: false, startDate: new Date(), endDate: new Date(), price: "0"}
+const emptyImage = {img_url:"", img_id:""}
+
+
 
 
 class Inventory extends Component {
@@ -26,7 +29,7 @@ class Inventory extends Component {
         price: "",
         description: "",
         stock: [{ ...emptyVariant }],
-        // image:"",
+        image:{...emptyImage},
         flashSales: {...emptyFlashSale},
 
         // validator for submit
@@ -88,6 +91,7 @@ class Inventory extends Component {
                             description: res.data.description,
                             category: { ...res.data.category },
                             flashSales: {...res.data.flashSales},
+                            image: {...res.data.image},
                             [modalname]: true
                         })
                     }
@@ -113,6 +117,33 @@ class Inventory extends Component {
         }
 
     }
+
+    // image upload 
+    uploadImage = (event) => {
+        const files = Array.from(event.target.files)
+        const formData = new FormData()
+        files.forEach((file, i) => {
+          formData.append(i, file)
+        })
+    
+        axios.post('/api/products/uploadImage', formData, 
+        { headers: {'Content-Type': 'multipart/form-data'}})
+          .then(images => {
+            
+            let newImage = {
+                img_url: images.data[0].secure_url,
+                img_id: images.data[0].public_id
+            }
+
+            console.log(newImage)
+            
+            this.setState({
+                image: {...newImage}
+            })
+
+            console.log(this.state.image)
+          })
+      }
 
     // methods for the product info management
     inputChangeHandler = (e) => {
@@ -208,7 +239,7 @@ class Inventory extends Component {
 
             // close the modal after save changes
             this.closeModalHandler("productModal")
-            window.location.reload()
+            // window.location.reload()
         }
     }
 
@@ -241,6 +272,7 @@ class Inventory extends Component {
                 handleDatepicker={this.handleDatepicker}
                 handleSalesPrice={this.handleSalesPrice}
                 handleCheckBox={this.handleCheckBox}
+                uploadImage={this.uploadImage}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
@@ -252,6 +284,7 @@ class Inventory extends Component {
                 description={this.state.description}
                 selectedCategory={this.state.category}
                 flashSales={this.state.flashSales}
+                image={this.state.image}
                 
             />
         </>)
