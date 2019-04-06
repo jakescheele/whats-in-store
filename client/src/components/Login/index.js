@@ -6,6 +6,7 @@ class LoginModal extends Component{
     state={
         email:"",
         password:"",
+        errorMessage:""
     }
     handleChange=(event)=>{
         event.preventDefault();
@@ -20,6 +21,9 @@ class LoginModal extends Component{
             console.log(res)
             if(res.data==='Server Error'){
                 console.log("wrong input")
+                this.setState({
+                    errorMessage: "Please check your email and password."
+                })
             }
             else{
                 console.log("login successful")
@@ -47,6 +51,9 @@ class LoginModal extends Component{
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={this.handleChange} name="password" type="password" placeholder="Password" />
                     </Form.Group>
+                    <p className="text-danger">
+                        {this.state.errorMessage}
+                    </p>
                     <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
                         Submit
                         </Button>
