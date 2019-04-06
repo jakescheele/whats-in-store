@@ -13,6 +13,7 @@ module.exports = {
   findById: function (req, res) {
     db.Product
       .findById(req.params.id)
+      .populate("category")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },
@@ -30,7 +31,8 @@ module.exports = {
         description: req.body.description,
         // img: req.file.url,
         // img_id: req.file.public_id
-        stock: req.body.stock
+        stock: req.body.stock,
+        flashSales: req.body.flashSales
 
       };
       console.log("==============hit the post route==========")
@@ -46,10 +48,11 @@ module.exports = {
 
   update: function (req, res) {
     db.Product
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, {$set:{...req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(422, err))
   },
+  
   remove: function (req, res) {
     db.Product
       .findById({ _id: req.params.id })

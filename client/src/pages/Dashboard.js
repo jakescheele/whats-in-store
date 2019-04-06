@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import Nav from "../components/NavBar";
 import '../index.css'
 import axios from "axios";
-import SalesChart from "../components/Dashboard/SalesChart";
-import StockChart from "../components/Dashboard/StockChart";
-import { Col, Row } from 'react-bootstrap'
+import BarChart from "../components/Dashboard/BarChart"
+import LineSeries from "../components/Dashboard/LineChart";
+import { Col, Row, Container, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
+import ProductAPI from "../utils/API/products"
+import Jumbotron from "../components/Jumbotron"
+// Utils
+import CategoryAPI from "../utils/API/categories"
 
 
 class Dashboard extends Component {
     state = {
         login: false,
         shop: {},
+        categoryStockData: []
     }
 
     componentDidMount() {
@@ -20,7 +25,7 @@ class Dashboard extends Component {
                 console.log(res.data)
                 if (res.data === "no user") {
                     console.log("no user log in")
-                    window.location.assign("/login")
+                    window.location.assign("/")
                 } else {
                     console.log("user logged in")
                     this.setState({
@@ -29,42 +34,99 @@ class Dashboard extends Component {
                     })
                 }
             })
+        
+        // make an axios to get all category obj
+        CategoryAPI.getCategories()
+            .then(res=>{
+                console.log(res.data)
+                console.log("====here is inside the mount=====")
+                for(let i in res.data){
+                    this.getProductByCategory(res.data[i].name, res.data[i]._id)
+                }
+        })
+        // [
+        //     {
+        //         name: cats's name
+        //         _id: cat's id
+        //     }
+        // ]
+        
+        //forEach: 
+        //request to get info of the user with products belonging to specific category
+        
+
+    }
+
+    getProductByCategory=(catName, id)=>{
+        let productArr=[]
+        console.log("Looking for products with category id:")
+        console.log(id)
+        console.log(catName)
+        ProductAPI.getProducts()
+        .then(res=>{
+            console.log(res)
+            productArr = res.data.filter(product=>product.category===id)
+            console.log(productArr)
+
+            // do the math to add up stock
+            let stockOfCategory = 0
+            for(let i in productArr){
+                let stockOfProduct = 0
+                productArr[i].stock.forEach(element=>{
+                    stockOfProduct += parseFloat(element.stock)  
+                })
+                stockOfCategory += stockOfProduct
+            }
+            console.log(stockOfCategory)
+            let xyObj = {
+                x: catName, y: stockOfCategory
+            }
+            this.setState({
+                categoryStockData: [...this.state.categoryStockData, {...xyObj}]
+            })
+            console.log(this.state.categoryStockData)
+        })       
+    }
+
+    redirect=(e)=>{
+        const {name} = e.target
+        window.location.assign(name)
     }
 
     render() {
         return (<>
             <Nav shop={this.state.shop} />
-            <Row>
-                <Col md={6}>
-                    <SalesChart />
-                    <li className="chartButton">
-                        <Link
-                            to="/inventory"
-                            className={
-                                window.location.pathname === "/inventory"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                            }
-                        >See All Stock</Link>
-                    </li>
-
+            <Jumbotron pageName="DASHBOARD" instructions="Here is the dashboard for shop management. What's below is the stock and sale data. You can you can explore more by hitting the buttons."/>
+            <Container className="mt-5">
+            <Row className="justify-content-around align-items-start text-center">
+                <Col sm={12} md={4} lg={4} className="text-center">
+                    <BarChart data={this.state.categoryStockData}/>
+                    <Button 
+                        className="mt-5"
+                        name="/inventory" 
+                        size="lg" 
+                        variant="outline-light" 
+                        onClick={this.redirect}
+                        block
+                    >
+                        View/Edit Stock
+                    </Button>
                 </Col>
 
-                <Col md={6}>
-                    <StockChart />
-                    <li className="chartButton">
-                        <Link
-                            to="/profile"
-                            className={
-                                window.location.pathname === "/profile"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                            }
-                        >See Sales Records</Link>
-                    </li>
-
+                <Col sm={12} md={4} lg={4} className="text-center">
+                    <LineSeries/>
+                    <Button 
+                        className="mt-5"
+                        name="#" 
+                        size="lg" 
+                        variant="outline-light"
+                        block
+                    >
+                        See Sales Records
+                    </Button>
                 </Col>
             </Row>
+            </Container>
         </>)
     }
 }
