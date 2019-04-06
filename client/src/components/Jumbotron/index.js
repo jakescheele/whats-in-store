@@ -8,15 +8,15 @@ function Banner(props) {
     return (<Jumbotron className="mb-5" fluid>
         <Container className="text-center">
         {props.children?(<>
-        <div class="modalHeader">{props.pageName}</div>
+        <div className="modalHeader">{props.pageName}</div>
         <h5>
             {props.instructions}
         </h5>
         <div>{props.children}</div>
         </>)
         :(<>
-        <div class="modalHeader">{props.pageName}</div>
-        <div class="instructions">
+        <div className="modalHeader">{props.pageName}</div>
+        <div className="instructions">
             {props.instructions}
         </div>
         </>)}
