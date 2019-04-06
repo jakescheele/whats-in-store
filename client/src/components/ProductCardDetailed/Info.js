@@ -94,6 +94,7 @@ class Info extends Component {
                 dropDownSelectHandler={this.props.dropDownSelectHandler} 
                 selectedCategory={this.props.selectedCategory} />
             </Form>
+          </Row >
       </Container>
     )
   }
