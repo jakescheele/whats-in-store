@@ -13,9 +13,17 @@ const ProductSchema = new Schema({
   img_id: {type: String},
   price: { type: String, required: true },
   description: { type: String },
-  stock: { type: Array },
+  stock: { type: Array }
+
 });
 
 const Product = mongoose.model("Product", ProductSchema);
 
 module.exports = Product;
+
+// flashSales: {
+// 	checked	boolean
+// 	starttime	date
+// 	endtime	date
+// 	price	number
+// }
