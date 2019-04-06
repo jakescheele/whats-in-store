@@ -59,7 +59,7 @@ code {
   font-family: itc-avant-garde-gothic-pro, sans-serif;
   color: black;
   font-weight: bold; 
-  font-size: 49pt;
+  font-size: 60pt;
 }
 
 
@@ -68,13 +68,27 @@ code {
   font-family: open-sans, sans-serif;
   background-color: black;
   border-radius: 5pt;
-  padding: 8pt;
+  padding: 4pt;
+}
+
+.whiteButton {
+  
+  font-family: open-sans, sans-serif;
+  border-color: 10pt solid black;
+  border-radius: 5pt;
+  padding: 4pt;
 }
 
 .instructions {
   color: black;
   font-family: open-sans, sans-serif;
   font-size: 17pt;
+}
+
+.input {
+  color: black;
+  font-family: open-sans, sans-serif;
+  font-size: 10pt;
 }
 
 .modalImage {

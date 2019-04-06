@@ -14,22 +14,26 @@ class CategoryModal extends Component {
         <>
             <Modal show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
                 <Modal.Header closeButton>
+                    <div class="modalHeader">
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Edit Categories
+                        EDIT CATEGORIES
                     </Modal.Title>
+                    </div>
                     </Modal.Header>
                     <Modal.Body>
                         <Row>
                             <Col>
                                 <InputGroup className="mb-3" size="sm">
+                                    <div class="input">
                                     <FormControl
-                                        placeholder="New category name"
+                                        placeholder="New Category Name"
                                         aria-label="Recipient's username"
                                         aria-describedby="basic-addon2"
                                         name="cata" onChange={this.props.handleChange}
                                     />
+                                    </div>
                                     <InputGroup.Append>
-                                        <Button variant="outline-secondary" onClick={this.props.submitForm} size="sm">Add New Category</Button>
+                                        <button class="whiteButton" variant="outline-secondary" onClick={this.props.submitForm} size="sm">Add New Category</button>
                                     </InputGroup.Append>
                                 </InputGroup>
                             </Col>
@@ -40,12 +44,12 @@ class CategoryModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={(e) => this.props.close("categoryModal")}>
+                        <button class="whiteButton" variant="secondary" onClick={(e) => this.props.close("categoryModal")}>
                             Close
-                    </Button>
-                    <Button variant="primary" onClick={(e)=>this.props.close("categoryModal")}>
+                    </button>
+                    <button class="blackButton" variant="primary" onClick={(e)=>this.props.close("categoryModal")}>
                             Save Changes
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>

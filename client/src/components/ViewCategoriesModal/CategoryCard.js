@@ -23,7 +23,7 @@ class CategoryCard extends Component {
                             <input value={this.props.category.name}></input>
                         </div>
                         <div>
-                            <Button className="mr-2" size="sm" variant="success">+ extend</Button><Button size="sm" variant="danger">- delete</Button>
+                            <button class="blackButton"> Add Subcategory</button><button class="blackButton"> Delete</button>
                         </div>
                     </div>
                 </Card.Body>
