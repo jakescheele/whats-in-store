@@ -10,7 +10,7 @@ import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
 const emptyCategory = { name: "", subcategories: [], _id: ""}
 const emptyFlashSale = {checked: false, startDate: new Date(), endDate: new Date(), price: "0"}
-const emptyImage = {img_url:"", img_id:""}
+const emptyImage = {img_url: "", img_id:""}
 
 
 
