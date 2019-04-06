@@ -19,39 +19,25 @@ import Nav from "./components/NavBar";
 
 class App extends Component {
 
-  state={
-    
-    login: false,
-    shop:{},
-
-  }
-
-  loginStateHandler=(shop)=>{
-    console.log("log in!!!")
-    this.setState({
-      login: true,
-      shop: shop
-    })
-  }
 
   render(){
     return (
       <Router>
           <Switch>
             <Route exact path="/" 
-            render={props=><LandingPage {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />} 
+            render={props=><LandingPage {...props} />} 
             />
             <Route exact path="/dashboard" 
-            render={props=><Dashboard {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            render={props=><Dashboard {...props}  />}
             />
             <Route exact path="/promos" 
-            render={props=><Promos {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            render={props=><Promos {...props} />}
             />
             <Route exact path="/inventory" 
-            render={props=> <Inventory {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            render={props=> <Inventory {...props} />}
             />
             <Route exact path="/profile" 
-            render={props=><Profile {...props} login={this.loginStateHandler} loginState={this.state.login} shopName={this.state.shopName} />}
+            render={props=><Profile {...props}  />}
             />
             <Route exact path="/login" component={Login}></Route>
             <Route component={NoMatch} />
