@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 import Jumbotron from "../components/Jumbotron";
 import Nav from "../components/NavBar";
-import Table from "../components/PromosManagement/FlashSale/ProductCardForFlashSale";
+import PromoTable from "../components/PromosManagement/FlashSale/ProductCardForFlashSale";
 import axios from "axios";
+import ProductAPI from "../utils/API/products"
 
 class Promos extends Component{
     state={
         login: false,
         shop:{},
+        saleProducts:[]
     }
 
     componentDidMount(){
@@ -16,7 +18,7 @@ class Promos extends Component{
             console.log(res.data)
             if(res.data==="no user"){
                 console.log("no user log in")
-                window.location.assign("/login")
+                window.location.assign("/")
             }else{
                 console.log("user logged in")
                 this.setState({
@@ -25,13 +27,27 @@ class Promos extends Component{
                 })
             }
         })
+
+        ProductAPI.getProducts()
+        .then(res=>{
+            let productArr=[]
+            productArr = res.data.filter(product=>product.flashSales.checked===true)
+            // set state
+            this.setState({
+                saleProducts: [...productArr]
+            })
+            console.log(this.state.saleProducts)
+            
+        })       
+
+
     }
 
     render(){
         return(<>
             <Nav shop={this.state.shop}/>
-            <Jumbotron pageName="PROMOTIONALS" instructions="Edit your promotion settings."/>
-            <Table/>
+            <Jumbotron pageName="PROMOTIONS" instructions="Edit your promotion settings."/>
+            <PromoTable saleProducts={this.state.saleProducts}/>
         </>)
     }
 }

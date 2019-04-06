@@ -17,7 +17,7 @@ class Nav extends Component {
         .then(res=>{
             if(res.data.success==="Yes"){
                 alert("You log out successfully!")
-                window.location.assign("/login")
+                window.location.assign("/")
             }else{
                 alert("Something went wrong!")
             }

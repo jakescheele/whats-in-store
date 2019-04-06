@@ -14,6 +14,8 @@ class AddCategory extends Component {
   }
 
   componentDidMount(){
+    console.log("=====Here is the selected category id=====")
+    console.log(this.props.selectedCategory)
     //axio request to find all categories in DB
     CategoryAPI.getCategories()
     .then(res=>{
@@ -30,19 +32,27 @@ class AddCategory extends Component {
     return (
       <>
       <Form.Group className="mb-3 mx-0">
+            <Form.Label className ="pl-1">Product Category</Form.Label>
             <Form.Control 
             required
             name="category" 
             as="select" 
             style={{"width": "100%"}} 
-            onChange={this.props.dropDownSelectHandler}>
-            <option value="" disabled selected>Select a category</option>
-            {this.state.categories.map(category=>(
-            <option key={category.name} value={category._id}>{category.name}</option>  ))}
+            onChange={this.props.dropDownSelectHandler}
+            >
+              <option disabled selected>Select a category</option>
+              {this.state.categories.map(category=>
+              (category._id === this.props.selectedCategory._id)?
+              (<option key={category.name} value={category._id} selected>{category.name} </option>)
+              :(<option key={category.name} value={category._id}>{category.name}</option>)
+            )}
+            
             </Form.Control>
+            
             <Form.Control.Feedback type="invalid">
               Please select a category.
             </Form.Control.Feedback>
+      
       </Form.Group>
 </>
     )

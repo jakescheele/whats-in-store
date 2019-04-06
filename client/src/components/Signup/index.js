@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { Button, Container,Form, Modal } from "react-bootstrap";
+import { Button, Container,Form, Modal} from "react-bootstrap";
 import axios from "axios";
+// import { on } from "cluster";
+
 class SignupModal extends Component {
     state = {
         email: "",
         password: "",
         Confirmpassword: "",
         shopName: "",
-        description: ""
+        description: "",
+        validate: true,
     }
     handleChange = (event) => {
         event.preventDefault();
@@ -18,17 +21,19 @@ class SignupModal extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
+        this.setState({ showAlert: false });
         let pass=this.state.password;
         if (this.state.Confirmpassword === pass&&/[a-z]/gi.test(pass)&&
         /[!@#$%^&*()<>.,/]/g.test(pass)&&/[0-9]/gi.test(pass)&&pass.length>=6&&/@/g.test(this.state.email)&&
-        /.com/g.test(this.state.email)) {
-            console.log("passowrds match")
+        /.com/g.test(this.state.email)){
+            console.log("passwords match")
             console.log(this.state)
             axios.post("/auth/signup",this.state).then(res=>{
                 if(res.data==="Email already taken"){
                     console.log(res.data)
                 }
                 else{
+                    this.setState({ showOverlay: false })
                     axios.post("/auth/login",{email:this.state.email,password:this.state.password})
                     .then(res=>{
                         console.log(res.data)
@@ -42,6 +47,7 @@ class SignupModal extends Component {
             console.log("check password and email format, or passwords dont match")
         }
     }
+
 
     render() {
         return (
@@ -63,6 +69,9 @@ class SignupModal extends Component {
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control onChange={this.handleChange} name="password" type="password" placeholder="Password" />
+                                <Form.Text className="text-muted">
+                                     Passwords must be at least six characters, including a number and special character
+                                </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="confirmPassword">
                                 <Form.Label>Confirm Password</Form.Label>
@@ -76,7 +85,7 @@ class SignupModal extends Component {
                                 <Form.Label>Shop Description</Form.Label>
                                 <Form.Control as="textarea" rows="3" onChange={this.handleChange} name="description" placeholder="Shop Description" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
+                            <Button variant="primary" type="submit" onSubmit={this.formSubmit} >
                                 Submit
                             </Button>
                         </Form>
@@ -88,7 +97,6 @@ class SignupModal extends Component {
         );
     }
 }
-
 
 
 export default SignupModal;
