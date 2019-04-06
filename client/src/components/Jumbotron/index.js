@@ -8,17 +8,17 @@ function Banner(props) {
     return (<Jumbotron className="mb-5" fluid>
         <Container className="text-center">
         {props.children?(<>
-        <div style={{"fontSize": "46pt", "fontWeight":"bold"}}>{props.pageName}</div>
+        <div class="modalHeader">{props.pageName}</div>
         <h5>
             {props.instructions}
         </h5>
         <div>{props.children}</div>
         </>)
         :(<>
-        <div style={{"fontSize": "46pt", "fontWeight":"bold"}}>{props.pageName}</div>
-        <h5>
+        <div class="modalHeader">{props.pageName}</div>
+        <div class="instructions">
             {props.instructions}
-        </h5>
+        </div>
         </>)}
             
         </Container>

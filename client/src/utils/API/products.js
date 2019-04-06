@@ -25,19 +25,16 @@ export default {
             price: productData.price,
             description: productData.description,
             stock: productData.stock,
-            flashSales: {...productData.flashSales, checked: true}
+            flashSales: productData.flashSales
         }
         // if product already exists, update
         if (productData.productid){
-        console.log("going to the put route!!")
-
-        return axios.put("/api/products/" + productData.productid, product);}
+        console.log("Updating product!")
+        return axios.put("/api/products/" + productData.productid, productData);}
         // else create new product
         else{
-            console.log("going to the post route!!")
-            
-        return axios.post("/api/products", product);
-
+        console.log("Creating product!")
+        return axios.post("/api/products", productData);
 
         }
     },

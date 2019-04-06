@@ -7,13 +7,33 @@ import AddCategory from '../ProductCardDetailed/AddCategory';
 import '../../fileButton.css';
 // dummy categories
 import categories from "../../DummyCategories.json"
-
+import Axios from "axios";
 
 class Info extends Component {
+
+
   componentDidMount(){
     console.log("============Here is in info for props.category========")
     console.log(this.props.selectedCategory)
   }
+
+  handleChange = (event) => {
+    const files = Array.from(event.target.files)
+    const formData = new FormData()
+    files.forEach((file, i) => {
+      formData.append(i, file)
+    })
+
+    Axios.post('/api/products/uploadImage', formData, 
+    { headers: {'Content-Type': 'multipart/form-data'}})
+      .then(images => {
+        console.log(images.data[0].public_id)
+        console.log(images.data[0].secure_url)
+      })
+  }
+
+  
+  
   render() {
     return (
       <Container>
@@ -46,8 +66,8 @@ class Info extends Component {
                 placeholder="Product Name" 
                 value={this.props.productName}
                 onChange={this.props.inputChangeHandler} />
-                <Form.Control.Feedback type="invalid">
-                  Please enter a product name.
+              <Form.Control.Feedback type="invalid">
+                Please enter a product name.
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="price">
@@ -58,8 +78,8 @@ class Info extends Component {
                 placeholder="Price" 
                 value={this.props.price}
                 onChange={this.props.inputChangeHandler} />
-                <Form.Control.Feedback type="invalid">
-                  Please enter a product price.
+              <Form.Control.Feedback type="invalid">
+                Please enter a product price.
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="description">
@@ -83,4 +103,4 @@ class Info extends Component {
   }
 }
 
-    export default Info
+export default Info

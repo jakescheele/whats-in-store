@@ -9,7 +9,7 @@ router.route("/signup")
     // .post(usersController.signup);
 
 router.route("/update/:id")
-    .put(usersController.parseImage, usersController.update)
+    .put(usersController.update)
 
 
 module.exports = router;

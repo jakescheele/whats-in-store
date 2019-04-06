@@ -114,7 +114,9 @@ class Dashboard extends Component {
     render() {
         return (<>
             <Nav shop={this.state.shop} />
-            <Jumbotron pageName="DASHBOARD" instructions="Here is the dashboard for shop management. What's below is the stock and sale data. You can you can explore more by hitting the buttons."/>
+            <div class="modalHeader">
+            <Jumbotron pageName="DASHBOARD" instructions="Keep tabs on your stocks, stats and stuff."/>
+            </div>
             <Container className="mt-5">
             <Row className="justify-content-around align-items-start text-center">
                 <Col sm={12} md={4} lg={4} className="text-center">

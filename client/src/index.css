@@ -55,8 +55,6 @@ code {
   text-align: center;
 }
 
-
-
 .modalHeader {
   font-family: itc-avant-garde-gothic-pro, sans-serif;
   color: black;
@@ -64,9 +62,23 @@ code {
   font-size: 49pt;
 }
 
-.modalBody {
-  background-image: url('/components/Dashboard/LineChart/img/happy.png');
-  z-index: 2;
+
+.blackButton {
+  color: white;
+  font-family: open-sans, sans-serif;
+  background-color: black;
+  border-radius: 5pt;
+  padding: 8pt;
+}
+
+.instructions {
+  color: black;
+  font-family: open-sans, sans-serif;
+  font-size: 17pt;
+}
+
+.modalImage {
+  max-width: 100%;
 }
 
 

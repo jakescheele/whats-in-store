@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Table, Container, Row, Col} from "react-bootstrap";
+import Moment from 'react-moment';
+import 'moment-timezone';
+
 
 function PromoTable(props) {
+  
     return (<>
     <Container>
         <Row>
@@ -10,7 +14,6 @@ function PromoTable(props) {
    <Table striped bordered hover variant="dark">
   <thead>
     <tr>
-      <th>#</th>
       <th>Product</th>
       <th>Promo Price</th>
       <th>Start Time</th>
@@ -19,8 +22,27 @@ function PromoTable(props) {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
+    {props.saleProducts.map(saleProduct=>(
+      <tr>
+      <td>{saleProduct.name}</td>
+      <td>{saleProduct.flashSales.price}</td>
+      <td>
+        <Moment format="YYYY-MM-DD HH:mm:ss">
+        {saleProduct.flashSales.startDate}
+        </Moment>
+      </td>
+      <td>
+        <Moment format="YYYY-MM-DD HH:mm:ss">
+        {saleProduct.flashSales.endDate}
+        </Moment>
+        </td>
+      <td>
+          <Button className="mx-2" variant="outline-success">Edit</Button>
+          <Button className="mx-2" variant="outline-danger">Delete</Button>
+      </td>
+      </tr>
+    ))}
+    {/* <tr>
       <td>Spring T-shirt</td>
       <td>$30</td>
       <td>April 9, 2019</td>
@@ -29,14 +51,13 @@ function PromoTable(props) {
       <Button variant="danger">Delete</Button></td>
       </tr>
     <tr>
-      <td>2</td>
       <td>Casual Dress</td>
       <td>$15</td>
       <td>April 10, 2019</td>
       <td>April 30, 2019</td>
       <td><Button variant="success">Edit</Button>
       <Button variant="danger">Delete</Button></td>
-    </tr>
+    </tr> */}
   </tbody>
 </Table>;
 </Col>
