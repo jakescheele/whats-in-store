@@ -1,5 +1,12 @@
 const db = require("../models");
-const parser = require("../cloudinary")
+const cloudinary = require("cloudinary");
+require("dotenv").config()
+
+cloudinary.config({ 
+  cloud_name: process.env.REACT_APP_CLOUD_NAME, 
+  api_key: process.env.REACT_APP_API_KEY, 
+  api_secret: process.env.REACT_APP_API_SECRET
+})
 
 // Defining methods for the productsController
 module.exports = {
@@ -18,7 +25,13 @@ module.exports = {
       .catch(err => res.json(422, err))
   },
 
-  parseImage: parser.single("image"),
+  uploadImage: function (req, res) {
+    const values = Object.values(req.files)
+    const promises = values.map(image => cloudinary.uploader.upload(image.path))
+    Promise
+      .all(promises)
+      .then(results => res.json(results))
+  },
 
   create: function (req, res) {
     // if photo has been uploaded
