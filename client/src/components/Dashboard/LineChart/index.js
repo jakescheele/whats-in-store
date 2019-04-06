@@ -1,23 +1,34 @@
 import React, {Component} from "react";
 import '../../../../node_modules/react-vis/dist/style.css';
-import {XYPlot, VerticalBarSeries} from 'react-vis';
+import {XYPlot, LineSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis} from 'react-vis';
 
 
-class SalesChart extends Component {
+class StockChart extends Component {
     render() {
       const data = [
-        {x: 0, y: 8},
-        {x: 1, y: 5},
-        {x: 2, y: 4},
-        {x: 3, y: 2},
-        {x: 4, y: 6},
-       
-    
+        {x: 'Nov', y: 54},
+        {x: 'Dec', y: 28},
+        {x: 'Jan', y: 42},
+        {x: 'Feb', y: 72},
+        {x: 'Mar', y: 26},
+        {x: 'Apr', y: 10},
       ];
       return (
         <div className="App">
-          <XYPlot height={400} width={400} color="white">
-            <VerticalBarSeries data={data} />
+          <XYPlot 
+          height={400} 
+          width={400} 
+          color="white"
+          xType="ordinal"
+          >
+            <HorizontalGridLines />
+            <XAxis />
+            <YAxis />
+            <LineSeries 
+            data={data} 
+            color="white"
+            strokeWidth = {"5px"}
+            />
           </XYPlot>
         </div>
       );
@@ -99,4 +110,4 @@ class SalesChart extends Component {
 
   
 
-export default SalesChart
+export default StockChart

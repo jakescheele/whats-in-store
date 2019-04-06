@@ -33,7 +33,8 @@ class ModalComponent extends React.Component {
                 // product methods
                 validated={this.props.validated} 
                 handleSubmit={this.props.handleSubmit} 
-                inputChangeHandler={this.props.inputChangeHandler} dropDownSelectHandler={this.props.dropDownSelectHandler}
+                inputChangeHandler={this.props.inputChangeHandler} 
+                dropDownSelectHandler={this.props.dropDownSelectHandler}
                 // product info
                 productid={this.props._id}
                 productName={this.props.productName} 
@@ -49,7 +50,11 @@ class ModalComponent extends React.Component {
                 updateVariant={this.props.updateVariant}/>
               </Tab>
               <Tab eventKey="Promos" title="Promos">
-                <Promos />
+                <Promos 
+                handleDatepicker={this.props.handleDatepicker}
+                flashSales={this.props.flashSales}
+                handleSalesPrice={this.props.handleSalesPrice}
+                />
               </Tab>
             </Tabs>
           </Modal.Body>

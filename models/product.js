@@ -13,7 +13,8 @@ const ProductSchema = new Schema({
   img_id: {type: String},
   price: { type: String, required: true },
   description: { type: String },
-  stock: { type: Array }
+  stock: { type: Array },
+  flashSales: {type: Object}
 
 });
 

@@ -8,16 +8,16 @@ function Banner(props) {
         <Container className="text-center">
         {props.children?(<>
         <div style={{"fontSize": "46pt", "fontWeight":"bold"}}>{props.pageName}</div>
-        <p>
+        <h5>
             {props.instructions}
-        </p>
+        </h5>
         <div>{props.children}</div>
         </>)
         :(<>
         <div style={{"fontSize": "46pt", "fontWeight":"bold"}}>{props.pageName}</div>
-        <p>
+        <h5>
             {props.instructions}
-        </p>
+        </h5>
         </>)}
             
         </Container>

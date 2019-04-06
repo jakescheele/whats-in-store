@@ -9,6 +9,8 @@ import ProductAPI from "../utils/API/products";
 import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
 const emptyCategory = { name: "", subcategories: [], _id: ""}
+const emptyFlashSale = {checked: false, startDate: new Date(), endDate: new Date(), price: "0"}
+
 
 class Inventory extends Component {
     state = {
@@ -25,6 +27,8 @@ class Inventory extends Component {
         description: "",
         stock: [{ ...emptyVariant }],
         // image:"",
+        flashSales: {...emptyFlashSale},
+
         // validator for submit
         validated: false,
     }
@@ -152,6 +156,27 @@ class Inventory extends Component {
         })
     }
 
+    // methods for promo page
+    handleDatepicker= (date, name) => {
+        console.log(name)
+        console.log(date)
+        this.setState({
+            flashSales: {...this.state.flashSales, [name] : date}
+        });
+    }
+
+    handleSalesPrice = (e)=>{
+        let { name, value } = e.target
+        console.log(name)
+        console.log(value)
+        this.setState({
+            flashSales: {...this.state.flashSales, [name] : value}
+        })
+    }
+
+
+    // submit btn
+
     handleSubmit = (event) => {
 
         // validation
@@ -179,6 +204,8 @@ class Inventory extends Component {
     }
 
 
+
+
     render() {
         return (<>
             <Nav shop={this.state.shop} />
@@ -199,8 +226,11 @@ class Inventory extends Component {
                 close={this.closeModalHandler}
                 // product methods
                 product={this.state.product}
-                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} updateVariant={this.updateVariant}
+                inputChangeHandler={this.inputChangeHandler} dropDownSelectHandler={this.dropDownSelectHandler} 
+                updateVariant={this.updateVariant}
                 addVariant={this.addVariant}
+                handleDatepicker={this.handleDatepicker}
+                handleSalesPrice={this.handleSalesPrice}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
@@ -211,7 +241,8 @@ class Inventory extends Component {
                 stock={this.state.stock}
                 description={this.state.description}
                 selectedCategory={this.state.category}
-
+                flashSales={this.state.flashSales}
+                
             />
         </>)
     }
