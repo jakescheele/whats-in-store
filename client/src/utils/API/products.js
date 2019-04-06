@@ -21,23 +21,24 @@ export default {
             name: productData.name,
             category: productData.category,
             // subcategory: productData.subcategory,
-            // image: productData.image,
+            image: productData.image,
             price: productData.price,
             description: productData.description,
             stock: productData.stock,
-            flashSales: {...productData.flashSales, checked: true}
+            flashSales: productData.flashSales
         }
         // if product already exists, update
         if (productData.productid){
-        console.log("going to the put route!!")
+        console.log("Updating product!")
+        console.log(product)
 
         return axios.put("/api/products/" + productData.productid, product);}
         // else create new product
         else{
-            console.log("going to the post route!!")
-            
-        return axios.post("/api/products", product);
+        console.log("Creating product!")
+        console.log(product)
 
+        return axios.post("/api/products", product);
 
         }
     },

@@ -1,17 +1,25 @@
-const express = require('express');
-const mongoose = require('mongoose');
-var logger = require("morgan");
-const passport=require("passport");
-const session=require("express-session");
-const cookieParser=require("cookie-parser");
-const PORT= process.env.PORT || 3001;
-const routes = require('./routes');
+const express     = require('express');
+const mongoose    = require('mongoose');
+const logger      = require("morgan");
+const cloudinary  = require('cloudinary');
+const formData    = require('express-form-data');
+const bodyParser  = require('body-parser');
+const passport    = require("passport");
+const session     = require("express-session");
+const cookieParser= require("cookie-parser");
+
+// Initialize express
 const app = express();
+
+// Set port
+const PORT = process.env.PORT || 3001;
+
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
  app.use(express.static("client/build"));
 };
-//mongo stuff
+
+// Connect to MongoDB
 app.use(logger("dev"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/project3",{ useNewUrlParser: true });
 mongoose.connection.once("open",function(){
@@ -20,6 +28,14 @@ mongoose.connection.once("open",function(){
   console.log("connection error: \n",err)
 });
 
+// Initialize Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -28,12 +44,18 @@ saveUninitialized:false,
 resave:false }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(formData.parse());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Passport
 
 const passportRoute = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRoute);
+
+// Routes
+const routes = require('./routes');
 app.use(routes);
 
 // Listener
