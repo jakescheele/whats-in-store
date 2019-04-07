@@ -222,7 +222,7 @@ class Inventory extends Component {
     }
 
     // methods for promo page
-    handleCheckBox = (e) => {
+    handlePromoCheckBox = (e) => {
         const { checked } = e.target
         this.setState({
             flashSales: { ...this.state.flashSales, checked: checked }
@@ -281,6 +281,15 @@ class Inventory extends Component {
             // close the modal after save changes
 
         }
+    }
+
+    deleteProduct=(id)=>{
+        ProductAPI.deleteProduct(id)
+        .then(res=>{
+            console.log(res)
+            window.location.reload()
+        })
+        .catch(err=>console.log(err))
     }
 
     // filter handler
@@ -455,13 +464,14 @@ class Inventory extends Component {
                 addVariant={this.addVariant}
                 handleDatepicker={this.handleDatepicker}
                 handleSalesPrice={this.handleSalesPrice}
-                handleCheckBox={this.handleCheckBox}
+                handlePromoCheckBox={this.handlePromoCheckBox}
                 uploadImage={this.uploadImage}
+                deleteProduct={this.deleteProduct}
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
                 // product info
-                productid={this.state._id}
+                productid={this.state.productid}
                 productName={this.state.name}
                 price={this.state.price}
                 stock={this.state.stock}
