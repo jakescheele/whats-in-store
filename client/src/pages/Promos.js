@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import Jumbotron from "../components/Jumbotron";
 import Nav from "../components/NavBar";
 import PromoTable from "../components/PromosManagement/FlashSale/ProductCardForFlashSale";
+import Footer from "../components/Footer"
+
 import axios from "axios";
 import ProductAPI from "../utils/API/products"
 
@@ -48,6 +50,7 @@ class Promos extends Component{
             <Nav shop={this.state.shop}/>
             <Jumbotron pageName="PROMOTIONS" instructions="Edit your promotion settings."/>
             <PromoTable saleProducts={this.state.saleProducts}/>
+            <Footer/>
         </>)
     }
 }

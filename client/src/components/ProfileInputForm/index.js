@@ -17,11 +17,11 @@ class ProfileInputForm extends Component {
                     <Row className="mt-3">
                         <Col md={{ span: 6, offset: 3 }}>
                         <Form>
-                            <Form.Group controlId="shopLogo">
+                            <Form.Group className="text-center" controlId="shopLogo">
                             <label className="border">
                                 <Form.Label className ="text-light">Upload Logo</Form.Label>
                             </label>
-                                <label class="fileContainer">
+                                <label className="fileContainer">
                                 <Form.Control onChange={this.props.uploadImage} 
                                 type="file" class="fileButton" name="image" display="none" placeholder="Your Shop Logo"/>
                             </label>

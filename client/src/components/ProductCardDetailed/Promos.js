@@ -13,7 +13,7 @@ function Promos(props) {
                 <Form.Group controlId="formBasicChecbox">
                     <Form.Check 
                     checked={props.flashSales.checked} 
-                    onChange={props.handleCheckBox} 
+                    onChange={props.handlePromoCheckBox} 
                     type="checkbox" 
                     label="Flash Sale" />
                 </Form.Group>
