@@ -5,15 +5,11 @@ import ProductCard from "../ProductCard"
 import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
-import ProductModal from "../ProductCardDetailed";
 import CategoryModal from "../ViewCategoriesModal"
-import Footer from "../Footer"
 import Axios from "axios";
 
+
 // Utils
-
-
-
 
 class Layout extends Component {
     state={
@@ -26,7 +22,7 @@ class Layout extends Component {
         event.preventDefault();
         Axios.post("/api/categories",{name:this.state.cata})
         .then(res=>{
-        this.setState({categories:[...this.state.categories, res.data]})
+        this.setState({categories:[...this.state.categories,res.data]})
         })
     }
     
@@ -36,7 +32,6 @@ class Layout extends Component {
         this.setState({[name]:value });
         console.log(this.state.cata)
     }
-
     // click handler for product card to trigger product detail modal
     openModaltHandler=(id, modalname)=>{
         
@@ -50,34 +45,51 @@ class Layout extends Component {
         })
        
     }
-
+    categoryDelete=(event)=>{
+        event.preventDefault();
+        console.log(event.target)
+        Axios.post("/api/catagories/delete",{_id:event.target.name})
+        .then(function(res){
+            console.log(res)
+        })
+    }
     closeModalHandler=(modalname)=>{
         this.setState({
             [modalname]: false
         })
     }
 
-    render(){
-        return (<>
+    render() {
+        return (
+        <>
         <Container>
             <Row>
                 <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar/></Col>
-                <Col sm={12} md={2} lg={2} className="rem-0.125"><SortingBar/></Col>
+                <Col sm={12} md={2} lg={2} className="rem-0.125">
+                    <SortingBar 
+                    handleSorting={this.props.handleSorting}
+                    sorting={this.props.sorting}
+                    />
+                </Col>
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={3} lg={3} className="rem-0.0625 pb-2">
-                    <CategorySideBar categories={this.props.categories} show={this.openModaltHandler}/>
+                    <CategorySideBar 
+                        categories={this.props.categories} 
+                        show={this.openModaltHandler}
+                        handleCheckBox={this.props.handleCheckBox}
+                        filters={this.props.filters}
+                    />
                 </Col>
                 <Col>
                     <Row>
-                        {this.props.products.length===0?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.props.products.map(product=>(<ProductCard key={product._id} product={product} show={this.props.show} />)))}
+                        {this.props.products.length===0?(<Card className="py-4 px-3" style={{"width":"100%"}}>No product in the inventory now.</Card>):(this.props.products.map(product=>(<ProductCard key={product._id} catName={product._id} product={product} show={this.props.show} />)))}
                     </Row>
                 </Col>
 
             </Row>
             <BackToTopBtn/>
         </Container>
-        <Footer/>
         <CategoryModal state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
           show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)

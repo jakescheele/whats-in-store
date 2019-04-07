@@ -21,22 +21,41 @@ export default {
             name: productData.name,
             category: productData.category,
             // subcategory: productData.subcategory,
-            // image: productData.image,
+            image: productData.image,
             price: productData.price,
             description: productData.description,
             stock: productData.stock,
-            flashSales: productData.flashSales
+            flashSales: productData.flashSales, 
+            totalStock: totalStock(productData)
         }
         // if product already exists, update
         if (productData.productid){
         console.log("Updating product!")
-        return axios.put("/api/products/" + productData.productid, productData);}
+        console.log(product)
+
+        return axios.put("/api/products/" + productData.productid, product);}
         // else create new product
         else{
         console.log("Creating product!")
-        return axios.post("/api/products", productData);
+        console.log(product)
+
+        return axios.post("/api/products", product);
 
         }
     },
     
 };
+
+
+function totalStock(product) {
+    var total = 0;
+
+    if (product.hasOwnProperty("stock")) {
+        for (let i in product.stock) {
+            total += parseInt(product.stock[i].stock)
+        }
+    }
+
+
+    return total;
+}

@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Info from "./Info"
 import Stock from "./Stock"
 import Promos from "./Promos"
+import Others from "./Others"
 import Modal from 'react-bootstrap/Modal'
-import { Col, Row, Card } from 'react-bootstrap'
-import { Button, Tab, Tabs } from "react-bootstrap";
+import { Button, Tab, Tabs, } from "react-bootstrap";
 
 
 class ModalComponent extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
     console.log("============Here is in Product Modal for props.category========")
     console.log(this.props.selectedCategory)
     console.log(this.props.productName)
@@ -20,45 +20,65 @@ class ModalComponent extends React.Component {
 
     return (
       <>
-        <Modal size="lg" 
-        show={this.props.state} 
-        onHide={(e) => this.props.close("productModal")}>
+        <Modal size="lg"
+          show={this.props.state}
+          onHide={(e) => this.props.close("productModal")}>
           <Modal.Header closeButton>
-            <Button variant="secondary" size="sm"><i className="far fa-edit pr-1"></i>Edit</Button>
+            <div className="modalHeader">
+              <Modal.Title id="contained-modal-title-vcenter">
+                VIEW/EDIT PRODUCT
+            </Modal.Title>
+            </div>
           </Modal.Header>
-          <Modal.Body>
-            <Tabs defaultActiveKey="Info" transition={false} id="noanim-tab-example">
-              <Tab eventKey="Info" title="Info">
-                <Info 
-                // product methods
-                validated={this.props.validated} 
-                handleSubmit={this.props.handleSubmit} 
-                inputChangeHandler={this.props.inputChangeHandler} 
-                dropDownSelectHandler={this.props.dropDownSelectHandler}
-                // product info
-                productid={this.props._id}
-                productName={this.props.productName} 
-                price={this.props.price} 
-                description = {this.props.description} 
-                selectedCategory={this.props.selectedCategory}
+          <Tabs className="mt-2" defaultActiveKey="Info" transition={false} id="noanim-tab-example">
+            <Tab eventKey="Info" title="Info">
+              <Modal.Body style={{ 'height': 'calc(100vh - 280px)', 'overflowY': 'auto' }}>
+                <Info
+                  // product methods
+                  validated={this.props.validated}
+                  handleSubmit={this.props.handleSubmit}
+                  inputChangeHandler={this.props.inputChangeHandler}
+                  dropDownSelectHandler={this.props.dropDownSelectHandler}
+                  uploadImage={this.props.uploadImage}
+
+                  // product info
+                  productid={this.props.productid}
+                  productName={this.props.productName}
+                  price={this.props.price}
+                  description={this.props.description}
+                  selectedCategory={this.props.selectedCategory}
+                  image={this.props.image}
                 />
-              </Tab>
-              <Tab eventKey="Stock" title="Stock">
-                <Stock 
-                stock={this.props.stock} 
-                addVariant={this.props.addVariant} 
-                updateVariant={this.props.updateVariant}/>
-              </Tab>
-              <Tab eventKey="Promos" title="Promos">
-                <Promos 
-                handleDatepicker={this.props.handleDatepicker}
-                flashSales={this.props.flashSales}
-                handleSalesPrice={this.props.handleSalesPrice}
-                handleCheckBox={this.props.handleCheckBox}
+              </Modal.Body>
+            </Tab>
+            <Tab eventKey="Stock" title="Stock">
+              <Modal.Body style={{ 'height': 'calc(100vh - 280px)', 'overflowY': 'auto' }}>
+                <Stock
+                  stock={this.props.stock}
+                  totalStock={this.props.totalStock}
+                  addVariant={this.props.addVariant}
+                  updateVariant={this.props.updateVariant} />
+              </Modal.Body>
+            </Tab>
+            <Tab eventKey="Promos" title="Promos">
+              <Modal.Body style={{ 'height': 'calc(100vh - 280px)', 'overflowY': 'auto' }}>
+                <Promos
+                  handleDatepicker={this.props.handleDatepicker}
+                  flashSales={this.props.flashSales}
+                  handleSalesPrice={this.props.handleSalesPrice}
+                  handlePromoCheckBox={this.props.handlePromoCheckBox}
                 />
-              </Tab>
-            </Tabs>
-          </Modal.Body>
+              </Modal.Body>
+            </Tab>
+            <Tab eventKey="Others" title="Others">
+              <Modal.Body style={{ 'height': 'calc(100vh - 280px)', 'overflowY': 'auto' }}>
+                <Others 
+                  deleteProduct={this.props.deleteProduct}
+                  productid={this.props.productid}
+                />
+              </Modal.Body>
+            </Tab>
+          </Tabs>
           <Modal.Footer>
             <Button variant="secondary" onClick={(e) => this.props.close("productModal")}>
               Close

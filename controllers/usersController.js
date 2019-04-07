@@ -10,6 +10,9 @@ cloudinary.config({
 // only update & upload is  used, the rest is currently in auth.js
 // passport is not defined
 
+// only update & upload is  used, the rest is currently in auth.js
+// passport is not defined
+
 // Defining methods for the usersController
 module.exports = {
 
@@ -56,17 +59,19 @@ module.exports = {
 
     update: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.user._id }, req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
+            .findOne({ _id: req.user._id })
+            .then(user=>{
+                console.log("=====Here is from the userController doing findone!!!!======")
+                console.log(user)
+                console.log("=====Here is from the userController spreading updagtedUser!!!!======")
+                let updagtedUser = {...user._doc, ...req.body}
+                console.log(updagtedUser)
 
-    uploadImage: function (req, res) {
-        const values = Object.values(req.files)
-        const promises = values.map(image => cloudinary.uploader.upload(image.path))
-        Promise
-            .all(promises)
-            .then(results => res.json(results))
+                // console.log(updagtedUser)
+                db.User.findOneAndUpdate({_id: req.user._id}, {$set:{...updagtedUser}}).then(dbModel => res.json(dbModel))
+                .catch(err => res.status(422).json(err));
+            })
+            
     },
 
 }

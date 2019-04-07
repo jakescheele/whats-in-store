@@ -9,11 +9,11 @@ const ProductSchema = new Schema({
     ref: "Category"
   },
   subcategory: { type: String },
-  img: { type: String },
-  img_id: {type: String},
+  image: { type: Object },
   price: { type: String, required: true },
   description: { type: String },
   stock: { type: Array },
+  totalStock:{ type: Number},
   flashSales: {type: Object}
 
 });

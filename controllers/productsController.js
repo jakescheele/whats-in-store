@@ -42,9 +42,9 @@ module.exports = {
         // subcategory: req.body.subcategory,
         price: req.body.price,
         description: req.body.description,
-        // img: req.file.url,
-        // img_id: req.file.public_id
+        image: req.body.image,
         stock: req.body.stock,
+        totalStock: req.body.totalStock,
         flashSales: req.body.flashSales
 
       };
@@ -60,6 +60,8 @@ module.exports = {
   },
 
   update: function (req, res) {
+    console.log("==============hit the put route==========")
+    console.log(req.body)
     db.Product
       .findOneAndUpdate({ _id: req.params.id }, {$set:{...req.body}})
       .then(dbModel => res.json(dbModel))

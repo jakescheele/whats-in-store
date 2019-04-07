@@ -20,7 +20,7 @@
 .border {
     border-style: 10px solid white;
     padding: 8px;
-    border-radius: 30px;
+    border-radius: 5px;
 
 }
 
@@ -31,3 +31,5 @@
     border-radius: 30px;
 
 }
+
+
