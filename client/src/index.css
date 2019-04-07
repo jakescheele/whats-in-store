@@ -59,8 +59,9 @@ code {
   font-family: itc-avant-garde-gothic-pro, sans-serif;
   color: black;
   font-weight: bold; 
-  font-size: 12vh;
+  font-size: 5vw;
 }
+
 
 
 .blackButton {
@@ -82,17 +83,33 @@ code {
 .instructions {
   color: black;
   font-family: open-sans, sans-serif;
-  font-size: 17pt;
+  font-size: 1.5vw;
 }
 
 .input {
   color: black;
   font-family: open-sans, sans-serif;
-  font-size: 5vh;
+  font-size: 1.5vw;
 }
 
 .modalImage {
   max-width: 100%;
 }
+
+
+@media screen and (max-width: 600px) {
+  .modalHeader {
+    
+    font-size: 10vw;
+  }
+  .instructions {
+    font-size: 3vw;
+  }
+  
+  .input {
+    font-size: 3vw;
+  }
+}
+
 
 

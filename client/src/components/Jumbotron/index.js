@@ -9,10 +9,10 @@ function Banner(props) {
         <Container className="text-center">
         {props.children?(<>
         <div className="modalHeader">{props.pageName}</div>
-        <h5>
+        <div className="instructions">
             {props.instructions}
-        </h5>
-        <div>{props.children}</div>
+        </div>
+        <div className="mt-3">{props.children}</div>
         </>)
         :(<>
         <div className="modalHeader">{props.pageName}</div>

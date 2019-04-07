@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import Modal from 'react-bootstrap/Modal';
-import { Div, Button, Container, InputGroup, FormControl, Col, Row, Card, Table } from "react-bootstrap";
+import { Button, Container, Col, Row, Table } from "react-bootstrap";
 
 
 class Stock extends Component {

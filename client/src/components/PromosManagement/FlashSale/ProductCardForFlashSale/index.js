@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Table, Container, Row, Col} from "react-bootstrap";
 import Moment from 'react-moment';
@@ -42,22 +42,6 @@ function PromoTable(props) {
       </td>
       </tr>
     ))}
-    {/* <tr>
-      <td>Spring T-shirt</td>
-      <td>$30</td>
-      <td>April 9, 2019</td>
-      <td>April 10, 2019</td>
-      <td><Button variant="success">Edit</Button>
-      <Button variant="danger">Delete</Button></td>
-      </tr>
-    <tr>
-      <td>Casual Dress</td>
-      <td>$15</td>
-      <td>April 10, 2019</td>
-      <td>April 30, 2019</td>
-      <td><Button variant="success">Edit</Button>
-      <Button variant="danger">Delete</Button></td>
-    </tr> */}
   </tbody>
 </Table>;
 </Col>

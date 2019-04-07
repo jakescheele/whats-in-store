@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, InputGroup, FormControl, Card, Form } from "react-bootstrap";
 import DatePicker from "react-datepicker";

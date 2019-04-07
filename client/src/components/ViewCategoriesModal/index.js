@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import {Col, Row, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
+import {Col, Row, Modal, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
-import CategoryOverlay from "../../components/ViewCategoriesModal";
 
 
 
