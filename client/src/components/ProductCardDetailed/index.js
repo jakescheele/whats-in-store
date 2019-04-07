@@ -4,7 +4,6 @@ import Info from "./Info"
 import Stock from "./Stock"
 import Promos from "./Promos"
 import Modal from 'react-bootstrap/Modal'
-import { Col, Row, Card } from 'react-bootstrap'
 import { Button, Tab, Tabs } from "react-bootstrap";
 
 

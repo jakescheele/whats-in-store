@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { default as LoginModal } from "../components/Login";
 import { default as SignupModal } from "../components/Signup";
-import { Button, Container, Row, Col, Figure } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import Nav from "../components/NavBarWithoutHamburger";
 
 

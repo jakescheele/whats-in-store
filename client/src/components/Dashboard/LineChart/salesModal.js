@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import '../../../index.css';
 //import Happy from "../components/Dashboard/img/Happy.png"
 
@@ -18,7 +18,7 @@ class SalesModal extends React.Component {
             <h2><b>WOAH, HEY THERE</b></h2>
             </Modal.Header>
             <Modal.Body>
-            <img style={{"width":"100%","object-fit": "contain"}}src={require('../img/happy.png')} />
+            <img alt="premium" style={{"width":"100%","object-fit": "contain"}}src={require('../img/happy.png')} />
             </Modal.Body>
           
             <Modal.Footer>
