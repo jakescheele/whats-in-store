@@ -240,8 +240,8 @@ footer a {
 
 /* Product Cards */
 img{
-  width: 25rem;
-  height: 18.75rem;
+  width: 25vw;
+  height: 20vw;
   object-fit: cover
 }
 

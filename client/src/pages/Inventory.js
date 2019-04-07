@@ -4,6 +4,8 @@ import Layout from "../components/LayoutForInventory.js";
 import Nav from "../components/NavBar";
 import { Button } from 'react-bootstrap'
 import ProductModal from '../components/ProductCardDetailed'
+import Footer from "../components/Footer"
+
 import axios from "axios";
 import ProductAPI from "../utils/API/products";
 import CategoryAPI from "../utils/API/categories"
@@ -110,6 +112,7 @@ class Inventory extends Component {
                 price: "",
                 description: "",
                 stock: [{ ...emptyVariant }],
+                image:{...emptyImage},
                 [modalname]: true
             })
 
@@ -294,6 +297,7 @@ class Inventory extends Component {
                 image={this.state.image}
                 
             />
+            <Footer/>
         </>)
     }
 }

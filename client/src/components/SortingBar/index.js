@@ -12,7 +12,6 @@ function SortingBar(){
             <option value="stockHtoL">Stock H-L</option>
             <option value="NameAtoZ">Name A-Z</option>
             <option value="NameZtoA">Name Z-A</option>
-            <option value="recent">Recent</option>
             </Form.Control>
         </Form>
     </>)

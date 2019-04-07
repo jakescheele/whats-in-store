@@ -6,7 +6,6 @@ import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
 import CategoryModal from "../ViewCategoriesModal"
-import Footer from "../Footer"
 import Axios from "axios";
 
 
@@ -83,7 +82,6 @@ class Layout extends Component {
             </Row>
             <BackToTopBtn/>
         </Container>
-        <Footer/>
         <CategoryModal state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
           show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)
