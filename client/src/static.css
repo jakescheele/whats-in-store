@@ -174,19 +174,7 @@
     .category_block li a {
         color: #343a40;
     }
-    .add_to_cart_block .price {
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        font-size: 200%;
-        margin-bottom: 0;
-    }
-    .add_to_cart_block .price_discounted {
-        color: #343a40;
-        text-align: center;
-        text-decoration: line-through;
-        font-size: 140%;
-    }
+    
     .product_rassurance {
         padding: 0.625rem;
         margin-top: 0.9375rem;
@@ -224,10 +212,5 @@
 
     .chartButton {
       border-color: 1px solid white;
-    }
-
-
-    var variables = {
-      background-color: black;
     }
     

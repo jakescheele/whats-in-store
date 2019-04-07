@@ -5,10 +5,10 @@ import ProductCard from "../ProductCard"
 import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
-import ProductModal from "../ProductCardDetailed";
 import CategoryModal from "../ViewCategoriesModal"
 import Footer from "../Footer"
 import Axios from "axios";
+
 
 // Utils
 
@@ -23,7 +23,7 @@ class Layout extends Component {
         event.preventDefault();
         Axios.post("/api/categories",{name:this.state.cata})
         .then(res=>{
-        this.setState({categories:[...this.state.categories, res.data]})
+        this.setState({categories:[...this.state.categories,res.data]})
         })
     }
     
@@ -60,8 +60,14 @@ class Layout extends Component {
         })
     }
 
-    render(){
-        return (<>
+    render() {
+        return (
+        <>
+         
+
+
+
+
         <Container>
             <Row>
                 <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar/></Col>

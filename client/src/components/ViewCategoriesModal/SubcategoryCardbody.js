@@ -52,8 +52,8 @@ class SubcategoryCardBody extends Component {
                             {this.props.subcategory?(<input placeholder={this.props.subcategory} name="subUpdate" onChange={this.handleChange} type="text" id={this.props.category._id}  ></input>):(<input name="subCreate" id="newsub" value={this.state.subCreate} placeHolder="create new subcategory" onChange={this.handleChange} type="text"></input>)}
                         </div>
                         <div>
-                            {this.props.subcategory?(<><Button size="sm" id={this.props.category._id} name={this.props.subcategory} onClick={this.subCategoryUpdate} variant="success">update</Button><Button size="sm" id={this.props.category._id} name={this.props.subcategory} onClick={this.subCategoryDelete} variant="danger">- delete</Button></>):
-                            (<Button size="sm" onClick={this.subCategoryCreate} name={this.state.subCreate} id={this.props.category._id} variant="success">+ create</Button>)}
+                            {this.props.subcategory?(<><Button size="sm" id={this.props.category._id} name={this.props.subcategory} onClick={this.subCategoryUpdate} variant="success">update</Button><Button size="sm" className="blackButton" id={this.props.category._id} name={this.props.subcategory} onClick={this.subCategoryDelete} variant="danger">- delete</Button></>):
+                            (<Button size="sm" className="blackButton" onClick={this.subCategoryCreate} name={this.state.subCreate} id={this.props.category._id} variant="success">+ create</Button>)}
                         </div>
                     </div>
                     </Card.Body>

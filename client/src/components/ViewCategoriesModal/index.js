@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import {Col, Row, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
 import axios from "axios";
+import CategoryOverlay from "../../components/ViewCategoriesModal";
+
+
+
 
 class CategoryModal extends Component {
     state={
@@ -13,22 +17,26 @@ class CategoryModal extends Component {
         <>
             <Modal show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
                 <Modal.Header closeButton>
+                    <div className="modalHeader">
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Edit Categories
+                        VIEW/EDIT CATEGORIES
                     </Modal.Title>
+                    </div>
                     </Modal.Header>
                     <Modal.Body>
                         <Row>
                             <Col>
                                 <InputGroup className="mb-3" size="sm">
+                                    <div className="input">
                                     <FormControl
-                                        placeholder="New category name"
+                                        placeholder="New Category Name"
                                         aria-label="Recipient's username"
                                         aria-describedby="basic-addon2"
                                         name="cata" onChange={this.props.handleChange}
                                     />
+                                    </div>
                                     <InputGroup.Append>
-                                        <Button variant="outline-secondary" onClick={this.props.submitForm} size="sm">Add New Category</Button>
+                                        <button className="whiteButton" variant="outline-secondary" onClick={this.props.submitForm} size="sm">Add New Category</button>
                                     </InputGroup.Append>
                                 </InputGroup>
                             </Col>

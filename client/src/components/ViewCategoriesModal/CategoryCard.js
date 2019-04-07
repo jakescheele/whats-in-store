@@ -3,6 +3,7 @@ import { Container, Col, Row, Card, Form, Button } from 'react-bootstrap'
 import SubcategoryCardBody from "./SubcategoryCardbody"
 import Axios from "axios";
 
+
 class CategoryCard extends Component {
     state={
         name:"",
@@ -42,7 +43,7 @@ class CategoryCard extends Component {
                             <input name="name" id={this.props.category._id} placeholder={this.props.category.name} onChange={this.handleChange} type="text"></input>
                         </div>
                         <div>
-                            <Button className="mr-2" onClick={this.updateCategory} id={this.props.category._id} size="sm" variant="success">Update</Button><Button onClick={this.deleteCategory} id={this.props.category._id} size="sm" variant="danger">- delete</Button>
+                            <Button className="mr-2 blackButton" onClick={this.updateCategory} id={this.props.category._id} size="sm" variant="success">Update</Button><Button  className="blackButton" onClick={this.deleteCategory} id={this.props.category._id} size="sm" variant="danger">- delete</Button>
                         </div>
                     </div>
                 </Card.Body>

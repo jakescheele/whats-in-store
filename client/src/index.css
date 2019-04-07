@@ -1,9 +1,11 @@
+@import url('https://use.typekit.net/zlx6nkj.css');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: itc-avant-garde-gothic-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,3 +14,85 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto; 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.modalHeader {
+  font-family: itc-avant-garde-gothic-pro, sans-serif;
+  color: black;
+  font-weight: bold; 
+  font-size: 12vh;
+}
+
+
+.blackButton {
+  color: white;
+  font-family: open-sans, sans-serif;
+  background-color: black;
+  border-radius: 5pt;
+  padding: 4pt;
+}
+
+.whiteButton {
+  
+  font-family: open-sans, sans-serif;
+  border-color: 10pt solid black;
+  border-radius: 5pt;
+  padding: 4pt;
+}
+
+.instructions {
+  color: black;
+  font-family: open-sans, sans-serif;
+  font-size: 17pt;
+}
+
+.input {
+  color: black;
+  font-family: open-sans, sans-serif;
+  font-size: 5vh;
+}
+
+.modalImage {
+  max-width: 100%;
+}
+
+
