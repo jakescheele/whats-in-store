@@ -70,7 +70,13 @@ module.exports=function(passport){
     router.get("/test", function(req,res){
       console.log(req.user)
       if(req.user){
-        res.json({shopName:req.user.shopName,email:req.user.email,description:req.user.description});
+        res.json(
+          {
+            shopName:req.user.shopName,
+            email:req.user.email,
+            description:req.user.description,
+            logo:req.user.logo
+          });
       }else{
         res.json("no user")
       }

@@ -8,7 +8,7 @@ router.route("/login")
 router.route("/signup")
     // .post(usersController.signup);
 
-router.route("/update/:id")
+router.route("/update")
     .put(usersController.update)
 
 
