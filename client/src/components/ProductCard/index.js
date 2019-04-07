@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Card, Form } from 'react-bootstrap'
+import {  Col, Card  } from 'react-bootstrap'
 
 class ProductCard extends Component {
     state = {

@@ -234,12 +234,19 @@ class Inventory extends Component {
             console.log("===================================")
             console.log("Hello! I'm here trying to hit the save Product!")
             ProductAPI.saveProduct(this.state)
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
+                .then(res => {
+                    console.log(res)
+                    this.closeModalHandler("productModal")
+                    window.location.reload()
+                })
+                .catch(err => {
+                    console.log(err)
+                    alert("Oops! Something wrong! Try it again!")
+                
+                });
 
             // close the modal after save changes
-            this.closeModalHandler("productModal")
-            window.location.reload()
+           
         }
     }
 

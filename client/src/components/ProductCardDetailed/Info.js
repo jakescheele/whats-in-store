@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { Col, Row, Card } from 'react-bootstrap'
-import { Button, Container, InputGroup, FormControl } from "react-bootstrap";
+import { Col, Row, Container } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
 import AddCategory from '../ProductCardDetailed/AddCategory';
 import '../../fileButton.css';
@@ -22,7 +21,7 @@ class Info extends Component {
       <Container>
         <Row className="p-0 justify-content-center">
           <Col sm="auto" md="auto" lg="auto">
-          {this.props.image.img_url?(<img src={this.props.image.img_url} />):(<img src={process.env.PUBLIC_URL + '/placeholder.png'} />)}
+          {this.props.image.img_url?(<img alt="product" src={this.props.image.img_url} />):(<img alt="product" src={process.env.PUBLIC_URL + '/placeholder.png'} />)}
           </Col>
         </Row>
         <Row>

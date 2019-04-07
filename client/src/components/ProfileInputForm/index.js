@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import '../../fileButton.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import axios from "axios";
-
 import { Button, Container, Form, Col, Row } from "react-bootstrap";
-import { relative } from "path";
 
 class ProfileInputForm extends Component {
 
@@ -14,7 +11,7 @@ class ProfileInputForm extends Component {
                 <Container>
                     <Row className="p-0 justify-content-center">
                         <Col sm="auto" md="auto" lg="auto">
-                        {this.props.logo.logo_url?( <img src={this.props.logo.logo_url}/>):(<img src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
+                        {this.props.logo.logo_url?( <img alt="shopLogo" src={this.props.logo.logo_url}/>):(<img alt="shopLogo" src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
                         </Col>
                     </Row>
                     <Row className="mt-3">
@@ -65,7 +62,7 @@ class ProfileInputForm extends Component {
                                 placeholder="Your Shop Description" />
                             </Form.Group>
                             
-                            <Button variant="primary" type="submit" onSubmit={this.props.formSubmit} onClick={this.props.formSubmit} >
+                            <Button variant="outline-light" type="submit" onSubmit={this.props.formSubmit} onClick={this.props.formSubmit} block>
                             Submit
                             </Button>
 

@@ -69,22 +69,6 @@ class Profile extends Component {
         this.setState({ [name]: value });
     }
 
-    formSubmit = (event) => {
-        event.preventDefault();
-        console.log("passwords match")
-        console.log(this.state)
-        let body = {
-            email: this.state.email,
-            shopName: this.state.shopName,
-            logo: this.state.logo,
-            description: this.state.description,
-        }
-
-        axios.put("/api/users/update", body)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-
-    }
 
     // image upload 
     uploadImage = (event) => {
@@ -111,6 +95,29 @@ class Profile extends Component {
 
                 console.log(this.state.shop)
             })
+    }
+
+    formSubmit = (event) => {
+        event.preventDefault();
+        console.log("passwords match")
+        console.log(this.state)
+        let body = {
+            email: this.state.email,
+            shopName: this.state.shopName,
+            logo: this.state.logo,
+            description: this.state.description,
+        }
+
+        axios.put("/api/users/update", body)
+            .then(res => {
+                console.log(res)
+                alert("Changes Saved!")
+            })
+            .catch(err => {
+                console.log(err)
+                alert("Oops! Something wrong! Try it again!")
+            });
+
     }
 
     render() {
