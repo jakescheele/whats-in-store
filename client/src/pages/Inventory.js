@@ -239,7 +239,7 @@ class Inventory extends Component {
 
             // close the modal after save changes
             this.closeModalHandler("productModal")
-            // window.location.reload()
+            window.location.reload()
         }
     }
 

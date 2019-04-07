@@ -59,7 +59,7 @@ code {
   font-family: itc-avant-garde-gothic-pro, sans-serif;
   color: black;
   font-weight: bold; 
-  font-size: 40pt;
+  font-size: 12vh;
 }
 
 
@@ -84,13 +84,13 @@ code {
   color: black;
   font-family: open-sans, sans-serif;
   font-size: 17pt;
-  margin-bottom: 15pt;
+  margin-bottom: 15vh;
 }
 
 .input {
   color: black;
   font-family: open-sans, sans-serif;
-  font-size: 10pt;
+  font-size: 5vh;
 }
 
 .modalImage {

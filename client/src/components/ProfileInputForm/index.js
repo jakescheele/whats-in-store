@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import '../../fileButton.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
-import { Button, Container, Form, Col } from "react-bootstrap";
-import { relative } from "path";
+import { Button, Container, Form, Col, Modal } from "react-bootstrap";
+import SalesModal from "../components/Dashboard/LineChart/salesModal"
 
 class ProfileInputForm extends Component {
-    
-    
+   
 
     render() {
         return (
@@ -43,12 +41,9 @@ class ProfileInputForm extends Component {
                     </Col>
 
                     <Col md={{ span: 6 }}>
-
                     
-
-
-
                     </Col>
+
                 </Container>
             </>
 

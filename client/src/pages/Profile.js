@@ -3,6 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import {default as ProfileInputForm} from "../components/ProfileInputForm";
 import Nav from "../components/NavBar";
 import axios from "axios";
+import SalesModal from "../components/Dashboard/LineChart/salesModal"
 
 
 class Profile extends Component {
@@ -60,7 +61,10 @@ class Profile extends Component {
     render() {
     return(<>
         <Nav shop={this.state.shop}/>
-        <Jumbotron pageName="PROFILE" instructions="Edit basic information of the shop."/>
+        <Jumbotron 
+        pageName="PROFILE" 
+        instructions="Edit basic information of the shop."
+        />
         <ProfileInputForm shop={this.state.shop}/>
     </>)
 }

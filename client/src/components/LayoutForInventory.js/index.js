@@ -5,11 +5,10 @@ import ProductCard from "../ProductCard"
 import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
-import ProductModal from "../ProductCardDetailed";
 import CategoryModal from "../ViewCategoriesModal"
 import Footer from "../Footer"
 import Axios from "axios";
-import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
+
 
 // Utils
 
