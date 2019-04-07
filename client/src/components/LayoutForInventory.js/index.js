@@ -54,24 +54,6 @@ class Layout extends Component {
             console.log(res)
         })
     }
-    subCatagoryDelete=(event)=>{
-        event.preventDefault();
-        console.log(event.target)
-        Axios.post("/api/catagories/subdelete",{_id:event.target.name})
-        .then(function(res){
-            console.log(res)
-        })
-
-    }
-    subCategoryCreate=(event)=>{
-        event.preventDefault();
-        console.log(event.target)
-        Axios.post("/api/catagories/subcreate",{_id:event.target.name})
-        .then(function(res){
-            console.log(res)
-        })
-    }
-
     closeModalHandler=(modalname)=>{
         this.setState({
             [modalname]: false
@@ -99,7 +81,7 @@ class Layout extends Component {
             <BackToTopBtn/>
         </Container>
         <Footer/>
-        <CategoryModal categoryDelete={this.categoryDelete} state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
+        <CategoryModal updateState={this.props.updateState} categoryDelete={this.categoryDelete} state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
           show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)
     }

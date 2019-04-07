@@ -33,19 +33,11 @@ class CategoryModal extends Component {
                                 </InputGroup>
                             </Col>
                         </Row>
-                        {this.props.categories.map(category => (
-                            <CategoryCard categoryDelete={this.categoryDelete} key={category.name} category={category} />
+                        {this.props.categories.map((category,i) => (
+                            <CategoryCard updateState={this.props.updateState} categoryDelete={this.categoryDelete} key={i} category={category} />
                         ))}
 
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={(e) => this.props.close("categoryModal")}>
-                            Close
-                    </Button>
-                    <Button variant="primary" onClick={(e)=>this.props.close("categoryModal")}>
-                            Save Changes
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </>
         );

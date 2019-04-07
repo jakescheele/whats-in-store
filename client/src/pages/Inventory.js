@@ -63,6 +63,14 @@ class Inventory extends Component {
         })
         
     }
+    updateState=()=>{
+        console.log("updating")
+        axios.get("/api/categories")
+        .then(res=>{
+            console.log(res.data)
+        this.setState({categories:res.data})
+        })
+    }
 
     openModaltHandler = (id, modalname) => {
 
@@ -252,6 +260,7 @@ class Inventory extends Component {
                 <Button variant="outline-dark" size="lg" onClick={(e) => this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
             <Layout
+            updateState={this.updateState}
                 products={this.state.products}
                 categories={this.state.categories}
                 state={this.state.productModal}

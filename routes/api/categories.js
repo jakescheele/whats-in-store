@@ -5,17 +5,16 @@ const categoriesController = require("../../controllers/categoriesController");
 router.route("/")
     .get(categoriesController.findAll)
     .post(categoriesController.create)
-
 // Matches with "/api/category/:id"
-router
-    .route("/:id")
-    .get(categoriesController.findById);
-//     .put(categoriesController.update)
-//     .delete(categoriesController.remove);
+router.route("/:id")
+.get(categoriesController.findById);
+//matches with assgined route
+router.route("/update").post(categoriesController.update)
 router.route("/create").post(categoriesController.create)
 router.route("/delete").post(categoriesController.remove)
 router.route("/createsub").post(categoriesController.createSub)
 router.route("/deletesub").post(categoriesController.deleteSub)
+router.route("/updatesub").post(categoriesController.updateSub)
 
 module.exports = router;
 
