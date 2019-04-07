@@ -25,7 +25,7 @@ class ProductCard extends Component {
                 >
                     {this.props.product.image.img_url ? 
                     (<Card.Img variant="top" src={this.props.product.image.img_url} />) 
-                    : (<Card.Img variant="top" src="" />)}
+                    : (<Card.Img variant="top" src={process.env.PUBLIC_URL + '/placeholder.png'} />)}
                     <Card.Body>
                         <Card.Title
                             className="product-name">{this.props.product.name}</Card.Title>

@@ -22,7 +22,7 @@ class Info extends Component {
       <Container>
         <Row className="p-0 justify-content-center">
           <Col sm="auto" md="auto" lg="auto">
-          <img src={this.props.image.img_url} />
+          {this.props.image.img_url?(<img src={this.props.image.img_url} />):(<img src={process.env.PUBLIC_URL + '/placeholder.png'} />)}
           </Col>
         </Row>
         <Row>
