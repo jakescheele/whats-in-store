@@ -2,21 +2,8 @@ import React, { Component } from "react";
 import {  Col, Card  } from 'react-bootstrap'
 
 class ProductCard extends Component {
-    state = {
-        total: 0
-    }
-    componentDidMount() {
-        let total = 0
-        this.props.product.stock.forEach(element => {
-
-            total += parseFloat(element.stock)
-            this.setState({
-                total: total
-            })
-        })
-    }
+    
     render() {
-        console.log(this.props.product)
         return (<>
             <Col xs={12} sm={12} md={6} lg={4} className="rem-0.0625 pb-2">
                 <Card
@@ -32,7 +19,7 @@ class ProductCard extends Component {
                         <div className="product-description">{this.props.product.description}</div>
                         <hr></hr>
                         <h5>Price: $ {this.props.product.price} </h5>
-                        <h5>Stock: {this.state.total}</h5>
+                        <h5>Stock: {this.props.product.totalStock}</h5>
 
 
                     </Card.Body>

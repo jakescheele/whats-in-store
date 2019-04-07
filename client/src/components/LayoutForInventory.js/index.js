@@ -59,15 +59,15 @@ class Layout extends Component {
     render() {
         return (
         <>
-         
-
-
-
-
         <Container>
             <Row>
                 <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar/></Col>
-                <Col sm={12} md={2} lg={2} className="rem-0.125"><SortingBar/></Col>
+                <Col sm={12} md={2} lg={2} className="rem-0.125">
+                    <SortingBar 
+                    handleSorting={this.props.handleSorting}
+                    sorting={this.props.sorting}
+                    />
+                </Col>
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={3} lg={3} className="rem-0.0625 pb-2">

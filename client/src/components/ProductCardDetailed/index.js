@@ -52,6 +52,7 @@ class ModalComponent extends React.Component {
               <Tab eventKey="Stock" title="Stock">
                 <Stock 
                 stock={this.props.stock} 
+                totalStock={this.props.totalStock}
                 addVariant={this.props.addVariant} 
                 updateVariant={this.props.updateVariant}/>
               </Tab>

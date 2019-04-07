@@ -66,11 +66,7 @@ class Dashboard extends Component {
             // do the math to add up stock
             let stockOfCategory = 0
             for(let i in productArr){
-                let stockOfProduct = 0
-                productArr[i].stock.forEach(element=>{
-                    stockOfProduct += parseFloat(element.stock)  
-                })
-                stockOfCategory += stockOfProduct
+                stockOfCategory += productArr[i].totalStock
             }
             console.log(stockOfCategory)
             let xyObj = {
