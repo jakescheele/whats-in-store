@@ -94,6 +94,14 @@ class Inventory extends Component {
             })
 
     }
+    updateState=()=>{
+        console.log("updating")
+        axios.get("/api/categories")
+        .then(res=>{
+            console.log(res.data)
+        this.setState({categories:res.data})
+        })
+    }
 
     openModaltHandler = (id, modalname) => {
 
@@ -251,7 +259,6 @@ class Inventory extends Component {
     // submit btn
 
     handleSubmit = (event) => {
-
         // validation
         const form = event.currentTarget
         if (form.checkValidity() === false) {
@@ -442,6 +449,7 @@ class Inventory extends Component {
             </Jumbotron>
             <Layout
                 products={this.state.filteredProducts}
+                updateState={this.updateState}
                 categories={this.state.categories}
                 state={this.state.productModal}
                 show={this.openModaltHandler}

@@ -1,8 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Table, Container, Row, Col} from "react-bootstrap";
-import Moment from 'react-moment';
 import 'moment-timezone';
+import Moment from 'react-moment';
 
 
 function PromoTable(props) {

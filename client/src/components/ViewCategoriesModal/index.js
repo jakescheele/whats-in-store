@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import {Col, Row, Modal, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
+import axios from "axios";
+import CategoryOverlay from "../../components/ViewCategoriesModal";
 
 
 
 
 class CategoryModal extends Component {
-
-
+    state={
+        subcategory:""
+    }
+    
     render() {
         return (
         <>
@@ -37,19 +41,11 @@ class CategoryModal extends Component {
                                 </InputGroup>
                             </Col>
                         </Row>
-                        {this.props.categories.map(category => (
-                            <CategoryCard key={category.name} category={category} />
+                        {this.props.categories.map((category,i) => (
+                            <CategoryCard updateState={this.props.updateState} categoryDelete={this.categoryDelete} key={i} category={category} />
                         ))}
 
                     </Modal.Body>
-                    <Modal.Footer>
-                        <button className="whiteButton" variant="secondary" onClick={(e) => this.props.close("categoryModal")}>
-                            Close
-                    </button>
-                    <button className="blackButton" variant="primary" onClick={(e)=>this.props.close("categoryModal")}>
-                            Save Changes
-                    </button>
-                </Modal.Footer>
             </Modal>
         </>
         );
