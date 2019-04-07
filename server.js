@@ -1,3 +1,4 @@
+// Require dependencies
 const express     = require('express');
 const mongoose    = require('mongoose');
 const logger      = require("morgan");
@@ -49,7 +50,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Passport
-
 const passportRoute = require("./routes/auth")(passport);
 require("./passport")(passport);
 app.use('/auth', passportRoute);
