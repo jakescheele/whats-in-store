@@ -1,4 +1,14 @@
 const db = require("../models");
+const cloudinary = require("cloudinary");
+
+cloudinary.config({
+    cloud_name: process.env.REACT_APP_CLOUD_NAME,
+    api_key: process.env.REACT_APP_API_KEY,
+    api_secret: process.env.REACT_APP_API_SECRET
+})
+
+// only update & upload is  used, the rest is currently in auth.js
+// passport is not defined
 
 // only update & upload is  used, the rest is currently in auth.js
 // passport is not defined
