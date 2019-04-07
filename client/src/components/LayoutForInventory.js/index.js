@@ -71,7 +71,12 @@ class Layout extends Component {
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={3} lg={3} className="rem-0.0625 pb-2">
-                    <CategorySideBar categories={this.props.categories} show={this.openModaltHandler}/>
+                    <CategorySideBar 
+                        categories={this.props.categories} 
+                        show={this.openModaltHandler}
+                        handleCheckBox={this.props.handleCheckBox}
+                        filters={this.props.filters}
+                    />
                 </Col>
                 <Col>
                     <Row>

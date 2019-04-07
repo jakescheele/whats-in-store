@@ -22,8 +22,15 @@ class Inventory extends Component {
         productModal: false,
         login: false,
         shop: {},
+
+        //categories on the sidebar
         categories: [],
+
+        // products on the dom
         products:[],
+        filters:{},
+        filteredProducts:[],
+
         // the product state
         productid: "",
         name: "",
@@ -49,17 +56,33 @@ class Inventory extends Component {
             }else{
                 console.log("user logged in")
                 this.setState({login: true,shop: res.data})
+                // get all the categories belonging to the user
                 CategoryAPI.getCategories()
                 .then(res=>{
                     console.log(res.data)
-                    this.setState({categories: res.data})
+                    // set the original state.filters obj
+                    this.setState(prevState=>{
+                        const categories= res.data
+                        let filters={...prevState.filters}
+                        
+                        res.data.forEach(cat=>
+                            filters = {
+                                ...filters,
+                                [cat._id]: true
+                            }
+                        )
+                        return{
+                            categories,
+                            filters
+                        }
+                    })
                 })
+
+                // get all the products belonging to the user
                 ProductAPI.getProducts()
                 .then(res=>{
                     console.log(res.data)
                     this.setState({products: res.data})
-                
-                
                 })
             }
         })
@@ -253,21 +276,90 @@ class Inventory extends Component {
         }
     }
 
+    // filter handler
+    // checkbox handler
+    handleCheckBox=(e)=>{
+        const {name, checked} = e.target
+        console.log(checked)
+        console.log(name)
+    
+        // let checkObj = {
+        //   [value]: checked
+        // }
+    
+        this.setState(prevState=>{
+            //set state with previous state key/value and change the checked key/value
+            const filters = {...prevState.filters, [name]: checked}
+            
+            const filteredCatsIds = Object.keys(filters).filter(
+                // return the id of cats whose value is true
+                filterKey=>filters[filterKey]
+            )
+            
+            const filteredProducts =prevState.products.filter(product=>
+                filteredCatsIds.some(
 
+                    filteredCatsId=>filteredCatsId===product.category
+                )
+            )
+            console.log("=======Here is the filters ========")
+            console.log(filters)
+            console.log("=======Here is the filtered Cats Ids ========")
+            console.log(filteredCatsIds)
+            console.log("=======Here is the filtered product========")
+            console.log(filteredProducts)
+            
+            return{
+                filters,
+                filteredProducts
+            }
+
+        })
+          
+    }
+
+    handleUpdateDom=()=>{
+        
+
+        
+        // backend
+        // db.User.findOne({_id:req.user._id})
+        // .populate("products")
+        // .then(user=>{
+        //   let filteredPrds = []
+        //   for(let i in req.body.filteredCats){
+        //     for(let j in user.products){
+        //       if(req.body.filteredCats[i]===user.products[j].category){
+        //         filteredPrds.push(user.products[j]) 
+        //       }
+        //     }
+        //   }
+        //   res.json(filteredPrds)
+        // })
+        
+    }
+
+    // sorting handler
 
 
     render() {
+        const products = this.state.filteredProducts.length
+        ? this.state.filteredProducts
+        : this.state.products;
         return (<>
             <Nav shop={this.state.shop} />
             <Jumbotron pageName="INVENTORY" instructions="Click to view and edit products and categories.">
                 <Button variant="outline-dark" size="lg" onClick={(e) => this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
             <Layout
-                products={this.state.products}
+                products={products}
                 categories={this.state.categories}
                 state={this.state.productModal}
                 show={this.openModaltHandler}
-                close={this.closeModalHandler} />
+                close={this.closeModalHandler} 
+                handleCheckBox={this.handleCheckBox}
+                filters={this.state.filters}
+            />
 
             <ProductModal
                 // modal methods
