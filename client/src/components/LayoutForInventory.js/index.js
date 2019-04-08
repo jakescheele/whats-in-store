@@ -5,67 +5,13 @@ import ProductCard from "../ProductCard"
 import SearchBar from "../SearchBar"
 import SortingBar from "../SortingBar"
 import BackToTopBtn from "../BackToTopBtn"
-import CategoryModal from "../ViewCategoriesModal"
-import Axios from "axios";
+import CategoriesModal from "../CategoriesModal"
 
 
 // Utils
 
 class Layout extends Component {
-    state={
-        // categoryModal: false,
-        // product: {},
-    }
-
-<<<<<<< HEAD
-    // submitForm=(event)=>{
-    //     event.preventDefault();
-    //     Axios.post("/api/categories",{name:this.state.cata})
-    //     .then(res=>{
-    //         this.setState({categories:[...this.props.categories,res.data]})
-    //     })
-    // }
-=======
-    submitForm=(event)=>{
-        event.preventDefault();
-        Axios.post("/api/categories",{name:this.state.cata})
-        .then(res=>{
-        this.setState({categories:[this.state.categories,res.data]})
-        })
-    }
->>>>>>> master
     
-    // handleChange = (event) => {
-    //     event.preventDefault();
-    //     const {name,value}= event.target
-    //     this.setState({[name]:value });
-    //     console.log(this.state.cata)
-    // }
-    // // click handler for product card to trigger product detail modal
-    // openModaltHandler=(id, modalname)=>{
-        
-    //      // make ajax request to the backend and get the viewed product
-    //      console.log(id)
-
-    //      // set show to true
-    //     this.setState({
-    //         [modalname]: true
-    //     })
-       
-    // }
-    // categoryDelete=(event)=>{
-    //     event.preventDefault();
-    //     console.log(event.target)
-    //     Axios.post("/api/catagories/delete",{_id:event.target.name})
-    //     .then(function(res){
-    //         console.log(res)
-    //     })
-    // }
-    // closeModalHandler=(modalname)=>{
-    //     this.setState({
-    //         [modalname]: false
-    //     })
-    // }
 
     render() {
         return (
@@ -98,7 +44,7 @@ class Layout extends Component {
             </Row>
             <BackToTopBtn/>
         </Container>
-        <CategoryModal state={this.state.categoryModal} submitForm={this.submitForm} handleChange={this.handleChange}
+        <CategoriesModal state={this.props.categoriesModal} submitForm={this.submitForm} handleChange={this.handleChange}
           show={this.openModaltHandler} close={this.closeModalHandler} categories={this.props.categories}/>
         </>)
     }
