@@ -103,10 +103,10 @@ class Dashboard extends Component {
             <Jumbotron pageName="DASHBOARD" instructions="Keep tabs on your stocks, stats and stuff."/>
             <Container className="mt-5">
             <Row className="justify-content-around align-items-start text-center">
-                <Col sm={12} md={4} lg={4} className="text-center">
+                <Col sm={12} md={10} lg={4} className="text-center">
                     <BarChart data={this.state.categoryStockData}/>
                     <Button 
-                        className="mt-5"
+                        className="my-5"
                         name="/inventory" 
                         size="lg" 
                         variant="outline-light" 
@@ -117,11 +117,11 @@ class Dashboard extends Component {
                     </Button>
                 </Col>
 
-                <Col sm={12} md={4} lg={4} className="text-center">
+                <Col sm={12} md={10} lg={4} className="text-center">
                     <LineSeries/>
                     
                     <Button  
-                        className="mt-5"
+                        className="my-5"
                         name="#" 
                         size="lg" 
                         variant="outline-light"
