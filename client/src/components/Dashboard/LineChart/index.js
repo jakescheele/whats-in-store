@@ -16,8 +16,8 @@ class StockChart extends Component {
       return (
         <div className="App">
           <XYPlot 
-          height={400} 
-          width={400} 
+          // height={350} 
+          // width={350} 
           color="white"
           xType="ordinal"
           >

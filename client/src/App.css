@@ -16,7 +16,6 @@ body {
     background: black;
 }
 
-
 .container{
     /* margin: 0; */
     max-width: 90rem;
@@ -338,13 +337,14 @@ a .nav-link {
 .fadein{
     justify-content: center;
     display: flex;
+    vertical-align: top;
     height: 100%
 }
 .fadein img {
     object-fit: scale-down!important;
     position:absolute;
-    /* left: 5vw;
-    top: 2vw; */
+    /* left: 5vw; */
+    /* top: 2vw; */
     animation-name: fade;
     animation-iteration-count: infinite;
     animation-duration: 1.5s;
@@ -355,7 +355,7 @@ a .nav-link {
     0% {opacity: 0;}
     20% {opacity: 1;}
     33% {opacity: 1;}
-    53% {opacity: 0;}
+    50% {opacity: 0;}
     100% {opacity: 0;}
   }
   
