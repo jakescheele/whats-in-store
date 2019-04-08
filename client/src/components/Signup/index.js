@@ -74,7 +74,7 @@ class SignupModal extends Component {
 
         return (
             <>
-                <Modal show={this.props.modalState} onHide={(e) => this.props.close("SignupModal")}>
+                <Modal centered={true} show={this.props.modalState} onHide={(e) => this.props.close("SignupModal")}>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
                             Sign Up

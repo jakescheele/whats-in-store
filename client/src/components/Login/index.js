@@ -34,7 +34,7 @@ class LoginModal extends Component{
     render(){
         return(
         <>
-        <Modal show={this.props.modalState} onHide={(e)=>this.props.close("LoginModal")}>
+        <Modal centered={true} show={this.props.modalState} onHide={(e)=>this.props.close("LoginModal")}>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Log In

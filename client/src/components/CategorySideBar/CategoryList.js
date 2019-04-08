@@ -20,6 +20,14 @@ function CategoryList(props){
                         :(props.category.subcategories.map((subcategory,i)=>(<Form.Check key={i} type="checkbox" value= {subcategory} label={subcategory} checked={true} />)))}
                 </Form.Group>
             </div> */}
+            {/* plain text instead of checkbox */}
+            <div className="pl-4">
+                <Form.Group controlId="formBasicChecbox">
+                    {props.category.subcategories.length===0?
+                        (<></>)
+                        :(props.category.subcategories.map((subcategory,i)=>(<p key={i} >{subcategory}</p>)))}
+                </Form.Group>
+            </div>
     </Form>)
 }
 

@@ -8,7 +8,8 @@ import { Col, Row, Container, Button } from 'react-bootstrap'
 import ProductAPI from "../utils/API/products"
 import Jumbotron from "../components/Jumbotron"
 import SalesModal from "../components/Dashboard/LineChart/salesModal"
-import '../index.css';
+import Footer from "../components/Footer"
+
 
 // Utils
 import CategoryAPI from "../utils/API/categories"
@@ -143,6 +144,7 @@ class Dashboard extends Component {
             close= {this.closeModal}
             
             />
+             <Footer />
         </>)
     }
 }
