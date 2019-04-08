@@ -20,12 +20,13 @@ export default {
         let product = {
             name: productData.name,
             category: productData.category,
-            // subcategory: productData.subcategory,
+            subcategory: productData.subcategory,
             image: productData.image,
             price: productData.price,
             description: productData.description,
             stock: productData.stock,
-            flashSales: productData.flashSales
+            flashSales: productData.flashSales, 
+            totalStock: totalStock(productData)
         }
         // if product already exists, update
         if (productData.productid){
@@ -44,3 +45,17 @@ export default {
     },
     
 };
+
+
+function totalStock(product) {
+    var total = 0;
+
+    if (product.hasOwnProperty("stock")) {
+        for (let i in product.stock) {
+            total += parseInt(product.stock[i].stock)
+        }
+    }
+
+
+    return total;
+}

@@ -23,7 +23,7 @@ function PromoTable(props) {
   </thead>
   <tbody>
     {props.saleProducts.map(saleProduct=>(
-      <tr>
+      <tr key={saleProduct.name}>
       <td>{saleProduct.name}</td>
       <td>{saleProduct.flashSales.price}</td>
       <td>

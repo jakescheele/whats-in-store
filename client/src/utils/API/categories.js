@@ -18,5 +18,8 @@ export default {
     saveCategory: function (catData) {
         return axios.post("/api/categories", catData);
     },
+    saveCat: function(cat){
+        return axios.put("api/categories", cat)
+    }
     
 };

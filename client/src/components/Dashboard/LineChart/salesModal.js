@@ -1,29 +1,12 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap'
+import {Col, Row, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
 import '../../../index.css';
 //import Happy from "../components/Dashboard/img/Happy.png"
 
 
 
 class SalesModal extends React.Component {
-
-    state = {
-        SalesModal: false,
-    }
-
-    showModal= (modalName) => {
-        this.setState({
-            [modalName]: true
-        })
-    }
-
-    closeModal = (modalName) => {
-        this.setState({
-            [modalName]: false
-        })
-    }
-
-
+    
     render() {
       return (
         <>
@@ -32,11 +15,11 @@ class SalesModal extends React.Component {
           show={this.props.state} 
           onHide={(e) => this.props.close("SalesModal")}
         >
-            <Modal.Header closeButton>
-            <div class="modalHeader">WOAH, HEY THERE</div>
+            <Modal.Header className="modalHeader" closeButton>
+                <Modal.Title>WOAH, HEY THERE</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <img alt="premium" style={{"width":"100%","object-fit": "contain"}}src={require('../img/happy.png')} />
+            <img style={{"width":"100%","objectFit": "contain"}}src={require('../img/happy.png')} />
             </Modal.Body>
           
             <Modal.Footer>

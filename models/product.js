@@ -13,6 +13,7 @@ const ProductSchema = new Schema({
   price: { type: String, required: true },
   description: { type: String },
   stock: { type: Array },
+  totalStock:{ type: Number},
   flashSales: {type: Object}
 
 });

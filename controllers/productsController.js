@@ -39,11 +39,12 @@ module.exports = {
       const product = {
         name: req.body.name,
         category: req.body.category,
-        // subcategory: req.body.subcategory,
+        subcategory: req.body.subcategory,
         price: req.body.price,
         description: req.body.description,
         image: req.body.image,
         stock: req.body.stock,
+        totalStock: req.body.totalStock,
         flashSales: req.body.flashSales
 
       };

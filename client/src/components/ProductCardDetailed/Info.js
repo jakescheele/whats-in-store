@@ -3,18 +3,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Col, Row, Container } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
 import AddCategory from '../ProductCardDetailed/AddCategory';
+import AddSubcategory from "../ProductCardDetailed/AddSubcategory"
 import '../../fileButton.css';
 // dummy categories
 import categories from "../../DummyCategories.json"
 
 class Info extends Component {
-
-
-  componentDidMount() {
-    console.log("============Here is in info for props.category========")
-    console.log(this.props.selectedCategory)
-  }
-
+  
 
   render() {
     return (
@@ -32,10 +27,13 @@ class Info extends Component {
             className="my-3"
             style={{ "width": "100%" }}
           >
-            <Form.Group controlId="productImage">
+            <Form.Group className="text-center" controlId="productImage">
+            <label className="border">
               <Form.Label variant="outline-dark" block>
                 Upload Image 
               </Form.Label>
+              </label>
+              <label className="fileContainer">
               <Form.Control 
                 style={{"color":"rgb(0,0,0,0)"}}
                 onChange={this.props.uploadImage}
@@ -44,6 +42,8 @@ class Info extends Component {
                 name="image" 
                 display="none" 
                 placeholder="Upload Product Image" />
+              </label>
+
             </Form.Group>
             <Form.Group controlId="name">
               <Form.Label className="pl-1">Product Name</Form.Label>
@@ -81,9 +81,18 @@ class Info extends Component {
                 onChange={this.props.inputChangeHandler} />
             </Form.Group>
             <AddCategory
-              categories={categories}
+              categories={this.props.categories}
               dropDownSelectHandler={this.props.dropDownSelectHandler}
-              selectedCategory={this.props.selectedCategory} />
+              selectedCategory={this.props.selectedCategory} 
+            />
+            <AddSubcategory
+              categories={this.props.categories}
+              dropDownSelectHandler={this.props.dropDownSelectHandler}
+              selectedCategory={this.props.selectedCategory} 
+              selectedSubcategory={this.props.selectedSubcategory} 
+
+            />
+            
           </Form>
         </Row>
       </Container>

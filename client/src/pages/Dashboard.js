@@ -8,7 +8,8 @@ import { Col, Row, Container, Button } from 'react-bootstrap'
 import ProductAPI from "../utils/API/products"
 import Jumbotron from "../components/Jumbotron"
 import SalesModal from "../components/Dashboard/LineChart/salesModal"
-import '../index.css';
+import Footer from "../components/Footer"
+
 
 // Utils
 import CategoryAPI from "../utils/API/categories"
@@ -66,11 +67,7 @@ class Dashboard extends Component {
             // do the math to add up stock
             let stockOfCategory = 0
             for(let i in productArr){
-                let stockOfProduct = 0
-                productArr[i].stock.forEach(element=>{
-                    stockOfProduct += parseFloat(element.stock)  
-                })
-                stockOfCategory += stockOfProduct
+                stockOfCategory += productArr[i].totalStock
             }
             console.log(stockOfCategory)
             let xyObj = {
@@ -103,9 +100,7 @@ class Dashboard extends Component {
     render() {
         return (<>
             <Nav shop={this.state.shop} />
-            <div class="modalHeader">
             <Jumbotron pageName="DASHBOARD" instructions="Keep tabs on your stocks, stats and stuff."/>
-            </div>
             <Container className="mt-5">
             <Row className="justify-content-around align-items-start text-center">
                 <Col sm={12} md={4} lg={4} className="text-center">
@@ -147,6 +142,7 @@ class Dashboard extends Component {
             close= {this.closeModal}
             
             />
+             <Footer />
         </>)
     }
 }

@@ -38,21 +38,20 @@ class LandingPage extends Component {
                 
            
                     <Container className="text-light">
-                        <Row>
-                        <Col md={6}>
-                                {/* <img className="landingPageLogo" src={process.env.PUBLIC_URL + '/logo.png'} /> */}
-                                <div className="modalHeaderWhite">Manage Your Inventory Online</div>
+                        <Row className="d-flex justify-content-around mt-5" >
+                        <Col sm={12} md={5} lg={5}  className="align-self-center">
+                                <div className="landingTile">Manage Your Inventory Online</div>
                                 <br></br>
-                                <div className="instructionsWhite">Whether your business is big or small, or you'd just like to keep your stuff straight.</div>
+                                <div className="landingSubtitle">Whether your business is big or small, or you'd just like to keep your stuff straight.</div>
                                 <br></br>
                                 <Button size="lg" variant="outline-light" onClick={(e)=>this.showModal("SignupModal")}>Get Started</Button>
                                 <LoginModal modalState={this.state.LoginModal} show={this.showModal} close={this.closeModal} loginStateHandler={this.props.login}/>
                                 <SignupModal modalState={this.state.SignupModal} show={this.showModal} close={this.closeModal} loginStateHandler={this.props.login}/>
-                               
-                            
                             </Col>
-                        <Col md={6}>
-                         <StoreAnimation />
+                            
+                        <Col sm={12} md={5} lg={5} className="align-self-center">
+                         <StoreAnimation style={{ "margin":"0px 0.5rem 0px 0.5rem","padding":"0px"}}/>
+
                         </Col>
                         </Row>
                     </Container>

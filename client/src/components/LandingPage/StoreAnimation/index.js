@@ -5,16 +5,14 @@ class StoreAnimation extends Component {
 
     render() {
         return (
-            <>
-            <div class="fadein">
-            <img class="f3" src={require('../../img/sequence3.png')} />
-            <img class="f2" src={require('../../img/sequence2.png')} />
-            <img class="f1" src={require('../../img/sequence1.png')} />
+            // <div className="landingImage">
+            <div className="fadein clearfix">
+            <img className="f3" src={process.env.PUBLIC_URL + '/img/sequence3.png'} />
+            <img className="f2" src={process.env.PUBLIC_URL + '/img/sequence2.png'} />
+            <img className="f1" src={process.env.PUBLIC_URL + '/img/sequence1.png'} />
+            <img className="f4" src={process.env.PUBLIC_URL + '/img/sequence4.png'} />
             </div>
-            
-            <img class="f4" src={require('../../img/sequence4.png')} />
-
-    </>
+            // </div>
         )
     }
 }
