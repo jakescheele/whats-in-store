@@ -18,7 +18,7 @@ class Layout extends Component {
         <>
         <Container>
             <Row>
-                <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar/></Col>
+                <Col sm={12} md={10} lg={10} className="rem-0.125"><SearchBar searched={this.props.searched}></SearchBar></Col>
                 <Col sm={12} md={2} lg={2} className="rem-0.125">
                     <SortingBar 
                     handleSorting={this.props.handleSorting}
