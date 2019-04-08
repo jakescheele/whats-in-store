@@ -17,8 +17,8 @@ router.route("/test")
 router.route("/update")
     .put(usersController.update);
 
-router.route("/uploadImage")
-    .post(usersController.uploadImage);
+router.route("/update")
+    .put(usersController.update)
 
 
 module.exports = router;

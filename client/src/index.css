@@ -59,8 +59,16 @@ code {
   font-family: itc-avant-garde-gothic-pro, sans-serif;
   color: black;
   font-weight: bold; 
-  font-size: 12vh;
+  font-size: 5vw;
 }
+
+.modalHeaderWhite {
+  font-family: itc-avant-garde-gothic-pro, sans-serif;
+  color: white;
+  font-weight: bold; 
+  font-size: 5vw;
+}
+
 
 
 .blackButton {
@@ -83,18 +91,116 @@ code {
 .instructions {
   color: black;
   font-family: open-sans, sans-serif;
-  font-size: 17pt;
-  margin-bottom: 15vh;
+  font-size: 1.5vw;
+}
+
+.instructionsWhite {
+  color: white;
+  font-family: open-sans, sans-serif;
+  font-size: 2.1vw;
 }
 
 .input {
   color: black;
   font-family: open-sans, sans-serif;
-  font-size: 5vh;
+  font-size: 1.5vw;
 }
 
 .modalImage {
   max-width: 100%;
 }
+
+
+@media screen and (max-width: 600px) {
+  .modalHeader {
+    
+    font-size: 10vw;
+  }
+  .instructions {
+    font-size: 3vw;
+  }
+  
+  .input {
+    font-size: 3vw;
+  }
+}
+
+
+/*---------Landing page shop animation---------*/
+
+.fadein {
+  top:8vw;
+  margin:auto;
+}
+.fadein img {
+  position:absolute;
+  left: 5vw;
+  top: 2vw;
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  0% {opacity: 0;}
+  20% {opacity: 1;}
+  33% {opacity: 1;}
+  53% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+.f2 {
+  animation-delay: 1s;
+}
+
+.f3 {
+  animation-delay: .5s;
+}
+
+.f4 {
+  margin:auto;
+  position:absolute;
+  left: 5vw;
+  top: 2vw;
+}
+
+.flash {
+    position: absolute;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+}
+
+.l {
+    position: absolute;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: .5s;
+}
+
+.rectangle {
+    height: 5vw;
+			width: 15vw;
+}
+	
+@media screen and (max-width: 100px) {
+.landingPageLogo {
+  left: 5vw;
+  top:15vw;
+}
+}
+
+/*div class="sequence">
+        <img class="flash" src={require('../img/flash1.png')} />
+        <img class="flash" src={require('../img/flash2.png')} />
+        <img class="l" src={require('../img/l1.png')} />
+        <img class="l" src={require('../img/l2.png')} />
+        <img class="lights" src={require('../img/lights1.png')} />
+        <img class="lights" src={require('../img/lights2.png')} />
+        <img class="rectangle" src={require('../img/rectangle.png')} />
+    </div>*/
+
+
+
 
 

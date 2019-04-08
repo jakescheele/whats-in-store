@@ -5,7 +5,6 @@ import axios from "axios";
 import BarChart from "../components/Dashboard/BarChart"
 import LineSeries from "../components/Dashboard/LineChart";
 import { Col, Row, Container, Button } from 'react-bootstrap'
-import { Link } from "react-router-dom";
 import ProductAPI from "../utils/API/products"
 import Jumbotron from "../components/Jumbotron"
 import SalesModal from "../components/Dashboard/LineChart/salesModal"
@@ -50,16 +49,6 @@ class Dashboard extends Component {
                     this.getProductByCategory(res.data[i].name, res.data[i]._id)
                 }
         })
-        // [
-        //     {
-        //         name: cats's name
-        //         _id: cat's id
-        //     }
-        // ]
-        
-        //forEach: 
-        //request to get info of the user with products belonging to specific category
-        
 
     }
 

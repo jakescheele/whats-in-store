@@ -10,7 +10,7 @@ import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
 const emptyCategory = { name: "", subcategories: [], _id: ""}
 const emptyFlashSale = {checked: false, startDate: new Date(), endDate: new Date(), price: "0"}
-const emptyImage = {img_url: "", img_id:""}
+const emptyImage = {img_url:"", img_id:""}
 
 
 
@@ -62,6 +62,14 @@ class Inventory extends Component {
             }
         })
         
+    }
+    updateState=()=>{
+        console.log("updating")
+        axios.get("/api/categories")
+        .then(res=>{
+            console.log(res.data)
+        this.setState({categories:res.data})
+        })
     }
 
     openModaltHandler = (id, modalname) => {
@@ -218,7 +226,6 @@ class Inventory extends Component {
     // submit btn
 
     handleSubmit = (event) => {
-
         // validation
         const form = event.currentTarget
         if (form.checkValidity() === false) {
@@ -239,7 +246,7 @@ class Inventory extends Component {
 
             // close the modal after save changes
             this.closeModalHandler("productModal")
-            window.location.reload()
+            // window.location.reload()
         }
     }
 
@@ -253,6 +260,7 @@ class Inventory extends Component {
                 <Button variant="outline-dark" size="lg" onClick={(e) => this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
             <Layout
+                updateState={this.updateState}
                 products={this.state.products}
                 categories={this.state.categories}
                 state={this.state.productModal}

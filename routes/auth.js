@@ -48,6 +48,7 @@ module.exports = function (passport) {
     })(req, res, next);
   });
 
+    
   router.get("/logout", function (req, res) {
     console.log("logout start")
     console.log(req.user)
@@ -56,11 +57,17 @@ module.exports = function (passport) {
     res.json({ success: (req.user ? "No" : "Yes") })
   })
 
-  router.get("/test", function (req, res) {
+  router.get("/test", function(req,res){
     console.log(req.user)
-    if (req.user) {
-      res.json({ shopName: req.user.shopName, email: req.user.email, description: req.user.description });
-    } else {
+    if(req.user){
+      res.json(
+        {
+          shopName:req.user.shopName,
+          email:req.user.email,
+          description:req.user.description,
+          logo:req.user.logo
+        });
+    }else{
       res.json("no user")
     }
   })

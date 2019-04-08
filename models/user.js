@@ -7,8 +7,7 @@ let userSchema = new Schema({
   password: { type: String, required: true },
   description: {type: String, required: true },
   shopName: {type: String},
-  shopLogo: {type: String},
-  logo_id: {type: String,},
+  logo: {type: Object},
   products: [{
     type: Schema.Types.ObjectId,
     ref: "Product"
