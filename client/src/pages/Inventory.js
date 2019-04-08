@@ -26,16 +26,13 @@ class Inventory extends Component {
         // Modal status
         productModal: false,
         categoriesModal: false,
-
         //categories on the sidebar
         categories: [],
-
         // products on the dom
         products: [],
         filters: {},
         filteredProducts: [],
         sorting:"default",
-
         // the product state
         productid: "",
         name: "",
@@ -47,7 +44,6 @@ class Inventory extends Component {
         totalStock: 0,
         image: { ...emptyImage },
         flashSales: { ...emptyFlashSale },
-
         // validator for submit
         validated: false,
     }
@@ -379,7 +375,20 @@ class Inventory extends Component {
             this.handleSortedDom()
         })
     }
-
+    searched=(event)=>{
+        event.preventDefault();
+        console.log(event.target)
+        let products = [...this.state.products]
+        let queired=products.filter(product => {
+            let name= new RegExp(event.target.name,"gi")
+            if(name.test(product.description)||name.test(product.name)){
+                console.log("accepted",product)
+                return product
+            }
+        })
+        console.log(queired)
+        this.setState({filteredProducts:queired})
+    }
     handleSortedDom = ()=>{
 
         let products = [...this.state.filteredProducts]
@@ -438,7 +447,6 @@ class Inventory extends Component {
                     filteredProducts: products
                 })
                 break;
-
             default:
                 console.log("ranging the dom by default")
                 this.handleCheckBox()
@@ -556,6 +564,7 @@ class Inventory extends Component {
                 <Button variant="outline-dark" size="lg" onClick={(e) => this.openModaltHandler(null, "productModal")}><i className="far fa-plus-square mr-2"></i> Add New Product</Button>
             </Jumbotron>
             <Layout
+                searched={this.searched}
                 products={this.state.filteredProducts}
                 // updateState={this.updateState}
                 categories={this.state.categories}

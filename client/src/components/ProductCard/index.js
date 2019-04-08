@@ -7,7 +7,7 @@ class ProductCard extends Component {
         return (<>
             <Col xs={12} sm={12} md={6} lg={4} className="rem-0.0625 pb-2">
                 <Card style={{ width: '100%' }} onClick={(e) => this.props.show(this.props.product._id, "productModal")}>
-                    {this.props.product.image.img_url ? 
+                    {this.props.product.hasOwnProperty('image') ? 
                     (<Card.Img variant="top" src={this.props.product.image.img_url} />) 
                     : (<Card.Img variant="top" src={process.env.PUBLIC_URL + '/placeholder.png'} />)}
                     <Card.Body>
