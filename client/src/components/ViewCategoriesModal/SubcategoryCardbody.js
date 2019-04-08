@@ -49,7 +49,7 @@ class SubcategoryCardBody extends Component {
                     <Card.Body className="p-0 my-1">
                     <div className="p-0 m-0 ml-5 d-flex">
                         <div className="mr-auto">
-                            {this.props.subcategory?(<input placeholder={this.props.subcategory} name="subUpdate" onChange={this.handleChange} type="text" id={this.props.category._id}  ></input>):(<input name="subCreate" id="newsub" value={this.state.subCreate} placeHolder="create new subcategory" onChange={this.handleChange} type="text"></input>)}
+                            {this.props.subcategory?(<input value={this.props.subcategory} name="subUpdate" onChange={this.handleChange} type="text" id={this.props.category._id}  ></input>):(<input name="subCreate" id="newsub" value={this.state.subCreate} placeHolder="New Subcategory" onChange={this.handleChange} type="text"></input>)}
                         </div>
                         <div>
                             {this.props.subcategory?(<><Button size="sm" id={this.props.category._id} name={this.props.subcategory} onClick={this.subCategoryUpdate} variant="success">update</Button><Button size="sm" className="blackButton" id={this.props.category._id} name={this.props.subcategory} onClick={this.subCategoryDelete} variant="danger">- delete</Button></>):

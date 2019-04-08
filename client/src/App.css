@@ -28,13 +28,14 @@ font-style: normal;
 }
 
 nav #brand {
-float: left;
-display: block;
-margin-left: 1.25rem;
-font-size: 3.125rem;
-line-height: 4.375rem;
-font-weight: bold;
+    float: left;
+    display: block;
+    font-size: 3.125rem;
+    line-height: 3.375rem;
+    font-weight: bold;
 }
+
+
 
 nav #brand a {
 color: #fff;
