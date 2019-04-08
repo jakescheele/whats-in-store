@@ -37,7 +37,7 @@ class Nav extends Component {
         return this.state.collapse?(
         <>
             <nav>
-                <BrandLogo shopName={this.props.shop.shopName}/>
+                <BrandLogo shop={this.props.shop}/>
                 <div id="toggle" onClick={this.hamburgerHandler}>
                     <div className="span" id="one"></div>
                     <div className="span" id="two"></div>
@@ -47,7 +47,7 @@ class Nav extends Component {
         </>):
         (<>
             <nav>
-                <BrandLogo/>
+                <BrandLogo shop={this.props.shop}/>
                 <div id="toggle" className="on" onClick={this.hamburgerHandler}>
                     <div className="span" id="one"></div>
                     <div className="span" id="two"></div>
