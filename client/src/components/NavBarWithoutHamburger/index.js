@@ -19,7 +19,7 @@ class Nav extends Component {
     render(){
         return (<>
             <nav>
-                <BrandLogo/>
+                <span><BrandLogo/></span>
                 <div>{this.props.children}</div>
             </nav>
         </>)
