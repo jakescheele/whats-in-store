@@ -1,25 +1,29 @@
+@import url('https://use.typekit.net/zlx6nkj.css');
+
 .test {
   color: white;
   margin-bottom: 3.125rem;
 }
 
 body {
-background: black;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: open-sans, sans-serif;
+    background: black;
 }
 
-
-/* Nav */
-nav {
-height: 4.375rem;
-z-index: 3;
-padding-left: 0.5em;
-padding-right: 1em;
-}
 
 .container{
     /* margin: 0; */
     max-width: 90rem;
 }
+
+/* ----------------style for shopname and hamburger ---------------- */
+
 
 .font {
 font-family: itc-avant-garde-gothic-pro, sans-serif;
@@ -27,14 +31,35 @@ font-weight: 700;
 font-style: normal;
 }
 
+/* ----------------style for input ---------------- */
+
+
+input {
+    color: black;
+    font-family: open-sans, sans-serif;
+    font-size: 1.5vw;
+  }
+
+  /* ----------------style for navbar ---------------- */
+
+/* Nav */
+nav {
+    height: 4.375rem;
+    z-index: 3;
+    padding-left: 0.5em;
+    padding-right: 1em;
+    }
+
+    
 nav #brand {
-float: left;
-display: block;
-margin-left: 1.25rem;
-font-size: 3.125rem;
-line-height: 4.375rem;
-font-weight: bold;
+    float: left;
+    display: block;
+    font-size: 3.125rem;
+    line-height: 3.375rem;
+    font-weight: bold;
 }
+
+
 
 nav #brand a {
 color: #fff;
@@ -151,11 +176,6 @@ transition: all 0.3s ease-out;
 #hamburger #menu li a {
 color: #212121;
 }
-/* 
-#hamburger.active {
-visibility: visible;
-opacity: 0.99;
-} */
 
 
 #toggle {
@@ -171,8 +191,63 @@ nav #menu {
 
 
 
+/* ----------------style of modal---------------- */
+
+.modalHeader {
+    font-family: itc-avant-garde-gothic-pro, sans-serif;
+    color: black;
+    /* font-weight: bold;  */
+    /* font-size: 5vw; */
+  }
+  
+.modalHeaderWhite {
+    font-family: itc-avant-garde-gothic-pro, sans-serif;
+    color: white;
+    /* font-weight: bold;  */
+    /* font-size: 5vw; */
+  }
+
+  /* ----------------style for jumbotron ----------------*/
+  .jumbotronTitle {
+    font-family: itc-avant-garde-gothic-pro, sans-serif;
+    color: black;
+    font-weight: bold; 
+    font-size: 5vw;
+  }
+
+  .instructionsWhite {
+    color: white;
+    font-family: open-sans, sans-serif;
+    font-size: 2.1vw;
+  }
 
 
+  @media screen and (max-width: 600px) {
+    .jumbotronTitle {
+      
+      font-size: 10vw;
+    }
+    .instructions {
+      font-size: 3vw;
+    }
+    
+    .input {
+      font-size: 3vw;
+    }
+  }
+  
+
+
+
+/* ----------------style for button ---------------- */
+  
+  .blackButton {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 4pt;
+    margin-right: 4pt;
+  }
 
 
 .bloc_left_price {
@@ -181,6 +256,30 @@ nav #menu {
     font-weight: bold;
     font-size: 150%;
 }
+
+
+/* ----------------Product Cards---------------- */
+
+img{
+    width: 25vw;
+    height: 20vw;
+    object-fit: cover
+  }
+  
+  .product-description{
+    width: 100%;
+    height: 6.25rem;
+    overflow: scroll;
+  }
+  
+  .product-name{
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+  
+
 .category_block li:hover {
     background-color: gray;
 }
@@ -189,37 +288,6 @@ nav #menu {
 }
 .category_block li a {
     color: #343a40;
-}
-.add_to_cart_block .price {
-    color: black;
-    text-align: center;
-    font-weight: bold;
-    font-size: 200%;
-    margin-bottom: 0;
-}
-.add_to_cart_block .price_discounted {
-    color: #343a40;
-    text-align: center;
-    text-decoration: line-through;
-    font-size: 140%;
-}
-.product_rassurance {
-    padding: 0.625rem;
-    margin-top: 0.9375rem;
-    background: #ffffff;
-    border: 0.0625rem solid #6c757d;
-    color: #6c757d;
-}
-.product_rassurance .list-inline {
-    margin-bottom: 0;
-    text-transform: uppercase;
-    text-align: center;
-}
-.product_rassurance .list-inline li:hover {
-    color: #343a40;
-}
-.reviews_product .fa-star {
-    color: gold;
 }
 .pagination {
     margin-top: 1.25rem;
@@ -238,25 +306,6 @@ footer a {
     color: black;
 }
 
-/* Product Cards */
-img{
-  width: 25vw;
-  height: 20vw;
-  object-fit: cover
-}
-
-.product-description{
-  width: 100%;
-  height: 6.25rem;
-  overflow: scroll;
-}
-
-.product-name{
-  white-space: nowrap; 
-  width: 100%; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-}
 
 
 .vertical-center {
@@ -266,7 +315,7 @@ img{
   }
 
 
-/* reset tab nav */
+/* --------style for tabs : reset tab nav-------- */
 
 a .nav-link {
     padding: 0.5rem 1rem 0.5rem 1rem!important;
@@ -277,3 +326,85 @@ a .nav-link {
     height: 3rem!important;
     margin-bottom: 2rem
 }
+
+
+
+/*---------Landing page shop animation---------*/
+.landingImage{
+    padding: 0px, 0px, 0px, 0px;
+    margin: 0px, 0px, 0px, 0px;
+}
+
+.fadein{
+    justify-content: center;
+    display: flex;
+    height: 100%
+}
+.fadein img {
+    object-fit: scale-down!important;
+    position:absolute;
+    /* left: 5vw;
+    top: 2vw; */
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+   
+  }
+  
+  @keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+  }
+  
+  .f2 {
+    animation-delay: 1s;
+  }
+  
+  .f3 {
+    animation-delay: .5s;
+  }
+  
+  .f4 {
+    object-fit: scale-down!important;
+  
+    margin:auto;
+  }
+  
+  .flash {
+      animation-name: fade;
+      animation-iteration-count: infinite;
+      animation-duration: 1.5s;
+  }
+  
+  .l {
+      animation-name: fade;
+      animation-iteration-count: infinite;
+      animation-duration: .5s;
+  }
+  
+  .rectangle {
+      height: 5vw;
+      width: 15vw;
+  }
+  
+
+  /* style for landing page */
+
+  .landingTile{
+    font-size: 4vw;
+    color: white;
+    font-family: itc-avant-garde-gothic-pro, sans-serif;
+
+
+  }
+
+  .landingSubtitle{
+    font-size: 1.5vw;
+    color: white;
+    font-family: open-sans, sans-serif;
+
+
+  }

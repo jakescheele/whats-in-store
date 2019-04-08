@@ -5,6 +5,7 @@ import Nav from "../components/NavBar";
 import Footer from "../components/Footer"
 
 import axios from "axios";
+import SalesModal from "../components/Dashboard/LineChart/salesModal"
 
 const emptyLogo = {
     logo: {

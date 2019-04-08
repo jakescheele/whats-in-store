@@ -74,7 +74,7 @@ class SignupModal extends Component {
 
         return (
             <>
-                <Modal show={this.props.modalState} onHide={(e) => this.props.close("SignupModal")}>
+                <Modal centered={true} show={this.props.modalState} onHide={(e) => this.props.close("SignupModal")}>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
                             Sign Up
@@ -160,9 +160,9 @@ class SignupModal extends Component {
                                 <p className="text-danger">
                                     {this.state.errorMessage}
                                 </p>
-                                <Button variant="primary" type="submit" onClick={this.formSubmit} >
+                                <Button className="mb-3" variant="outline-dark" type="submit" onClick={this.formSubmit} block>
                                     Submit
-                            </Button>
+                                </Button>
                             </Form>
                         </Container>
                     </Modal.Body>
