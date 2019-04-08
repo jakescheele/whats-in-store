@@ -56,7 +56,7 @@ class SubcategoryCardBody extends Component {
                             />
                         </div>
                         <div>
-                            <Button size="sm" className="blackButton" name={this.props.subcategory} onClick={(e)=>this.props.deleteSubCat(this.props.categoryIndex, this.props.subcategoryIndex)} variant="outline-danger"> - delete </Button>
+                            <Button size="sm"  name={this.props.subcategory} onClick={(e)=>this.props.deleteSubCat(this.props.categoryIndex, this.props.subcategoryIndex)} variant="outline-danger"> - delete </Button>
                         </div>
                     </div>
                     </Card.Body>

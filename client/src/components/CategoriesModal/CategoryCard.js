@@ -51,7 +51,7 @@ class CategoryCard extends Component {
                         </div>
                         <div>
                             <Button 
-                                className="mr-2 blackButton" 
+                                className="mr-2" 
                                 onClick={(e)=>this.props.addSubCat(this.props.index)} 
                                 id={this.props.category._id} 
                                 size="sm" 
@@ -60,7 +60,6 @@ class CategoryCard extends Component {
                                 + add subcat.
                             </Button>
                             <Button 
-                                className="blackButton" 
                                 onClick={(e)=>this.props.deleteCat(this.props.category._id)} 
                                 id={this.props.category._id} 
                                 variant="outline-danger"

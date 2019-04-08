@@ -15,12 +15,12 @@ class CategoriesModal extends Component {
         return (
         <>
             <Modal size="lg" show={this.props.state} onHide={(e)=>this.props.close("categoriesModal")}>
-                <Modal.Header closeButton>
-                    <div className="modalHeader">
+                <Modal.Header className="modalHeader" closeButton>
+                    
                     <Modal.Title id="contained-modal-title-vcenter">
                         VIEW/EDIT CATEGORIES
                     </Modal.Title>
-                    </div>
+                    
                     </Modal.Header>
                     <Modal.Body style={{ 'height': 'calc(100vh - 280px)', 'overflowY': 'auto' }}>
                         <Row>
