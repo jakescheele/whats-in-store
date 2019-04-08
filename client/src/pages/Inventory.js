@@ -4,13 +4,14 @@ import Layout from "../components/LayoutForInventory.js";
 import Nav from "../components/NavBar";
 import { Button } from 'react-bootstrap'
 import ProductModal from '../components/ProductCardDetailed'
+import CategoriesModal from '../components/CategoriesModal'
 import Footer from "../components/Footer"
 
 import axios from "axios";
 import ProductAPI from "../utils/API/products";
 import CategoryAPI from "../utils/API/categories"
 const emptyVariant = { name: "", stock: 0 };
-const emptyCategory = { name: "", subcategories: [], _id: "" }
+const emptyCategory = { name: "", subcategories: [] }
 const emptyFlashSale = { checked: false, startDate: new Date(), endDate: new Date(), price: "0" }
 const emptyImage = { img_url: "", img_id: "" }
 
@@ -19,9 +20,12 @@ const emptyImage = { img_url: "", img_id: "" }
 
 class Inventory extends Component {
     state = {
-        productModal: false,
+        // login
         login: false,
         shop: {},
+        // Modal status
+        productModal: false,
+        categoriesModal: false,
 
         //categories on the sidebar
         categories: [],
@@ -36,6 +40,7 @@ class Inventory extends Component {
         productid: "",
         name: "",
         category: { ...emptyCategory },
+        subcategory:"",
         price: "",
         description: "",
         stock: [{ ...emptyVariant }],
@@ -88,7 +93,7 @@ class Inventory extends Component {
                             this.setState({ 
                                 products: [...reversedArr], 
                                 filteredProducts: [...reversedArr]
-                            },()=>this.handleSortedDom())
+                            })
                         })
                 }
             })
@@ -130,6 +135,7 @@ class Inventory extends Component {
                             price: res.data.price,
                             description: res.data.description,
                             category: { ...res.data.category },
+                            subcategory: res.data.subcategory,
                             flashSales: { ...res.data.flashSales },
                             image: { ...res.data.image },
                             [modalname]: true
@@ -285,7 +291,6 @@ class Inventory extends Component {
 
                 });
 
-            // close the modal after save changes
 
         }
     }
@@ -377,7 +382,7 @@ class Inventory extends Component {
 
     handleSortedDom = ()=>{
 
-        let products = this.state.filteredProducts.length > 0 ? ([...this.state.filteredProducts]) : ([...this.state.products])
+        let products = [...this.state.filteredProducts]
         switch (this.state.sorting) {
 
             case "priceLtoH":
@@ -440,6 +445,109 @@ class Inventory extends Component {
         }
     }
 
+    // categories methods
+    addCat=(e)=>{
+
+        console.log("=====================Click !!!!=====================")
+        this.setState({
+            categories: [...this.state.categories, { ...emptyCategory }]
+        })
+
+    }
+
+    updateCat= (categoryIndex, field)=>value=>{
+        this.setState(
+            {
+                categories: this.state.categories.map((cat, i)=>i===categoryIndex?{...cat, [field]: value}:{...cat})
+            }
+        )
+    }
+
+    deleteCat=(categoryId)=>{
+        // this.setState({
+        //     categories: [...this.state.categories.filter((cat, i)=>i!==categoryIndex)]
+        // })
+        CategoryAPI.deleteCategory(categoryId)
+        .then(res=>{
+            console.log(res)
+            window.location.reload()
+        })
+        .catch(err=>console.log(err))
+
+    }
+
+    addSubCat=(catIndex)=>{
+
+        console.log("=====================Click Add Subcat!!!!=====================")
+        this.setState(
+            {
+                categories: this.state.categories.map((cat, i)=>i===catIndex?
+                {...cat, subcategories: [...cat.subcategories, ""]}
+                :{...cat})
+            }
+        )
+
+    }
+    
+    updateSubCat= (categoryIndex, field, subcategoriesIndex)=>value=>{
+        console.log("categoryIndex: "+ categoryIndex)
+        console.log("subcategoriesIndex: "+ subcategoriesIndex)
+        console.log("value: " + value)
+
+        this.setState(
+            {
+                categories: this.state.categories.map((cat, i)=>i===categoryIndex?{...cat, [field]: [
+                    ...Object.assign([], cat.subcategories, {[subcategoriesIndex]: value})
+                ]}:{...cat})
+            }
+        )
+    }
+
+    deleteSubCat=(categoryIndex, subcategoriesIndex)=>{
+
+        this.setState(
+            {
+                categories: this.state.categories.map((cat, i)=>i===categoryIndex?{...cat, subcategories: [
+                    ...cat.subcategories.filter((subcat,i)=>i!==subcategoriesIndex)
+                ]}:{...cat})
+            }
+        )
+    }
+
+    submitCats = (e)=>{
+            alert("Saving!")
+            console.log("submit new categories!")
+            console.log("=========here is the state of categories=========")
+            console.log(this.state.categories)
+            console.log("===================================")
+            console.log("Hello! I'm here trying to hit the save all categories!")
+            this.state.categories.forEach(cat=>{
+                CategoryAPI.saveCat(cat)
+                .then(res => {
+                    console.log(res)
+                    if(!res.data){
+                    CategoryAPI.saveCategory(cat)
+                            .then(res=>{
+                                console.log(res)
+                                // window.location.reload()
+                            })
+                            .catch(err=>console.log(err))
+                    }else{
+                        
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    alert("Oops! Something wrong! Try it again!")
+                })
+            })
+            
+            
+
+
+        
+    }
+
 
     render() {
         return (<>
@@ -449,11 +557,11 @@ class Inventory extends Component {
             </Jumbotron>
             <Layout
                 products={this.state.filteredProducts}
-                updateState={this.updateState}
+                // updateState={this.updateState}
                 categories={this.state.categories}
-                state={this.state.productModal}
+                // state={this.state.productModal}
                 show={this.openModaltHandler}
-                close={this.closeModalHandler}
+                // close={this.closeModalHandler}
                 handleCheckBox={this.handleCheckBox}
                 filters={this.state.filters}
                 handleSorting={this.handleSorting}
@@ -478,6 +586,8 @@ class Inventory extends Component {
                 // submit methods
                 handleSubmit={this.handleSubmit}
                 validated={this.state.validated}
+                // categories
+                categories={this.state.categories}
                 // product info
                 productid={this.state.productid}
                 productName={this.state.name}
@@ -486,9 +596,23 @@ class Inventory extends Component {
                 totalStock={this.state.totalStock}
                 description={this.state.description}
                 selectedCategory={this.state.category}
+                selectedSubcategory={this.state.subcategory}
                 flashSales={this.state.flashSales}
                 image={this.state.image}
 
+            />
+            <CategoriesModal 
+                state={this.state.categoriesModal}
+                show={this.openModaltHandler}
+                close={this.closeModalHandler}
+                categories={this.state.categories}
+                addCat={this.addCat}
+                updateCat={this.updateCat}
+                deleteCat={this.deleteCat}
+                addSubCat={this.addSubCat}
+                updateSubCat={this.updateSubCat}
+                deleteSubCat={this.deleteSubCat}
+                submitCats={this.submitCats}
             />
             <Footer />
         </>)

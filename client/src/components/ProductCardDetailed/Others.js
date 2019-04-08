@@ -10,7 +10,7 @@ function Others(props) {
                 <Col>
                 <Button 
                     onClick={e=>props.deleteProduct(props.productid)}
-                    variant="outline-dark" 
+                    variant="outline-danger" 
                     block
                 > Delete Product </Button>
                 </Col>

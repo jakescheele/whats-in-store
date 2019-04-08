@@ -9,7 +9,7 @@ class CategorySideBar extends Component{
         return (<Card>
                     <Card.Header className="d-flex justify-content-between">
                         <span className="pt-1">Categories</span> 
-                        <Button variant="outline-dark" size="sm" onClick={(e)=>this.props.show(null, "categoryModal")}><i className="far fa-plus-square mr-2"></i> Add/Edit Category</Button>
+                        <Button variant="outline-dark" size="sm" onClick={(e)=>this.props.show(null, "categoriesModal")}><i className="far fa-plus-square mr-2"></i> Add/Edit Category</Button>
                     </Card.Header>
                     <Card.Body>
                     {this.props.categories.length===0?
