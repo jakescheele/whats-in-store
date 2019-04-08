@@ -1,23 +1,10 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import Modal from 'react-bootstrap/Modal';
-import { Div, Button, Container, InputGroup, FormControl, Col, Row, Card, Table } from "react-bootstrap";
+import { Button, Container, Col, Row, Table } from "react-bootstrap";
 
 
 class Stock extends Component {
-    state={
-        total: 0
-    }
-    componentDidMount(){
-        let total = 0
-        this.props.stock.forEach(element=>{
-            
-            total += parseFloat(element.stock) 
-            this.setState({
-                total: total
-            })
-        })
-    }
+    
 
     render(){
         return (
@@ -40,7 +27,7 @@ class Stock extends Component {
                             <tbody>
                                 <tr>
                                     <td>Total</td>
-                                    <td>{this.state.total}</td>
+                                    <td>{this.props.totalStock}</td>
                                     <td></td>
                                 </tr>
                                 {this.props.stock.map(

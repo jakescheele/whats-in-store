@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, InputGroup, FormControl, Card, Form } from "react-bootstrap";
 import DatePicker from "react-datepicker";
@@ -13,7 +13,7 @@ function Promos(props) {
                 <Form.Group controlId="formBasicChecbox">
                     <Form.Check 
                     checked={props.flashSales.checked} 
-                    onChange={props.handleCheckBox} 
+                    onChange={props.handlePromoCheckBox} 
                     type="checkbox" 
                     label="Flash Sale" />
                 </Form.Group>
