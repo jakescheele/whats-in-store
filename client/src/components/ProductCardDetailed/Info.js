@@ -3,18 +3,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Col, Row, Container } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
 import AddCategory from '../ProductCardDetailed/AddCategory';
+import AddSubcategory from "../ProductCardDetailed/AddSubcategory"
 import '../../fileButton.css';
 // dummy categories
 import categories from "../../DummyCategories.json"
 
 class Info extends Component {
-
-
-  componentDidMount() {
-    console.log("============Here is in info for props.category========")
-    console.log(this.props.selectedCategory)
-  }
-
+  
 
   render() {
     return (
@@ -86,9 +81,18 @@ class Info extends Component {
                 onChange={this.props.inputChangeHandler} />
             </Form.Group>
             <AddCategory
-              categories={categories}
+              categories={this.props.categories}
               dropDownSelectHandler={this.props.dropDownSelectHandler}
-              selectedCategory={this.props.selectedCategory} />
+              selectedCategory={this.props.selectedCategory} 
+            />
+            <AddSubcategory
+              categories={this.props.categories}
+              dropDownSelectHandler={this.props.dropDownSelectHandler}
+              selectedCategory={this.props.selectedCategory} 
+              selectedSubcategory={this.props.selectedSubcategory} 
+
+            />
+            
           </Form>
         </Row>
       </Container>

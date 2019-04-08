@@ -5,8 +5,7 @@ import { Form } from "react-bootstrap";
 
 
 
-class AddCategory extends Component {
-  
+class AddSubcategory extends Component {
   
   render(){
     return (
@@ -15,17 +14,18 @@ class AddCategory extends Component {
             <Form.Label className ="pl-1">Product Category</Form.Label>
             <Form.Control 
             required
-            name="category" 
+            name="subcategory" 
             as="select" 
             style={{"width": "100%"}} 
             onChange={this.props.dropDownSelectHandler}
             >
-              <option disabled selected>Select a category</option>
-              {this.props.categories.map(category=>
-              (category._id === this.props.selectedCategory._id)?
-              (<option key={category.name} value={category._id} selected>{category.name} </option>)
-              :(<option key={category.name} value={category._id}>{category.name}</option>)
-            )}
+              <option disabled selected>Select a subcategory</option>
+              {this.props.selectedCategory.hasOwnProperty("subcategories")?(this.props.selectedCategory.subcategories.length===0?
+              (<></>)
+              :(this.props.selectedCategory.subcategories.map((subcategory,i)=>(parseInt(this.props.selectedSubcategory)===i)?
+              (<option key={i} value={i} selected>{subcategory}</option>)
+              :(<option key={i} value={i}>{subcategory}</option>))
+            )):(<></>)}
             
             </Form.Control>
             
@@ -39,5 +39,5 @@ class AddCategory extends Component {
   }
 }
 
-export default AddCategory
+export default AddSubcategory
 

@@ -40,13 +40,15 @@ class ModalComponent extends React.Component {
                   inputChangeHandler={this.props.inputChangeHandler}
                   dropDownSelectHandler={this.props.dropDownSelectHandler}
                   uploadImage={this.props.uploadImage}
-
+                  // categories
+                  categories={this.props.categories}
                   // product info
                   productid={this.props.productid}
                   productName={this.props.productName}
                   price={this.props.price}
                   description={this.props.description}
                   selectedCategory={this.props.selectedCategory}
+                  selectedSubcategory={this.props.selectedSubcategory}
                   image={this.props.image}
                 />
               </Modal.Body>
@@ -80,10 +82,10 @@ class ModalComponent extends React.Component {
             </Tab>
           </Tabs>
           <Modal.Footer>
-            <Button variant="secondary" onClick={(e) => this.props.close("productModal")}>
+            <Button variant="outline-secondary" onClick={(e) => this.props.close("productModal")}>
               Close
             </Button>
-            <Button type="submit" variant="primary" onClick={this.props.handleSubmit}>
+            <Button type="submit" variant="outline-dark" onClick={this.props.handleSubmit}>
               Save Changes
             </Button>
           </Modal.Footer>

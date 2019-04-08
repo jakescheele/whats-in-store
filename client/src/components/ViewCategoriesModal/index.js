@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import {Col, Row, Modal, InputGroup, FormControl } from 'react-bootstrap'
 import CategoryCard from "./CategoryCard";
-import axios from "axios";
-import CategoryOverlay from "../../components/ViewCategoriesModal";
+
 
 
 
@@ -15,7 +14,7 @@ class CategoryModal extends Component {
     render() {
         return (
         <>
-            <Modal show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
+            <Modal size="lg" show={this.props.state} onHide={(e)=>this.props.close("categoryModal")}>
                 <Modal.Header closeButton>
                     <div className="modalHeader">
                     <Modal.Title id="contained-modal-title-vcenter">

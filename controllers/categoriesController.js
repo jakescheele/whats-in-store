@@ -18,10 +18,10 @@ module.exports = {
   create: function (req, res) {
     console.log("here",req.body)
     db.Category
-      .create({name:req.body.name}).then(dbModel =>{
-        db.User.findOneAndUpdate({_id:req.user._id},{$push:{categories:dbModel._id}}).then(data=>{
-          res.json(dbModel)
-
+      .create(req.body).then(dbModel =>{
+        db.User.findOneAndUpdate({_id:req.user._id},{$push:{categories:dbModel._id}})
+        .then(data=>{
+          res.json(data)
         }).catch(err=>res.status(500,err))
       }).catch(err=>res.status(500,err))
   },
@@ -34,8 +34,8 @@ module.exports = {
   },
   remove: function (req, res) {
     db.Category
-      .findByIdAndRemove({ _id: req.body.id })
-      .then(dbModel => dbModel.remove())
+      .findByIdAndRemove(req.params.id)
+      // .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -59,5 +59,14 @@ module.exports = {
         db.Category.findOneAndUpdate({_id:req.body.id},{$push:{subcategories:req.body.name}})
           .then(dbModel=>res.json(dbModel)).catch(err=>res.json(err))
       }).catch(err => res.status(422).json(err));
+  },
+
+
+  updateCat: function (req, res) {
+    console.log(req.body)
+      db.Category
+      .findOneAndUpdate({ _id: req.body._id }, {$set:{...req.body}})
+      .then(result => res.json(result))
+      .catch(err => res.status(422).json(err));
   },
 };

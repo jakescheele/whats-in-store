@@ -20,7 +20,7 @@ export default {
         let product = {
             name: productData.name,
             category: productData.category,
-            // subcategory: productData.subcategory,
+            subcategory: productData.subcategory,
             image: productData.image,
             price: productData.price,
             description: productData.description,

@@ -54,9 +54,9 @@ class LoginModal extends Component{
                     <p className="text-danger">
                         {this.state.errorMessage}
                     </p>
-                    <Button variant="primary" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} >
+                    <Button className="my-3" variant="outline-dark" type="submit" onSubmit={this.formSubmit} onClick={this.formSubmit} block>
                         Submit
-                        </Button>
+                    </Button>
                 </Form>
                 </Container>
             </Modal.Body>
