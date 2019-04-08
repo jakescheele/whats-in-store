@@ -17,6 +17,7 @@ class Layout extends Component {
         // product: {},
     }
 
+<<<<<<< HEAD
     // submitForm=(event)=>{
     //     event.preventDefault();
     //     Axios.post("/api/categories",{name:this.state.cata})
@@ -24,6 +25,15 @@ class Layout extends Component {
     //         this.setState({categories:[...this.props.categories,res.data]})
     //     })
     // }
+=======
+    submitForm=(event)=>{
+        event.preventDefault();
+        Axios.post("/api/categories",{name:this.state.cata})
+        .then(res=>{
+        this.setState({categories:[this.state.categories,res.data]})
+        })
+    }
+>>>>>>> master
     
     // handleChange = (event) => {
     //     event.preventDefault();
