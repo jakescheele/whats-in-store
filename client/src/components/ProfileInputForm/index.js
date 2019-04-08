@@ -11,7 +11,7 @@ class ProfileInputForm extends Component {
                 <Container>
                     <Row className="p-0 justify-content-center">
                         <Col sm="auto" md="auto" lg="auto">
-                        {this.props.logo.logo_url?( <img alt="shopLogo" src={this.props.logo.logo_url}/>):(<img alt="shopLogo" src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
+                        {this.props.logo.hasOwnProperty("logo_url")?( <img alt="shopLogo" src={this.props.logo.logo_url}/>):(<img alt="shopLogo" src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
                         </Col>
                     </Row>
                     <Row className="mt-3">

@@ -604,7 +604,7 @@ class Inventory extends Component {
                 stock={this.state.stock}
                 totalStock={this.state.totalStock}
                 description={this.state.description}
-                selectedCategory={this.state.category}
+                selectedCategory={this.state.category._id}
                 selectedSubcategory={this.state.subcategory}
                 flashSales={this.state.flashSales}
                 image={this.state.image}

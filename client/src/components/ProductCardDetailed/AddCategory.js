@@ -22,7 +22,7 @@ class AddCategory extends Component {
             >
               <option disabled selected>Select a category</option>
               {this.props.categories.map(category=>
-              (category._id === this.props.selectedCategory._id)?
+              (category._id === this.props.selectedCategory)?
               (<option key={category.name} value={category._id} selected>{category.name} </option>)
               :(<option key={category.name} value={category._id}>{category.name}</option>)
             )}
