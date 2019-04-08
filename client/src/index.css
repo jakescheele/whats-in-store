@@ -68,7 +68,7 @@ code {
   color: white;
   font-family: open-sans, sans-serif;
   background-color: black;
-  border-radius: 5pt;
+  border-radius: 5px;
   padding: 4pt;
 }
 
@@ -76,7 +76,7 @@ code {
   
   font-family: open-sans, sans-serif;
   border-color: 10pt solid black;
-  border-radius: 5pt;
+  border-radius: 5px;
   padding: 4pt;
 }
 

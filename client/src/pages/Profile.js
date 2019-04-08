@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { default as ProfileInputForm } from "../components/ProfileInputForm";
 import Nav from "../components/NavBar";
+import Footer from "../components/Footer"
+
 import axios from "axios";
 
 const emptyLogo = {
@@ -136,6 +138,7 @@ class Profile extends Component {
                 logo= {this.state.logo}
                 description= {this.state.description}
             />
+            <Footer/>
         </>)
     }
 }

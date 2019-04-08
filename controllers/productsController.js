@@ -44,6 +44,7 @@ module.exports = {
         description: req.body.description,
         image: req.body.image,
         stock: req.body.stock,
+        totalStock: req.body.totalStock,
         flashSales: req.body.flashSales
 
       };

@@ -32,10 +32,13 @@ class Info extends Component {
             className="my-3"
             style={{ "width": "100%" }}
           >
-            <Form.Group controlId="productImage">
+            <Form.Group className="text-center" controlId="productImage">
+            <label className="border">
               <Form.Label variant="outline-dark" block>
                 Upload Image 
               </Form.Label>
+              </label>
+              <label className="fileContainer">
               <Form.Control 
                 style={{"color":"rgb(0,0,0,0)"}}
                 onChange={this.props.uploadImage}
@@ -44,6 +47,8 @@ class Info extends Component {
                 name="image" 
                 display="none" 
                 placeholder="Upload Product Image" />
+              </label>
+
             </Form.Group>
             <Form.Group controlId="name">
               <Form.Label className="pl-1">Product Name</Form.Label>
