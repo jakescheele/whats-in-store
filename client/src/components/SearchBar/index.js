@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import {InputGroup, Button, FormControl} from 'react-bootstrap'
 
 
-class SearchBar extends Component(){
+class SearchBar extends Component{
     state={
         query:""
     }
@@ -10,8 +10,8 @@ class SearchBar extends Component(){
         event.preventDefault();
         const {name,value}=event.target;
         this.setState({[name]:value})
+        console.log(this.state)
     }
-
     render(){
         return ( <InputGroup className="mb-3 mx-0">
             <FormControl

@@ -377,11 +377,12 @@ class Inventory extends Component {
     }
     searched=(event)=>{
         event.preventDefault();
+        console.log(event.target)
+        let products = [...this.state.products]
         let queired=products.filter(product => {
-            let name= new RegExp(product.name,"gi"),
-            description= new RegExp(product.description,"gi"),
-            stockName= new RegExp(product.stock.name,'gi'), target=event.target.name
-            if(name.test(target)||description.test(target)||stockName.test(target)){
+            let name= new RegExp(event.target.name,"gi")
+            if(name.test(product.description)||name.test(product.name)){
+                console.log("accepted",product)
                 return product
             }
         })
