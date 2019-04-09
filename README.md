@@ -135,7 +135,7 @@ handleCheckBox = (e) => {
     }
 ~~~~
 
-#### 4. Sorting
+### 4. Sorting
 
 The handleSorting function will keep track of the dropdown on inventory page and set the "sorting" state with the keywords of how we're going to sort the products (like price from low to high, for example). After we set the state, we call the handleSortedDom function which is basically a switch that take in the filteredProducts array and sort the products inside according to the keywords, and finally reset the filteredProducts array. The original codes are on client/src/pages/inventory.js
 ~~~~
