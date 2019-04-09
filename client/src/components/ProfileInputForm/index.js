@@ -12,9 +12,9 @@ class ProfileInputForm extends Component {
                     <Row className="p-0 justify-content-center">
                         <Col xs={12} sm="auto" md="auto" lg="auto" className="text-center">
                         {this.props.logo.hasOwnProperty("logo_url")?
-                        ( <img alt="shopLogo" style={{"object-fit":"contain"}} 
+                        ( <img alt="shopLogo" style={{"objectFit":"contain"}} 
                         src={this.props.logo.logo_url}/>)
-                        :(<img alt="shopLogo" style={{"object-fit":"contain"}} src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
+                        :(<img alt="shopLogo" style={{"objectFit":"contain"}} src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
                         </Col>
                     </Row>
                     <Row className="mt-3">
