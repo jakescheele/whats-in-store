@@ -115,43 +115,48 @@ class Inventory extends Component {
                 .then(res => {
 
 
-                    if (res.data.stock.length === 0) {
-                        console.log("the stock array is empty")
-                        this.setState({
-                            [modalname]: true
-                        })
+                    // if (res.data.stock.length === 0) {
+                    //     console.log("the stock array is empty")
+                    //     this.setState({
+                            
+                    //         [modalname]: true
+                    //     })
 
-                    } else {
+                    // } else {
                         console.log("the stock array has a lot")
                         this.setState({
                             productid: res.data._id,
                             name: res.data.name,
-                            stock: res.data.stock,
-                            totalStock: res.data.totalStock,
                             price: res.data.price,
                             description: res.data.description,
                             category: { ...res.data.category },
-                            subcategory: res.data.subcategory,
+                            subcategory: res.data.subcategory || "",
+                            stock: res.data.stock||[{ ...emptyVariant }],
+                            totalStock: res.data.totalStock,
                             flashSales: { ...res.data.flashSales },
-                            image: { ...res.data.image },
+                            image: { ...res.data.image }|| { ...emptyImage },
                             [modalname]: true
                         })
-                    }
-                    console.log("===========Here is the original category state =================")
-                    console.log(this.state.category)
+                    // }
+                    console.log("===========Here is the original  state =================")
+                    console.log(this.state)
                 })
 
 
 
         } else {
             console.log("===========You are going to see new product=================")
+            // reset the state to empty all
             this.setState({
                 productid: "",
                 name: "",
-                category: {},
                 price: "",
                 description: "",
+                category: {...emptyCategory},
+                subcategory:"",
                 stock: [{ ...emptyVariant }],
+                totalStock: 0,
+                flashSales: { ...emptyFlashSale },
                 image: { ...emptyImage },
                 [modalname]: true
             })
@@ -604,7 +609,7 @@ class Inventory extends Component {
                 stock={this.state.stock}
                 totalStock={this.state.totalStock}
                 description={this.state.description}
-                selectedCategory={this.state.category._id}
+                selectedCategory={this.state.category}
                 selectedSubcategory={this.state.subcategory}
                 flashSales={this.state.flashSales}
                 image={this.state.image}

@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Container, InputGroup, FormControl, Card, Form } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import 'moment-timezone';
+import Moment from 'react-moment';
 
 function Promos(props) {
     return (

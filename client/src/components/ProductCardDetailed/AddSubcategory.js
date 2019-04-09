@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Form } from "react-bootstrap";
+const emptyCategory = { name: "", subcategories: [] }
 
 
 
@@ -8,7 +9,7 @@ import { Form } from "react-bootstrap";
 class AddSubcategory extends Component {
   
   render(){
-    const catObj = this.props.categories.find(category => category._id === this.props.selectedCategory  || {})
+    const catObj = this.props.categories.find(category => category._id === this.props.selectedCategory|| category._id === this.props.selectedCategory._id)|| {...emptyCategory}
     return (
       <>
       <Form.Group className="mb-3 mx-0">

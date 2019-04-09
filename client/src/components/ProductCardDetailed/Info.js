@@ -29,7 +29,7 @@ class Info extends Component {
           >
             <Form.Group className="text-center" controlId="productImage">
             <label className="border">
-              <Form.Label variant="outline-dark" block>
+              <Form.Label variant="outline-dark">
                 Upload Image 
               </Form.Label>
               </label>
