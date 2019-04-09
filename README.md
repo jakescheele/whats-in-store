@@ -2,7 +2,7 @@
 
 What’s In Store is a tool for people to manage their inventories online. This app allows people to track their inventories, sales, and promotions. They may add and edit products, details, stock, and search their inventory by customizable categories and subcategories. They may track sales for each item and across all inventory, made easy with visual representations on their dashboard. This app will also allow people to set and follow their promotional sales: per item, price change, and time period.
 
-![image](files/Users/jzhang/Desktop/Isolated.png) !!!
+![image](client/public/img/landingPage.png) 
 
 ## Getting Started
 
@@ -14,11 +14,207 @@ Using this web portal requires no installation, though you may want to have an i
 
 ## Notable Code Snippets
 
-![image](files/Users/jzhang/Desktop/Isolated.png) !!!
+Please see our code snippets on CSS Animation, Add/Edit Variant, Categories, and Subcategories, filtering, and sorting below. 
 
-![image](files/Users/jzhang/Desktop/Isolated.png) !!!
+### 1. CSS Animation
 
-!!!
+We created an animated shop using CSS animation properties. The animation uses keyframes to sequence through animation sequences, and the fade value to cycle through each components of the animation. Each keyframe uses a different opacity ranging from 0% to 100% to progress, as well as animation delays to time when each piece should start.
+
+client/src/App.css
+
+~~~~
+.landingImage{
+    padding: 0px, 0px, 0px, 0px;
+    margin: 0px, 0px, 0px, 0px;
+}
+
+.fadein{
+    justify-content: center;
+    display: flex;
+    height: 10vw;
+    position: absolute;
+    bottom: -60px;
+    left: 200px
+}
+.fadein img {
+    object-fit: scale-down!important;
+    position:absolute;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    0% {opacity: 0}
+    20% {opacity: 1}
+    33% {opacity: 1}
+    53% {opacity: 0}
+    100% {opacity: 0}
+  }
+  ~~~~
+
+###  2. Add/Edit Variant, Categories, and Subcategories 
+
+These functions are using similar code. We used spread syntax to do add and updatee. The original codes are in client/src/pages/inventory.js
+
+~~~~
+updateVariant = (varientIndex, field) => value => {
+    this.setState(
+        {
+            stock: this.state.stock.map((item, i) => i === varientIndex ? { ...item, [field]: value } : { ...item })
+        }
+    )
+}
+addVariant = () => {
+    this.setState({
+        stock: [...this.state.stock, { ...emptyVariant }]
+    })
+}
+~~~~
+
+
+### 3. Filtering
+
+The logic of the filtering is get all product data from our database and save them in state on inventory page. At the same time we created a "filters" object on our state keeping category_id: true/false pairs inside. When a user check/uncheck a category, the function below will be triggered to reset the the value of a specific category id from true to false (or vice versa). Then, we call the handleSortedDom function which keeps tracking of the filters to fill the "filteredProducts" array on the state with products that belong to that specific category. The original codes are on client/src/pages/inventory.js
+
+~~~~
+handleCheckBox = (e) => {
+        // get the checked cats's id 
+        if (e) {
+            const { name, checked } = e.target
+
+            this.setState(prevState => {
+                //set state with previous state key/value and change the checked key/value
+                const filters = { ...prevState.filters, [name]: checked }
+
+                // return the id of cats whose value is true
+                const filteredCatsIds = Object.keys(filters).filter(
+                    // condition: keys of filters obj which value is true (has been checked)
+                    filterKey => filters[filterKey]
+                )
+                // filter the products arr in state with the filteredCatsIds
+                const filteredProducts = prevState.products.filter(product =>
+                    filteredCatsIds.some(
+                        // condition checked catsId equal to product category id
+                        filteredCatsId => filteredCatsId === product.category
+                    )
+                )
+                return {
+                    // return filters to actively monitor checkbox
+                    filters,
+                    // return the filtered products belonging to the checked cats
+                    filteredProducts
+                    
+                }
+            },()=>this.handleSortedDom())
+        }
+        else {
+            this.setState(prevState => {
+                //set state with previous state key/value and change the checked key/value
+                const filters = { ...prevState.filters }
+
+                // return the id of cats whose value is true
+                const filteredCatsIds = Object.keys(filters).filter(
+                    // condition: keys of filters obj which value is true (has been checked)
+                    filterKey => filters[filterKey]
+                )
+                // filter the products arr in state with the filteredCatsIds
+                const filteredProducts = prevState.products.filter(product =>
+                    filteredCatsIds.some(
+                        // condition checked catsId equal to product category id
+                        filteredCatsId => filteredCatsId === product.category
+                    )
+                )
+                return {
+                    // return the filtered products belonging to the checked cats
+                    filteredProducts
+                    
+                }
+            })
+        }
+    }
+~~~~
+
+#### 4. Sorting
+
+The handleSorting function will keep track of the dropdown on inventory page and set the "sorting" state with the keywords of how we're going to sort the products (like price from low to high, for example). After we set the state, we call the handleSortedDom function which is basically a switch that take in the filteredProducts array and sort the products inside according to the keywords, and finally reset the filteredProducts array. The original codes are on client/src/pages/inventory.js
+~~~~
+handleSorting = (e) => {
+        const { name, value } = e.target
+        console.log(name)
+        console.log(value)
+        // set state
+        this.setState({
+            [name]: value
+        },()=>{
+            this.handleSortedDom()
+        })
+    }
+   
+handleSortedDom = ()=>{
+
+    let products = [...this.state.filteredProducts]
+    switch (this.state.sorting) {
+
+        case "priceLtoH":
+            console.log("ranging the dom priceLtoH")
+            products.sort((a, b) => (a.price - b.price))
+            console.log(products)
+            this.setState({
+                filteredProducts: products
+            })
+            break;
+
+        case "priceHtoL":
+            console.log("ranging the dom priceHtoL")
+            products.sort((a, b) => (b.price - a.price))
+            console.log(products)
+            this.setState({
+                filteredProducts: products
+            })
+            break;
+
+        case "stockLtoH":
+            console.log("ranging the dom stockLtoH")
+            products.sort((a, b) => (a.totalStock - b.totalStock))
+            console.log(products)
+            this.setState({
+                filteredProducts: products
+            })
+            break;
+
+        case "stockHtoL":
+            console.log("ranging the dom stockHtoL")
+            products.sort((a, b) => (b.totalStock - a.totalStock))
+            console.log(products)
+            this.setState({
+                filteredProducts: products
+            })
+            break;
+
+        case "NameAtoZ":
+            console.log("ranging the dom NameAtoZ")
+            products.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? (1) : (-1)))
+            console.log(products)
+            this.setState({
+                filteredProducts: products
+            })
+            break;
+
+        case "NameZtoA":
+            console.log("ranging the dom NameZtoA")
+            products.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? (-1) : (1)))
+            console.log(products)
+            this.setState({
+                filteredProducts: products
+            })
+            break;
+        default:
+            console.log("ranging the dom by default")
+            this.handleCheckBox()
+    }
+}
+~~~~
 
 ## Repository on Github
 
