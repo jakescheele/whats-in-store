@@ -36,7 +36,7 @@ font-style: normal;
 input {
     color: black;
     font-family: open-sans, sans-serif;
-    font-size: 1.5vw;
+    font-size: 1.1vw;
   }
 
   /* ----------------style for navbar ---------------- */
@@ -398,7 +398,7 @@ a .nav-link {
   }
 
   .landingTile{
-    font-size: 4vw;
+    font-size: 3.6vw;
     color: white;
     font-family: itc-avant-garde-gothic-pro, sans-serif;
   }

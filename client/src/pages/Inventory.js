@@ -113,45 +113,39 @@ class Inventory extends Component {
             // make ajax request to the backend and get the viewed product
             ProductAPI.getProduct(id)
                 .then(res => {
-
-
-                    if (res.data.stock.length === 0) {
-                        console.log("the stock array is empty")
-                        this.setState({
-                            [modalname]: true
-                        })
-
-                    } else {
                         console.log("the stock array has a lot")
                         this.setState({
                             productid: res.data._id,
                             name: res.data.name,
-                            stock: res.data.stock,
-                            totalStock: res.data.totalStock,
                             price: res.data.price,
                             description: res.data.description,
                             category: { ...res.data.category },
-                            subcategory: res.data.subcategory,
+                            subcategory: res.data.subcategory || "",
+                            stock: res.data.stock||[{ ...emptyVariant }],
+                            totalStock: res.data.totalStock,
                             flashSales: { ...res.data.flashSales },
-                            image: { ...res.data.image },
+                            image: { ...res.data.image }|| { ...emptyImage },
                             [modalname]: true
                         })
-                    }
-                    console.log("===========Here is the original category state =================")
-                    console.log(this.state.category)
+                    console.log("===========Here is the original  state =================")
+                    console.log(this.state)
                 })
 
 
 
         } else {
             console.log("===========You are going to see new product=================")
+            // reset the state to empty all
             this.setState({
                 productid: "",
                 name: "",
-                category: {},
                 price: "",
                 description: "",
+                category: {...emptyCategory},
+                subcategory:"",
                 stock: [{ ...emptyVariant }],
+                totalStock: 0,
+                flashSales: { ...emptyFlashSale },
                 image: { ...emptyImage },
                 [modalname]: true
             })
@@ -327,10 +321,8 @@ class Inventory extends Component {
                     // return filters to actively monitor checkbox
                     filters,
                     // return the filtered products belonging to the checked cats
-                    filteredProducts
-                    
+                    filteredProducts   
                 }
-
             },()=>this.handleSortedDom())
         }
         else {
@@ -355,11 +347,8 @@ class Inventory extends Component {
                     filteredProducts
                     
                 }
-
             })
         }
-
-
     }
 
 
@@ -375,20 +364,7 @@ class Inventory extends Component {
             this.handleSortedDom()
         })
     }
-    searched=(event)=>{
-        event.preventDefault();
-        console.log(event.target)
-        let products = [...this.state.products]
-        let queired=products.filter(product => {
-            let name= new RegExp(event.target.name,"gi")
-            if(name.test(product.description)||name.test(product.name)){
-                console.log("accepted",product)
-                return product
-            }
-        })
-        console.log(queired)
-        this.setState({filteredProducts:queired})
-    }
+   
     handleSortedDom = ()=>{
 
         let products = [...this.state.filteredProducts]
@@ -451,6 +427,22 @@ class Inventory extends Component {
                 console.log("ranging the dom by default")
                 this.handleCheckBox()
         }
+    }
+
+    // search
+    searched=(event)=>{
+        event.preventDefault();
+        console.log(event.target)
+        let products = [...this.state.products]
+        let queired=products.filter(product => {
+            let name= new RegExp(event.target.name,"gi")
+            if(name.test(product.description)||name.test(product.name)){
+                console.log("accepted",product)
+                return product
+            }
+        })
+        console.log(queired)
+        this.setState({filteredProducts:queired})
     }
 
     // categories methods
@@ -604,7 +596,7 @@ class Inventory extends Component {
                 stock={this.state.stock}
                 totalStock={this.state.totalStock}
                 description={this.state.description}
-                selectedCategory={this.state.category._id}
+                selectedCategory={this.state.category}
                 selectedSubcategory={this.state.subcategory}
                 flashSales={this.state.flashSales}
                 image={this.state.image}

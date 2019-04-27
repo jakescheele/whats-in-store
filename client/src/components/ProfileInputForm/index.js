@@ -10,8 +10,11 @@ class ProfileInputForm extends Component {
             <>
                 <Container>
                     <Row className="p-0 justify-content-center">
-                        <Col sm="auto" md="auto" lg="auto">
-                        {this.props.logo.hasOwnProperty("logo_url")?( <img alt="shopLogo" src={this.props.logo.logo_url}/>):(<img alt="shopLogo" src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
+                        <Col xs={12} sm="auto" md="auto" lg="auto" className="text-center">
+                        {this.props.logo.hasOwnProperty("logo_url")?
+                        ( <img alt="shopLogo" style={{"objectFit":"contain"}} 
+                        src={this.props.logo.logo_url}/>)
+                        :(<img alt="shopLogo" style={{"objectFit":"contain"}} src={process.env.PUBLIC_URL + '/logoPlaceholder.png'}/>)}
                         </Col>
                     </Row>
                     <Row className="mt-3">
@@ -37,11 +40,6 @@ class ProfileInputForm extends Component {
                                 value={this.props.email} 
                                 placeholder="Your Email" />
                             </Form.Group>
-
-                            {/* <Form.Group controlId="formBasicPassword">
-                                <Form.Label className ="text-light">Password</Form.Label>
-                                <Form.Control onChange={this.props.handleChange} type="password" placeholder="Your Password" />
-                            </Form.Group> */}
                             <Form.Group controlId="shopName">
                                 <Form.Label className ="text-light">Shop Name</Form.Label>
                                 <Form.Control 

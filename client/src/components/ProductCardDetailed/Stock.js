@@ -12,7 +12,11 @@ class Stock extends Component {
                 <Container>
                     <Row className="mb-2">
                         <Col>
-                            <Button className="mr-2" size="sm" variant="success" onClick={this.props.addVariant}>+ Add A Variant</Button>
+                            <Button 
+                            className="mr-2" 
+                            size="sm" 
+                            variant="success" 
+                            onClick={this.props.addVariant}>+ Add A Variant</Button>
                         </Col>
                     </Row>
                     <Row className="px-3 py-2">

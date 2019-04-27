@@ -10,6 +10,7 @@ import '../index.css';
 class LandingPage extends Component {
     
     state = {
+        shop:"",
         LoginModal: false,
         SignupModal: false
     }
