@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "cloudinary": "^1.14.0",
     "concurrently": "^4.1.0",
     "connect-ensure-login": "^0.1.1",
